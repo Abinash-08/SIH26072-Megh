@@ -1,0 +1,4805 @@
+/* =========================================================
+   MEGHDHRISTI
+   LIVE MAP
+========================================================= */
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.live-map-page {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 10% 10%,
+            rgba(24, 184, 229, .10),
+            transparent 30%),
+
+        radial-gradient(circle at 90% 80%,
+            rgba(108, 86, 255, .10),
+            transparent 32%),
+
+        #030811;
+
+    color: #edf5ff;
+
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.live-map-bg {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(circle at 30% 30%,
+            rgba(0, 220, 255, .035),
+            transparent 28%),
+
+        linear-gradient(120deg,
+            transparent,
+            rgba(38, 90, 140, .025));
+
+    z-index: 0;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.live-map-main {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1500px,
+            calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding:
+        40px 0 70px;
+
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.live-map-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    gap: 30px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.live-map-heading .section-kicker {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        #7f9bb6;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .16em;
+
+}
+
+
+.live-map-heading h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(34px, 4vw, 56px);
+
+    line-height: 1;
+
+    letter-spacing:
+        -.04em;
+
+}
+
+
+.live-map-heading p {
+
+    max-width: 600px;
+
+    margin:
+        15px 0 0;
+
+    color:
+        #8397ae;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   LIVE PILL
+========================================================= */
+
+.map-live-pill {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        11px 16px;
+
+    border:
+        1px solid rgba(38, 231, 163, .20);
+
+    border-radius: 999px;
+
+    background:
+        rgba(5, 25, 29, .65);
+
+    color:
+        #35e5a4;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .13em;
+
+    white-space: nowrap;
+
+}
+
+
+.map-live-pill span {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+        #28e7a1;
+
+    box-shadow:
+        0 0 15px rgba(40, 231, 161, .9);
+
+    animation:
+        livePulse 1.7s infinite;
+
+}
+
+
+@keyframes livePulse {
+
+    50% {
+
+        opacity: .45;
+
+        transform:
+            scale(.7);
+
+    }
+
+}
+
+
+/* =========================================================
+   MAP SHELL
+========================================================= */
+
+.live-map-shell {
+
+    position: relative;
+
+    height:
+        min(72vh, 780px);
+
+    min-height:
+        610px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(105, 164, 218, .18);
+
+    border-radius: 24px;
+
+    background:
+        #061321;
+
+    box-shadow:
+
+        0 30px 90px rgba(0, 0, 0, .45),
+
+        inset 0 1px rgba(255, 255, 255, .04);
+
+}
+
+
+/* =========================================================
+   LEAFLET
+========================================================= */
+
+.live-map-canvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 1;
+
+    background:
+        #061321;
+
+}
+
+
+/* =========================================================
+   MAP DARK CINEMATIC OVERLAY
+========================================================= */
+
+.live-map-shell::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(180deg,
+            rgba(2, 10, 20, .35),
+            transparent 25%,
+            transparent 70%,
+            rgba(2, 9, 18, .55));
+
+}
+
+
+/* =========================================================
+   TOP STATUS
+========================================================= */
+
+.live-map-status {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 18px;
+
+    right: 18px;
+
+    z-index: 20;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        12px 15px;
+
+    border:
+        1px solid rgba(255, 255, 255, .10);
+
+    border-radius: 14px;
+
+    background:
+        rgba(4, 15, 29, .78);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, .25);
+
+}
+
+
+.live-map-status {
+
+    color:
+        #dceaff;
+
+}
+
+
+.status-indicator {
+
+    width: 8px;
+
+    height: 8px;
+
+    margin-right: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #2eea9b;
+
+    box-shadow:
+        0 0 15px rgba(46, 234, 155, .8);
+
+}
+
+
+.live-map-status>div {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.live-map-status strong {
+
+    display: block;
+
+    font-size: 11px;
+
+    letter-spacing:
+        .11em;
+
+}
+
+
+.live-map-status small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color:
+        #7189a2;
+
+    font-size: 9px;
+
+    letter-spacing:
+        .12em;
+
+}
+
+
+.data-source {
+
+    padding:
+        6px 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(49, 196, 255, .07);
+
+    color:
+        #6dc9f4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .08em;
+
+}
+
+
+/* =========================================================
+   LAYER CONTROL
+========================================================= */
+
+.live-layer-control {
+
+    position: absolute;
+
+    top: 105px;
+
+    left: 18px;
+
+    z-index: 30;
+
+    width: 145px;
+
+    padding: 10px;
+
+    border:
+        1px solid rgba(255, 255, 255, .09);
+
+    border-radius: 14px;
+
+    background:
+        rgba(4, 15, 29, .80);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, .3);
+
+}
+
+
+.control-title {
+
+    padding:
+        5px 8px 9px;
+
+    color:
+        #6d839a;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .14em;
+
+}
+
+
+.live-layer-button {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        9px 10px;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid transparent;
+
+    border-radius: 9px;
+
+    background:
+        transparent;
+
+    color:
+        #8195aa;
+
+    font-family:
+        inherit;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.live-layer-button span {
+
+    width: 18px;
+
+    text-align: center;
+
+}
+
+
+.live-layer-button:hover {
+
+    background:
+        rgba(255, 255, 255, .05);
+
+    color:
+        #d9ebff;
+
+}
+
+
+.live-layer-button.active {
+
+    border-color:
+        rgba(42, 216, 255, .22);
+
+    background:
+        rgba(31, 207, 255, .10);
+
+    color:
+        #39dfff;
+
+}
+
+
+/* =========================================================
+   STORM CARD
+========================================================= */
+
+.live-storm-card {
+
+    position: absolute;
+
+    top: 105px;
+
+    right: 18px;
+
+    z-index: 30;
+
+    width: 285px;
+
+    padding: 18px;
+
+    border:
+        1px solid rgba(120, 177, 232, .17);
+
+    border-radius: 17px;
+
+    background:
+        rgba(5, 15, 29, .88);
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, .35);
+
+}
+
+
+.storm-card-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding-bottom:
+        15px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, .07);
+
+}
+
+
+.storm-card-header span {
+
+    color:
+        #70869c;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .14em;
+
+}
+
+
+.storm-card-header h2 {
+
+    margin:
+        6px 0 0;
+
+    font-size:
+        17px;
+
+    letter-spacing:
+        -.02em;
+
+}
+
+
+.storm-severity {
+
+    padding:
+        5px 8px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 71, 100, .09);
+
+    color:
+        #ff526b;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing:
+        .12em;
+
+}
+
+
+.storm-card-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 13px;
+
+    padding:
+        16px 0;
+
+}
+
+
+.storm-data span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        #687f97;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        .09em;
+
+}
+
+
+.storm-data strong {
+
+    display: block;
+
+    color:
+        #dceaff;
+
+    font-size: 11px;
+
+}
+
+
+.cyan-value {
+
+    color:
+        #36d9ff !important;
+
+}
+
+
+.purple-value {
+
+    color:
+        #9570ff !important;
+
+}
+
+
+.storm-card-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding-top:
+        12px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, .07);
+
+    color:
+        #ff536d;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .08em;
+
+}
+
+
+.risk-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #ff536d;
+
+    box-shadow:
+        0 0 12px rgba(255, 83, 109, .8);
+
+}
+
+
+/* =========================================================
+   LOCATION CARD
+========================================================= */
+
+.live-location-card {
+
+    position: absolute;
+
+    left: 18px;
+
+    bottom: 18px;
+
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 230px;
+
+    padding:
+        11px 12px;
+
+    border:
+        1px solid rgba(44, 211, 255, .17);
+
+    border-radius: 14px;
+
+    background:
+        rgba(4, 17, 31, .84);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.location-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 39px;
+
+    height: 39px;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    background:
+        rgba(42, 215, 255, .08);
+
+    color:
+        #38dcff;
+
+    font-size: 21px;
+
+}
+
+
+.live-location-card span {
+
+    display: block;
+
+    color:
+        #698198;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .13em;
+
+}
+
+
+.live-location-card strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        #dcecff;
+
+    font-size: 11px;
+
+}
+
+
+.live-location-card small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color:
+        #71869b;
+
+    font-size: 8px;
+
+}
+
+
+#liveRefreshLocation {
+
+    width: 28px;
+
+    height: 28px;
+
+    border:
+        1px solid rgba(47, 216, 255, .15);
+
+    border-radius: 8px;
+
+    background:
+        rgba(38, 216, 255, .05);
+
+    color:
+        #39dfff;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+#liveRefreshLocation:hover {
+
+    background:
+        rgba(38, 216, 255, .12);
+
+    transform:
+        rotate(90deg);
+
+}
+
+
+/* =========================================================
+   DATE CONTROL
+========================================================= */
+
+.live-date-control {
+
+    position: absolute;
+
+    right: 18px;
+
+    bottom: 18px;
+
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 7px;
+
+    border:
+        1px solid rgba(255, 255, 255, .10);
+
+    border-radius: 13px;
+
+    background:
+        rgba(4, 15, 29, .86);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.live-date-control button {
+
+    width: 36px;
+
+    height: 36px;
+
+    border:
+        1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255, 255, 255, .04);
+
+    color:
+        #8fa6bd;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.live-date-control button:hover {
+
+    border-color:
+        rgba(48, 215, 255, .3);
+
+    color:
+        #3adfff;
+
+}
+
+
+.live-date-control div {
+
+    min-width: 92px;
+
+    text-align: center;
+
+}
+
+
+.live-date-control span {
+
+    display: block;
+
+    color:
+        #60778e;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .13em;
+
+}
+
+
+.live-date-control strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        #dcecff;
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.live-map-legend {
+
+    position: absolute;
+
+    left: 18px;
+
+    bottom: 18px;
+
+    z-index: 25;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-left: 245px;
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 9px;
+
+    background:
+        rgba(4, 15, 29, .72);
+
+    color:
+        #71869b;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+}
+
+
+.legend-bar {
+
+    width: 70px;
+
+    height: 5px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(90deg,
+            #22d9ff,
+            #27e49d,
+            #ffe22c,
+            #ff5151);
+
+}
+
+
+/* =========================================================
+   STORM DIRECTION
+========================================================= */
+
+.storm-direction {
+
+    position: absolute;
+
+    right: 320px;
+
+    bottom: 18px;
+
+    z-index: 25;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid rgba(255, 255, 255, .08);
+
+    border-radius: 10px;
+
+    background:
+        rgba(4, 15, 29, .72);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+.direction-arrow {
+
+    color:
+        #36ddff;
+
+    font-size: 22px;
+
+}
+
+
+.storm-direction span {
+
+    display: block;
+
+    color:
+        #607890;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .1em;
+
+}
+
+
+.storm-direction strong {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color:
+        #d7e8f9;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   LEAFLET CONTROLS
+========================================================= */
+
+.live-map-shell .leaflet-control-zoom {
+
+    margin-top:
+        125px !important;
+
+    margin-left:
+        18px !important;
+
+    border:
+        none !important;
+
+    box-shadow:
+        none !important;
+
+}
+
+
+.live-map-shell .leaflet-control-zoom a {
+
+    width: 34px !important;
+
+    height: 34px !important;
+
+    line-height: 34px !important;
+
+    border:
+        1px solid rgba(255, 255, 255, .09) !important;
+
+    background:
+        rgba(4, 15, 29, .82) !important;
+
+    color:
+        #9ab0c5 !important;
+
+    backdrop-filter:
+        blur(14px);
+
+}
+
+
+/* =========================================================
+   USER LOCATION MARKER
+========================================================= */
+
+.meghdhristi-location-marker {
+
+    background:
+        transparent !important;
+
+    border:
+        none !important;
+
+}
+
+
+.location-marker-ring {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    border:
+        1px solid rgba(45, 221, 255, .75);
+
+    border-radius: 50%;
+
+    background:
+        rgba(35, 215, 255, .08);
+
+    box-shadow:
+
+        0 0 0 5px rgba(35, 215, 255, .07),
+
+        0 0 22px rgba(35, 215, 255, .7);
+
+    animation:
+        locationPulse 2s infinite;
+
+}
+
+
+.location-marker-core {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background:
+        #37dcff;
+
+    box-shadow:
+        0 0 15px #37dcff;
+
+}
+
+
+@keyframes locationPulse {
+
+    70% {
+
+        box-shadow:
+
+            0 0 0 15px rgba(35, 215, 255, 0),
+
+            0 0 28px rgba(35, 215, 255, .7);
+
+    }
+
+}
+
+
+/* =========================================================
+   INFO CARDS
+========================================================= */
+
+.live-map-info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 15px;
+
+}
+
+
+.live-info-card {
+
+    padding: 20px;
+
+    border:
+        1px solid rgba(120, 170, 220, .13);
+
+    border-radius: 16px;
+
+    background:
+        rgba(8, 18, 31, .64);
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .03);
+
+}
+
+
+.live-info-card span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        #61778e;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing:
+        .13em;
+
+}
+
+
+.live-info-card strong {
+
+    display: block;
+
+    font-size: 17px;
+
+}
+
+
+.live-info-card p {
+
+    margin:
+        8px 0 0;
+
+    color:
+        #71869b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+.live-info-card .danger {
+
+    color:
+        #ff536d;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .live-storm-card {
+
+        width: 245px;
+
+    }
+
+
+    .storm-direction {
+
+        display: none;
+
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .live-map-main {
+
+        width:
+            calc(100% - 20px);
+
+        padding-top:
+            25px;
+
+    }
+
+
+    .live-map-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .live-map-shell {
+
+        min-height:
+            720px;
+
+        height:
+            720px;
+
+    }
+
+
+    .live-storm-card {
+
+        top: 170px;
+
+        left: 15px;
+
+        right: 15px;
+
+        width: auto;
+
+    }
+
+
+    .live-layer-control {
+
+        top: 105px;
+
+        left: 15px;
+
+    }
+
+
+    .live-map-legend {
+
+        display: none;
+
+    }
+
+
+    .live-location-card {
+
+        left: 12px;
+
+        bottom: 12px;
+
+    }
+
+
+    .live-date-control {
+
+        right: 12px;
+
+        bottom: 12px;
+
+    }
+
+
+    .live-map-info-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .live-map-shell {
+
+        min-height:
+            680px;
+
+        height:
+            680px;
+
+        border-radius:
+            18px;
+
+    }
+
+
+    .live-map-status {
+
+        top: 10px;
+
+        left: 10px;
+
+        right: 10px;
+
+    }
+
+
+    .live-layer-control {
+
+        top: 105px;
+
+        left: 10px;
+
+        width: 125px;
+
+    }
+
+
+    .live-storm-card {
+
+        top: 235px;
+
+    }
+
+
+    .live-location-card {
+
+        min-width: 0;
+
+        max-width: 205px;
+
+    }
+
+
+    .live-location-card strong {
+
+        max-width: 115px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+
+    }
+
+
+    .live-date-control {
+
+        transform:
+            scale(.9);
+
+        transform-origin:
+            bottom right;
+
+    }
+
+}
+
+/* =========================================================
+   ACTIVE STORM CELL
+========================================================= */
+
+.meghdhristi-storm-marker {
+
+    background:
+        transparent !important;
+
+    border:
+        none !important;
+
+}
+
+
+.storm-cell-ring {
+
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(46, 215, 255, .05);
+
+    border:
+        1px solid rgba(46, 215, 255, .65);
+
+    box-shadow:
+
+        0 0 0 15px rgba(46, 215, 255, .04),
+
+        0 0 35px rgba(46, 215, 255, .45);
+
+    animation:
+        stormPulse 2.4s ease-out infinite;
+
+}
+
+
+.storm-cell-core {
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    background:
+        #38dcff;
+
+    box-shadow:
+
+        0 0 10px #38dcff,
+
+        0 0 30px rgba(56, 220, 255, .9);
+
+}
+
+
+@keyframes stormPulse {
+
+    0% {
+
+        transform:
+            scale(.85);
+
+        opacity:
+            .75;
+
+    }
+
+    70% {
+
+        transform:
+            scale(1.12);
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        transform:
+            scale(.85);
+
+        opacity:
+            .75;
+
+    }
+
+}
+
+
+/* =========================================================
+   LEAFLET TOOLTIP
+========================================================= */
+
+.meghdhristi-tooltip {
+
+    padding:
+        9px 12px !important;
+
+    border:
+        1px solid rgba(48, 216, 255, .22) !important;
+
+    border-radius:
+        10px !important;
+
+    background:
+        rgba(4, 15, 29, .92) !important;
+
+    color:
+        #dcecff !important;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .35) !important;
+
+}
+
+
+.meghdhristi-tooltip::before {
+
+    border-top-color:
+        rgba(4, 15, 29, .92) !important;
+
+}
+
+/* =========================================================
+   MEGHDHRISTI LIVE MAP — FINAL SPACING FIX
+========================================================= */
+
+/* ---------------------------------------------------------
+   PAGE OFFSET
+   Navbar from index.html is fixed/large, so push content down.
+--------------------------------------------------------- */
+
+.live-map-main {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding-top: 95px;
+
+    padding-bottom: 70px;
+
+}
+
+
+/* ---------------------------------------------------------
+   PAGE HEADER
+--------------------------------------------------------- */
+
+.live-map-heading {
+
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 95px;
+
+    margin-bottom: 24px;
+
+    padding-top: 10px;
+
+}
+
+
+.live-map-heading h1 {
+
+    margin-top: 7px;
+
+}
+
+
+/* ---------------------------------------------------------
+   MAP
+--------------------------------------------------------- */
+
+.live-map-shell {
+
+    position: relative;
+
+    height: 690px;
+
+    min-height: 690px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+}
+
+
+/* ---------------------------------------------------------
+   TOP SATELLITE STATUS
+--------------------------------------------------------- */
+
+.live-map-status {
+
+    top: 16px;
+
+    left: 16px;
+
+    right: 16px;
+
+    height: 54px;
+
+    box-sizing: border-box;
+
+    z-index: 50;
+
+}
+
+
+/* ---------------------------------------------------------
+   LAYER CONTROL
+--------------------------------------------------------- */
+
+.live-layer-control {
+
+    top: 86px;
+
+    left: 16px;
+
+    z-index: 60;
+
+}
+
+
+/* ---------------------------------------------------------
+   STORM INTELLIGENCE
+--------------------------------------------------------- */
+
+.live-storm-card {
+
+    top: 86px;
+
+    right: 16px;
+
+    width: 280px;
+
+    z-index: 60;
+
+}
+
+
+/* ---------------------------------------------------------
+   BOTTOM LOCATION
+--------------------------------------------------------- */
+
+.live-location-card {
+
+    left: 16px;
+
+    bottom: 16px;
+
+    z-index: 70;
+
+}
+
+
+/* ---------------------------------------------------------
+   DATE SELECTOR
+--------------------------------------------------------- */
+
+.live-date-control {
+
+    right: 16px;
+
+    bottom: 16px;
+
+    z-index: 70;
+
+}
+
+
+/* ---------------------------------------------------------
+   MOVEMENT CARD
+--------------------------------------------------------- */
+
+.storm-direction {
+
+    right: 300px;
+
+    bottom: 16px;
+
+    z-index: 70;
+
+}
+
+
+/* ---------------------------------------------------------
+   LEGEND
+--------------------------------------------------------- */
+
+.live-map-legend {
+
+    left: 270px;
+
+    bottom: 16px;
+
+    margin-left: 0;
+
+    z-index: 70;
+
+}
+
+
+/* ---------------------------------------------------------
+   LEAFLET CONTROLS
+--------------------------------------------------------- */
+
+.live-map-shell .leaflet-control-zoom {
+
+    margin-top: 80px !important;
+
+    margin-left: 16px !important;
+
+    z-index: 1000 !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   INFO CARDS
+--------------------------------------------------------- */
+
+.live-map-info-grid {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 18px;
+
+}
+
+
+/* ---------------------------------------------------------
+   MAP TOOLTIP
+--------------------------------------------------------- */
+
+.leaflet-tooltip {
+
+    z-index: 9999 !important;
+
+}
+
+
+/* =========================================================
+   DESKTOP BALANCE
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .live-map-shell {
+
+        height: 720px;
+
+        min-height: 720px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .live-map-main {
+
+        padding-top: 85px;
+
+    }
+
+
+    .live-map-heading {
+
+        min-height: 90px;
+
+    }
+
+
+    .live-storm-card {
+
+        width: 250px;
+
+    }
+
+
+    .storm-direction {
+
+        display: none;
+
+    }
+
+
+    .live-map-legend {
+
+        left: 190px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .live-map-main {
+
+        width: calc(100% - 20px);
+
+        padding-top: 90px;
+
+    }
+
+
+    .live-map-heading {
+
+        min-height: auto;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .live-map-heading h1 {
+
+        font-size: 38px;
+
+    }
+
+
+    .live-map-heading p {
+
+        font-size: 13px;
+
+    }
+
+
+    .live-map-shell {
+
+        height: 760px;
+
+        min-height: 760px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .live-map-status {
+
+        top: 10px;
+
+        left: 10px;
+
+        right: 10px;
+
+    }
+
+
+    .live-layer-control {
+
+        top: 76px;
+
+        left: 10px;
+
+    }
+
+
+    .live-storm-card {
+
+        top: 76px;
+
+        left: 150px;
+
+        right: 10px;
+
+        width: auto;
+
+    }
+
+
+    .live-location-card {
+
+        left: 10px;
+
+        bottom: 10px;
+
+    }
+
+
+    .live-date-control {
+
+        right: 10px;
+
+        bottom: 10px;
+
+    }
+
+
+    .live-map-legend {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .live-map-main {
+
+        padding-top: 85px;
+
+    }
+
+
+    .live-map-shell {
+
+        height: 720px;
+
+        min-height: 720px;
+
+    }
+
+
+    .live-layer-control {
+
+        top: 72px;
+
+        left: 10px;
+
+        width: 120px;
+
+    }
+
+
+    .live-storm-card {
+
+        top: 210px;
+
+        left: 10px;
+
+        right: 10px;
+
+        width: auto;
+
+    }
+
+
+    .live-location-card {
+
+        max-width: 185px;
+
+    }
+
+
+    .live-date-control {
+
+        transform: scale(.85);
+
+        transform-origin: bottom right;
+
+    }
+}
+
+/* =========================================================
+   BOTTOM CONTROL POLISH
+========================================================= */
+
+.live-location-card {
+
+    min-height: 56px;
+
+    box-sizing: border-box;
+
+}
+
+
+.storm-direction {
+
+    min-height: 42px;
+
+    box-sizing: border-box;
+
+}
+
+
+.live-date-control {
+
+    min-height: 50px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* Don't let bottom controls overlap */
+
+@media (min-width: 900px) {
+
+    .live-location-card {
+
+        max-width: 245px;
+
+    }
+
+
+    .storm-direction {
+
+        right: 330px;
+
+        max-width: 190px;
+
+    }
+
+
+    .live-date-control {
+
+        width: 190px;
+
+    }
+
+}
+
+/* =========================================================
+   STORM FORECAST TIMELINE
+========================================================= */
+
+
+.forecast-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+.forecast-header .section-kicker {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color:
+        #69839c;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .15em;
+
+}
+
+
+.forecast-header h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    letter-spacing: -.025em;
+
+}
+
+
+.forecast-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        7px 10px;
+
+    border:
+        1px solid rgba(43, 225, 164, .16);
+
+    border-radius: 8px;
+
+    background:
+        rgba(31, 221, 159, .05);
+
+    color:
+        #31e0a0;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+
+}
+
+
+.forecast-status span {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        #2de6a2;
+
+    box-shadow:
+        0 0 12px rgba(45, 230, 162, .8);
+
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.forecast-timeline {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 10px;
+
+    margin-top: 26px;
+
+}
+
+
+.forecast-timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 7%;
+
+    right: 7%;
+
+    top: 31px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            rgba(45, 220, 255, .30),
+            rgba(142, 108, 255, .35),
+            rgba(255, 73, 104, .28));
+
+}
+
+
+.forecast-step {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+}
+
+
+.forecast-time {
+
+    margin-bottom: 9px;
+
+    color:
+        #71869c;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+}
+
+
+.forecast-node {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 40px;
+
+    height: 40px;
+
+    border:
+        1px solid rgba(107, 165, 218, .18);
+
+    border-radius: 50%;
+
+    background:
+        #081726;
+
+    color:
+        #8fa8bf;
+
+    font-size: 15px;
+
+    box-shadow:
+        0 0 0 5px rgba(5, 15, 28, .8);
+
+}
+
+
+.forecast-step strong {
+
+    margin-top: 10px;
+
+    color:
+        #a8bad0;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+}
+
+
+.forecast-step small {
+
+    margin-top: 4px;
+
+    color:
+        #627a92;
+
+    font-size: 9px;
+
+}
+
+
+.forecast-step.current .forecast-node {
+
+    border-color:
+        rgba(41, 220, 255, .6);
+
+    background:
+        rgba(31, 215, 255, .09);
+
+    color:
+        #34ddff;
+
+    box-shadow:
+
+        0 0 0 5px rgba(33, 215, 255, .05),
+
+        0 0 25px rgba(33, 215, 255, .28);
+
+}
+
+
+.forecast-step.current strong {
+
+    color:
+        #34ddff;
+
+}
+
+
+.forecast-step.severe .forecast-node {
+
+    border-color:
+        rgba(255, 79, 105, .42);
+
+    background:
+        rgba(255, 69, 99, .08);
+
+    color:
+        #ff6178;
+
+    box-shadow:
+        0 0 0 5px rgba(255, 69, 99, .035);
+
+}
+
+
+.forecast-step.severe strong {
+
+    color:
+        #ff6178;
+
+}
+
+/* =========================================================
+   DATA FRESHNESS
+========================================================= */
+
+.freshness-card>strong {
+
+    color:
+        #2fe4a4;
+
+}
+
+
+.freshness-items {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 13px;
+
+}
+
+
+.freshness-items div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color:
+        #70869b;
+
+    font-size: 8px;
+
+}
+
+
+.freshness-items span {
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        #2fe4a4;
+
+    box-shadow:
+        0 0 8px rgba(47, 228, 164, .7);
+
+}
+
+
+.freshness-items b {
+
+    color:
+        #9ab0c4;
+
+    font-size: 7px;
+
+    letter-spacing: .06em;
+
+}
+
+/* =========================================================
+   SATELLITE VISIBILITY
+========================================================= */
+
+.live-map-canvas {
+
+    filter:
+        saturate(.82) contrast(1.05) brightness(.82);
+
+}
+
+
+/* Keep Leaflet controls readable */
+
+.live-map-shell .leaflet-control {
+
+    filter: none;
+
+}
+
+/* =========================================================
+   STORM IMPACT INTELLIGENCE
+========================================================= */
+
+.impact-intelligence {
+
+    position: relative;
+
+    margin-top: 22px;
+
+    padding: 28px;
+
+    border: 1px solid rgba(91, 164, 220, .16);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(9, 23, 39, .94),
+            rgba(5, 13, 25, .90));
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .035),
+        0 25px 70px rgba(0, 0, 0, .22);
+
+    overflow: hidden;
+
+}
+
+
+.impact-intelligence::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 300px;
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            #29dcff,
+            transparent);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.impact-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+}
+
+
+.impact-kicker {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #6f8aa4;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .15em;
+
+}
+
+
+.impact-header h2 {
+
+    margin: 0;
+
+    color: #eef7ff;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 23px;
+
+}
+
+
+.impact-header p {
+
+    margin: 7px 0 0;
+
+    color: #70879e;
+
+    font-size: 12px;
+
+}
+
+
+.cell-id {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+}
+
+
+.cell-id span {
+
+    color: #5d748c;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .12em;
+
+}
+
+
+.cell-id strong {
+
+    padding: 7px 10px;
+
+    border: 1px solid rgba(45, 220, 255, .15);
+
+    border-radius: 8px;
+
+    background: rgba(32, 211, 255, .05);
+
+    color: #31dfff;
+
+    font-size: 10px;
+
+    letter-spacing: .08em;
+
+}
+
+
+/* =========================================================
+   QUICK STATS
+========================================================= */
+
+.impact-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-top: 24px;
+
+}
+
+
+.impact-stat {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(91, 164, 220, .10);
+
+    border-radius: 13px;
+
+    background:
+        rgba(8, 22, 37, .58);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+
+}
+
+
+.impact-stat:hover {
+
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(43, 220, 255, .24);
+
+    background:
+        rgba(12, 31, 50, .75);
+
+}
+
+
+.impact-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    flex: 0 0 36px;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: 1px solid rgba(43, 220, 255, .15);
+
+    border-radius: 10px;
+
+    background:
+        rgba(43, 220, 255, .06);
+
+    color: #2ddfff;
+
+    font-size: 17px;
+
+}
+
+
+.impact-icon.warning {
+
+    color: #ffbd45;
+
+    border-color:
+        rgba(255, 189, 69, .18);
+
+    background:
+        rgba(255, 189, 69, .06);
+
+}
+
+
+.impact-stat span {
+
+    display: block;
+
+    color: #607991;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+
+}
+
+
+.impact-stat strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #dce9f5;
+
+    font-size: 13px;
+
+}
+
+
+.impact-stat small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #627a91;
+
+    font-size: 8px;
+
+}
+
+/* =========================================================
+   MEGHDHRISTI — INTERACTIVE STORM SIMULATOR
+========================================================= */
+
+.storm-simulator {
+
+    position: relative;
+
+    margin-top: 14px;
+
+    padding: 24px;
+
+    border: 1px solid rgba(79, 181, 235, .16);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(7, 21, 36, .97),
+            rgba(4, 12, 24, .94));
+
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, .035),
+        0 30px 80px rgba(0, 0, 0, .28);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.simulator-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 30px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.simulator-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #5f7c96;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+
+}
+
+
+.live-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #28e3a2;
+
+    box-shadow:
+        0 0 12px rgba(40, 227, 162, .9);
+
+    animation:
+        liveBlink 1.5s infinite;
+
+}
+
+
+@keyframes liveBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .45;
+        transform: scale(.75);
+    }
+
+}
+
+
+.simulator-header h3 {
+
+    margin: 6px 0 5px;
+
+    color: #eef7ff;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size: 23px;
+
+}
+
+
+.simulator-header p {
+
+    margin: 0;
+
+    max-width: 600px;
+
+    color: #71879c;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+.simulator-meta {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 8px;
+
+}
+
+
+.model-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border: 1px solid rgba(39, 225, 166, .18);
+
+    border-radius: 9px;
+
+    background:
+        rgba(39, 225, 166, .05);
+
+    color: #32e3a4;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+}
+
+
+.model-status span {
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #32e3a4;
+
+    box-shadow:
+        0 0 10px rgba(50, 227, 164, .8);
+
+}
+
+
+.model-update {
+
+    color: #536d84;
+
+    font-size: 8px;
+
+}
+
+
+.model-update strong {
+
+    color: #8aa1b7;
+
+}
+
+
+/* =========================================================
+   SIMULATOR BODY
+========================================================= */
+
+.simulator-body {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 245px;
+
+    gap: 12px;
+
+}
+
+
+/* =========================================================
+   TRAJECTORY STAGE
+========================================================= */
+
+/* =========================================================
+   TRAJECTORY STAGE
+========================================================= */
+
+.trajectory-stage {
+
+    position: relative;
+
+    height: 430px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(79, 181, 235, .18);
+
+    border-radius: 16px;
+
+    background:
+        #061523;
+
+    isolation: isolate;
+
+}
+
+
+/* =========================================================
+   SATELLITE MAP BACKGROUND
+========================================================= */
+
+.trajectory-map-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -5;
+
+    background-image:
+        url("../assets/images/trajectory-bg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    transform:
+        scale(1.03);
+
+    opacity: .34;
+
+    filter:
+        saturate(.65) contrast(1.15) brightness(.55);
+
+    transition:
+        transform 12s ease;
+
+}
+
+
+/* subtle cinematic movement */
+
+.trajectory-stage:hover .trajectory-map-bg {
+
+    transform:
+        scale(1.07);
+
+}
+
+
+/* =========================================================
+   DARK MAP OVERLAY
+========================================================= */
+
+.trajectory-map-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -4;
+
+    background:
+
+        linear-gradient(90deg,
+            rgba(3, 17, 29, .84) 0%,
+            rgba(3, 17, 29, .58) 35%,
+            rgba(5, 16, 31, .48) 65%,
+            rgba(7, 13, 31, .72) 100%),
+
+        linear-gradient(180deg,
+            rgba(3, 12, 24, .72) 0%,
+            transparent 35%,
+            rgba(2, 10, 20, .72) 100%);
+
+    pointer-events: none;
+
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.trajectory-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background-image:
+
+        linear-gradient(rgba(105, 174, 207, .07) 1px,
+            transparent 1px),
+
+        linear-gradient(90deg,
+            rgba(105, 174, 207, .07) 1px,
+            transparent 1px);
+
+    background-size:
+        55px 55px;
+
+    opacity: .45;
+
+    pointer-events: none;
+
+}
+
+/* =========================================================
+   SATELLITE SCAN EFFECT
+========================================================= */
+
+.trajectory-stage::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            transparent 0%,
+            rgba(34, 220, 255, .025) 48%,
+            rgba(34, 220, 255, .08) 50%,
+            transparent 52%,
+            transparent 100%);
+
+    background-size:
+        100% 180px;
+
+    animation:
+        satelliteScan 7s linear infinite;
+
+    opacity: .45;
+
+}
+
+
+@keyframes satelliteScan {
+
+    from {
+        background-position:
+            0 -180px;
+    }
+
+    to {
+        background-position:
+            0 430px;
+    }
+
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.atmosphere-glow {
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    left: -90px;
+
+    bottom: -160px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(28, 218, 255, .16),
+            transparent 68%);
+
+    filter: blur(12px);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   RADAR RINGS
+========================================================= */
+
+.radar-ring {
+
+    position: absolute;
+
+    left: 15%;
+
+    top: 54%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid rgba(38, 218, 255, .13);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+}
+
+
+.ring-one {
+
+    width: 90px;
+    height: 90px;
+
+}
+
+
+.ring-two {
+
+    width: 170px;
+    height: 170px;
+
+}
+
+
+.ring-three {
+
+    width: 270px;
+    height: 270px;
+
+    border-color:
+        rgba(38, 218, 255, .07);
+
+}
+
+
+/* =========================================================
+   IMPACT ZONE
+========================================================= */
+
+.impact-zone {
+
+    position: absolute;
+
+    left: 10%;
+
+    top: 27%;
+
+    width: 83%;
+
+    height: 47%;
+
+    transform:
+        rotate(-18deg);
+
+    transform-origin:
+        left center;
+
+    clip-path:
+        polygon(0 50%,
+            100% 0,
+            100% 100%);
+
+    background:
+
+        linear-gradient(90deg,
+            rgba(25, 220, 255, .18),
+            rgba(76, 153, 255, .10),
+            rgba(125, 104, 255, .055),
+            transparent);
+
+    border-top:
+        1px solid rgba(60, 221, 255, .12);
+
+    border-bottom:
+        1px solid rgba(124, 105, 255, .08);
+
+    opacity: .75;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   PATH
+========================================================= */
+
+.trajectory-path {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 5;
+
+}
+
+
+.main-path {
+
+    fill: none;
+
+    stroke:
+        url(#stormPathGradient);
+
+    stroke-width: 4;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 1000;
+
+    stroke-dashoffset: 1000;
+
+    animation:
+        drawStormPath 2.5s ease forwards;
+
+    filter:
+        drop-shadow(0 0 7px rgba(40, 220, 255, .65));
+
+}
+
+.path-glow {
+
+    fill: none;
+
+    stroke: #28dfff;
+
+    stroke-width: 18;
+
+    stroke-linecap: round;
+
+    opacity: .11;
+
+    filter:
+        blur(5px);
+
+}
+
+
+/* =========================================================
+   STORM NODES
+========================================================= */
+
+.storm-node {
+
+    position: absolute;
+
+    z-index: 20;
+
+    width: 48px;
+
+    height: 48px;
+
+    transform:
+        translate(-50%, -50%);
+
+    padding: 0;
+
+    border:
+        1px solid rgba(110, 151, 255, .42);
+
+    border-radius: 50%;
+
+    background:
+        rgba(7, 22, 38, .92);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+.storm-node:hover {
+
+    transform:
+        translate(-50%, -50%) scale(1.16);
+
+    border-color:
+        #4edfff;
+
+    box-shadow:
+        0 0 30px rgba(47, 218, 255, .3);
+
+}
+
+
+.storm-node.selected {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-color:
+        #2edfff;
+
+    box-shadow:
+        0 0 0 8px rgba(42, 220, 255, .055),
+
+        0 0 35px rgba(42, 220, 255, .4);
+
+}
+
+
+.node-core {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 16px;
+
+}
+
+
+.node-pulse {
+
+    position: absolute;
+
+    inset: -9px;
+
+    border:
+        1px solid rgba(44, 224, 255, .45);
+
+    border-radius: 50%;
+
+    animation:
+        stormPulse 2s infinite;
+
+}
+
+
+@keyframes stormPulse {
+
+    0% {
+        transform: scale(.85);
+        opacity: .8;
+    }
+
+    70% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+.storm-node:not(.selected) .node-pulse {
+
+    display: none;
+
+}
+
+
+.node-label {
+
+    position: absolute;
+
+    top: calc(100% + 9px);
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    color: #7891a8;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+}
+
+
+.storm-node.selected .node-label {
+
+    color:
+        #2edfff;
+
+}
+
+
+/* =========================================================
+   FLOATING STORM CARD
+========================================================= */
+
+.storm-floating-card {
+
+    position: absolute;
+
+    left: 18%;
+
+    top: 40%;
+
+    z-index: 30;
+
+    min-width: 155px;
+
+    padding: 12px;
+
+    border:
+        1px solid rgba(60, 219, 255, .15);
+
+    border-radius: 11px;
+
+    background:
+        rgba(5, 17, 30, .88);
+
+    backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .28);
+
+    pointer-events: none;
+
+}
+
+
+.floating-card-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #607b93;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .09em;
+
+}
+
+
+.floating-card-top b {
+
+    margin-left: auto;
+
+    color: #ff526f;
+
+}
+
+
+.mini-live {
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #2ce1a4;
+
+    box-shadow:
+        0 0 9px #2ce1a4;
+
+}
+
+
+.storm-floating-card>strong {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #e4f0fa;
+
+    font-size: 12px;
+
+}
+
+
+.storm-floating-card>small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #6e879e;
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   WIND INDICATOR
+========================================================= */
+
+.wind-indicator {
+
+    position: absolute;
+
+    top: 16px;
+
+    right: 16px;
+
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    border:
+        1px solid rgba(81, 158, 213, .12);
+
+    border-radius: 9px;
+
+    background:
+        rgba(5, 17, 30, .78);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+.wind-arrow {
+
+    color: #2edfff;
+
+    font-size: 19px;
+
+    animation:
+        windFloat 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes windFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(3px, -3px);
+    }
+
+}
+
+
+.wind-indicator strong {
+
+    display: block;
+
+    color: #dceaf6;
+
+    font-size: 10px;
+
+}
+
+
+.wind-indicator small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #58728a;
+
+    font-size: 6px;
+
+    letter-spacing: .08em;
+
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.trajectory-legend {
+
+    position: absolute;
+
+    bottom: 14px;
+
+    left: 14px;
+
+    z-index: 30;
+
+    display: flex;
+
+    gap: 12px;
+
+    padding: 7px 9px;
+
+    border:
+        1px solid rgba(81, 158, 213, .11);
+
+    border-radius: 8px;
+
+    background:
+        rgba(4, 15, 27, .78);
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.trajectory-legend span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #6d849a;
+
+    font-size: 7px;
+
+}
+
+
+.trajectory-legend i {
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+}
+
+
+.legend-current {
+
+    background: #2edfff;
+
+}
+
+
+.legend-predicted {
+
+    background: #8170ff;
+
+}
+
+
+.legend-risk {
+
+    background: #ff526f;
+
+}
+
+
+/* =========================================================
+   INTELLIGENCE PANEL
+========================================================= */
+
+.trajectory-intelligence {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 18px;
+
+    border:
+        1px solid rgba(91, 164, 220, .12);
+
+    border-radius: 16px;
+
+    background:
+        rgba(5, 17, 30, .78);
+
+}
+
+
+.intel-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 14px;
+
+    border-bottom:
+        1px solid rgba(91, 164, 220, .09);
+
+}
+
+
+.intel-heading span {
+
+    color: #607990;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .12em;
+
+}
+
+
+.intel-heading strong {
+
+    color: #2edfff;
+
+    font-size: 10px;
+
+}
+
+
+.intel-main {
+
+    padding: 18px 0;
+
+}
+
+
+.intel-main span {
+
+    display: block;
+
+    color: #5f778e;
+
+    font-size: 7px;
+
+    letter-spacing: .1em;
+
+}
+
+
+.intel-main strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #edf6ff;
+
+    font-size: 17px;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+}
+
+
+/* =========================================================
+   METRIC
+========================================================= */
+
+.intel-metric {
+
+    padding: 12px;
+
+    border:
+        1px solid rgba(74, 154, 208, .08);
+
+    border-radius: 10px;
+
+    background:
+        rgba(15, 34, 52, .5);
+
+}
+
+
+.intel-metric>div:first-child {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.intel-metric span {
+
+    color: #627b92;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+}
+
+
+.intel-metric strong {
+
+    color: #2edfff;
+
+    font-size: 16px;
+
+}
+
+
+.metric-bar {
+
+    height: 4px;
+
+    margin-top: 9px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, .06);
+
+}
+
+
+.metric-bar span {
+
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(90deg,
+            #27dfff,
+            #8170ff);
+
+    box-shadow:
+        0 0 12px rgba(39, 223, 255, .3);
+
+    transition:
+        width .4s ease;
+
+}
+
+
+/* =========================================================
+   INTEL ROWS
+========================================================= */
+
+.intel-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid rgba(91, 164, 220, .07);
+
+}
+
+
+.intel-row span {
+
+    color: #617990;
+
+    font-size: 8px;
+
+}
+
+
+.intel-row strong {
+
+    color: #cddceb;
+
+    font-size: 9px;
+
+}
+
+
+.risk-value {
+
+    color: #ff536f !important;
+
+}
+
+
+/* =========================================================
+   ETA
+========================================================= */
+
+.eta-box {
+
+    margin-top: 13px;
+
+    padding: 12px;
+
+    border:
+        1px solid rgba(255, 184, 67, .13);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 184, 67, .035);
+
+}
+
+
+.eta-box span {
+
+    display: block;
+
+    color: #766b58;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+
+}
+
+
+.eta-box strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ffbf50;
+
+    font-size: 17px;
+
+}
+
+
+.eta-box small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #6a7781;
+
+    font-size: 7px;
+
+}
+
+
+/* =========================================================
+   PLAY BUTTON
+========================================================= */
+
+.simulate-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 11px;
+
+    border:
+        1px solid rgba(42, 220, 255, .24);
+
+    border-radius: 9px;
+
+    background:
+        rgba(36, 218, 255, .07);
+
+    color: #31dfff;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+    cursor: pointer;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.simulate-button:hover {
+
+    background:
+        rgba(36, 218, 255, .13);
+
+    border-color:
+        rgba(42, 220, 255, .5);
+
+    box-shadow:
+        0 0 25px rgba(42, 220, 255, .08);
+
+}
+
+
+.simulate-button.playing {
+
+    border-color:
+        rgba(255, 82, 111, .35);
+
+    color:
+        #ff6078;
+
+    background:
+        rgba(255, 82, 111, .06);
+
+}
+
+
+/* =========================================================
+   TIMELINE CONTROLS
+========================================================= */
+
+.trajectory-controls {
+
+    margin-top: 14px;
+
+    padding: 14px 4px 2px;
+
+}
+
+
+.timeline-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.timeline-top span {
+
+    color: #526b83;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+
+}
+
+
+.timeline-top strong {
+
+    color: #2edfff;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   RANGE SLIDER
+========================================================= */
+
+.trajectory-slider {
+
+    width: 100%;
+
+    height: 4px;
+
+    margin: 11px 0;
+
+    appearance: none;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background:
+        linear-gradient(90deg,
+            #2edfff 0%,
+            #8170ff 50%,
+            rgba(255, 255, 255, .07) 50%);
+
+    cursor: pointer;
+
+}
+
+
+.trajectory-slider::-webkit-slider-thumb {
+
+    appearance: none;
+
+    width: 15px;
+
+    height: 15px;
+
+    border:
+        2px solid #2edfff;
+
+    border-radius: 50%;
+
+    background:
+        #071827;
+
+    box-shadow:
+        0 0 15px rgba(46, 223, 255, .45);
+
+    cursor: grab;
+
+}
+
+
+.trajectory-slider::-webkit-slider-thumb:active {
+
+    cursor: grabbing;
+
+}
+
+
+/* =========================================================
+   TIME BUTTONS
+========================================================= */
+
+.timeline-labels {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 6px;
+
+}
+
+
+.time-button {
+
+    padding: 7px 5px;
+
+    border:
+        1px solid transparent;
+
+    border-radius: 7px;
+
+    background:
+        transparent;
+
+    color: #526b83;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.time-button:hover {
+
+    color: #a6bbce;
+
+}
+
+
+.time-button.active {
+
+    border-color:
+        rgba(46, 223, 255, .16);
+
+    background:
+        rgba(46, 223, 255, .055);
+
+    color:
+        #2edfff;
+
+}
+
+/* =========================================================
+   MAP LABELS
+========================================================= */
+
+.map-label {
+
+    position: absolute;
+
+    z-index: 4;
+
+    color:
+        rgba(178,207,224,.55);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .12em;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 1px 5px rgba(0,0,0,.8);
+
+}
+
+
+.map-label-1 {
+
+    left: 22%;
+
+    top: 67%;
+
+    color:
+        rgba(46,224,255,.75);
+
+}
+
+
+.map-label-2 {
+
+    left: 46%;
+
+    top: 49%;
+
+}
+
+
+.map-label-3 {
+
+    right: 8%;
+
+    bottom: 30%;
+
+    opacity: .45;
+
+}
+
+
+.map-coordinate {
+
+    position: absolute;
+
+    right: 16px;
+
+    bottom: 15px;
+
+    z-index: 10;
+
+    padding: 6px 8px;
+
+    border:
+        1px solid
+        rgba(89,157,201,.12);
+
+    border-radius: 6px;
+
+    background:
+        rgba(3,13,24,.72);
+
+    color:
+        #607d94;
+
+    font-size: 7px;
+
+    letter-spacing: .05em;
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+/* =========================================================
+   MAP LAYER CONTROL
+========================================================= */
+
+.map-layer-panel {
+
+    position: absolute;
+
+    top: 72px;
+
+    left: 14px;
+
+    z-index: 1000;
+
+    width: 150px;
+
+    padding: 9px;
+
+    border:
+        1px solid
+        rgba(83,167,214,.18);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6,20,34,.90);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,.35);
+
+}
+
+
+/* TITLE */
+
+.layer-panel-title {
+
+    padding:
+        5px 8px 8px;
+
+    color:
+        #627b91;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .13em;
+
+}
+
+
+/* BUTTON */
+
+.map-layer-btn {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    min-height: 39px;
+
+    margin: 2px 0;
+
+    padding:
+        8px 9px;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius: 9px;
+
+    background:
+        transparent;
+
+    color:
+        #8195a8;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.map-layer-btn:hover {
+
+    color:
+        #dcecf8;
+
+    background:
+        rgba(57,151,197,.08);
+
+    transform:
+        translateX(2px);
+
+}
+
+
+/* ICON */
+
+.layer-icon {
+
+    width: 20px;
+
+    color:
+        #728ca0;
+
+    font-size: 13px;
+
+    text-align: center;
+
+}
+
+
+.map-layer-btn.active
+.layer-icon {
+
+    color:
+        #2edfff;
+
+}
+
+
+/* ACTIVE */
+
+.map-layer-btn.active {
+
+    border-color:
+        rgba(46,218,255,.28);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,218,255,.12),
+            rgba(48,113,180,.09)
+        );
+
+    color:
+        #2edfff;
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(46,218,255,.025);
+
+}
+
+
+/* CHECK */
+
+.layer-check {
+
+    display: none;
+
+    margin-left: auto;
+
+    color:
+        #2edfff;
+
+    font-size: 10px;
+
+}
+
+
+.map-layer-btn.active
+.layer-check {
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   LAYER-SPECIFIC ACTIVE STATES
+========================================================= */
+
+.map-layer-btn[data-layer="clouds"].active {
+
+    border-color:
+        rgba(176,205,224,.24);
+
+    background:
+        rgba(151,180,201,.08);
+
+    color:
+        #c9d9e4;
+
+}
+
+
+.map-layer-btn[data-layer="clouds"].active
+.layer-icon {
+
+    color:
+        #d6e8f3;
+
+}
+
+
+.map-layer-btn[data-layer="rain"].active {
+
+    border-color:
+        rgba(72,153,255,.30);
+
+    background:
+        rgba(44,126,255,.10);
+
+    color:
+        #63adff;
+
+}
+
+
+.map-layer-btn[data-layer="rain"].active
+.layer-icon {
+
+    color:
+        #4ca8ff;
+
+}
+
+
+.map-layer-btn[data-layer="lightning"].active {
+
+    border-color:
+        rgba(255,190,55,.28);
+
+    background:
+        rgba(255,176,42,.08);
+
+    color:
+        #ffc34f;
+
+}
+
+
+.map-layer-btn[data-layer="lightning"].active
+.layer-icon {
+
+    color:
+        #ffc34f;
+
+}
+

@@ -1,0 +1,46 @@
+# =========================
+# Python virtual environments
+# =========================
+backend/venv/
+backend/venv312/
+venv/
+venv312/
+.venv/
+
+# =========================
+# Python cache
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+
+# =========================
+# MOSDAC raw data
+# Large NetCDF files
+# =========================
+ml/mosdac/raw/
+*.nc
+
+# =========================
+# OS / editor files
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =========================
+# Python environment files
+# =========================
+.env
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.log

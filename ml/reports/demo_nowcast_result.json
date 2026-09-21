@@ -1,0 +1,39 @@
+{
+    "system": "MEGHDRISHTI",
+    "mode": "single_frame_demo",
+    "a2": {
+        "probability": 0.9289614000584926,
+        "probability_percent": 92.9,
+        "prediction": "THUNDERSTORM",
+        "signal": "HIGH"
+    },
+    "radar": {
+        "signal": "LOW",
+        "maximum_dbz": 34.59845352172852,
+        "products": [
+            {
+                "product": "MAX_Z",
+                "max_dbz": 33.65998840332031,
+                "p95_dbz": 28.709936141967773,
+                "p99_dbz": 31.217330932617188,
+                "echo_fraction": 0.056640625,
+                "intensity_category": "WEAK_TO_MODERATE"
+            },
+            {
+                "product": "PPI_Z",
+                "max_dbz": 34.59845352172852,
+                "p95_dbz": 30.442108154296875,
+                "p99_dbz": 33.5695915222168,
+                "echo_fraction": 0.03936767578125,
+                "intensity_category": "WEAK_TO_MODERATE"
+            }
+        ]
+    },
+    "temporal_status": {
+        "required_frames": 5,
+        "available_timestamps": 1,
+        "temporal_model_ready": false
+    },
+    "fusion_status": "EVIDENCE_ONLY_NOT_TRAINED",
+    "note": "Radar and atmospheric evidence are reported separately because synchronized multi-frame radar training data is not currently available."
+}

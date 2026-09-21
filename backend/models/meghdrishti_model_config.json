@@ -1,0 +1,29 @@
+{
+    "model_name": "Meghdrishti ConvLSTM",
+    "input_shape": [
+        4,
+        48,
+        48,
+        1
+    ],
+    "output_shape": [
+        2,
+        48,
+        48,
+        1
+    ],
+    "input_history_minutes": 20,
+    "forecast_minutes": [
+        5,
+        10
+    ],
+    "frame_interval_minutes": 5,
+    "vil_min": -0.2063957,
+    "vil_max": 3.04316092,
+    "storm_threshold_vil": 1.0,
+    "test_mae": 0.04831184819340706,
+    "test_rmse": 0.19738258067377315,
+    "pod": 0.7459159311522444,
+    "far": 0.168228513005494,
+    "csi": 0.6481356326674932
+}

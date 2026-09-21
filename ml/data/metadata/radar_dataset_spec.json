@@ -1,0 +1,38 @@
+{
+  "project": "MEGHDRISHTI",
+  "source": "India Meteorological Department",
+  "radar": {
+    "site": "Paradip",
+    "region": "Odisha",
+    "product": "PPI-Z",
+    "variable": "reflectivity",
+    "unit": "dBZ"
+  },
+  "target": {
+    "location": "Bhubaneswar",
+    "latitude": 20.2961,
+    "longitude": 85.8245
+  },
+  "events": {
+    "positive": [
+      "TS",
+      "TSRA"
+    ],
+    "negative": [
+      "NON_TS"
+    ]
+  },
+  "forecast_horizons_minutes": [
+    30,
+    60,
+    90,
+    120,
+    180
+  ],
+  "temporal_resolution_minutes": 10,
+  "processing": {
+    "crop": "Bhubaneswar-centered",
+    "normalization": "reflectivity",
+    "missing_value": null
+  }
+}

@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta
+		content="Department of Space, Indian Space Research Organisation (ISRO), National Remote Sensing Centre (NRSC), Indian Remote Sensing Satellites (IRS), Indian Earth Observation Visualisation, Resourcesat ,Cartosat, LISSIII, AWiFS, High Resolution Data, NRSC Data Centre (NDC), Free data, open data, data download, Spatial data, IRS, ISRO, NRSC, EO, data archive, bhuvan, NOEDA, NRSC Open EO Data Archive, Ortho, Elevation data, Thematic Services, Weather Services, Ocean Services, Collaboration, 2D, 3D, Pocket Bhuvan, Bhuvan, Visualisation, Geoportal, Map, Geospatial data, LISSIV, DEM, flood, hazard, drought, forest fire, India, Land Cover Map, Land Use Map, Remote Sensing Data, Digital Elevation Model, DEM, High Resolution Satellite Data, Geospatial Data Download, Free Maps, Flood Mapping India, Historical Flood Maps, Flood Inundation, Active Forest Fire, Flood Hazard Map, Flood Hazard Analysis, Free GIS Data, OGC web serivces, Open GIS Data, Free GIS Serivces India, Free GIS API, Archive data, crowd sourcing, add GIS data, online shapefile creation"
+		name="keywords" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta property="og:title"
+		content="ISRO's Geoportal | Gateway to Indian Earth Observation | Applications| Lightning" />
+	<meta property="og:description"
+		content="NRSC ISRO Lightning Portal - Visualize and analyze lightning data across India using ISRO's Bhuvan Geoportal." />
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="theme/default/moefstyle.css" type="text/css" />
+	<link rel="stylesheet" href="css/light.css">
+	<input id="session" value="" style="display:none" />
+	<SCRIPT LANGUAGE="javascript"> var bhuvanusername = "empty"</script>
+		
+</head>
+
+
+<body onLoad="init(),i2()">
+	<div id="main">
+		<div id="banner">
+			<div class="logo-container">
+				<img src="img/bhuvanlogo.png" alt="Bhuvan Logo" />
+			</div>
+
+			<div class="title">
+				NRSC ISRO LIGHTNING PORTAL
+			</div>
+
+			<div class="logo-container">
+				<img src="img/ashokalogo.png" alt="Ashoka Logo" />
+			</div>
+
+			<div id="login" style="display:none;">
+				<div id="logindiv">
+					<a href="#" id="loginButton" title="Way to portal login" alt="login"
+						onclick="load_video('#LoginFrame','loading.php?q=login.php','Login','900','700');">
+						Login
+					</a>
+				</div>
+				<div id="loggedindiv">
+					&nbsp;&nbsp;Welcome User &nbsp;&nbsp; </div>
+			</div>
+		</div>
+
+
+		<div id="bannerstrip">
+			<table width='100%'>
+				<tr style="background: linear-gradient(135deg, #1e3a6b, #2a69ac);">
+					<td width="400px" height="22px">
+						<div style="vertical-align:middle; width:400px; height:100%;font-color:white;">
+
+							<div>
+
+							</div>
+						</div>
+						<div id="live"
+							style='display:none;position:absolute;z-index:3000;left:78px;top:140px;width:200px;overflow:auto;height:180px;'>
+						</div>
+					</td>
+					<td>
+						<table cellpadding="0px" cellspacing="0px" border="0">
+							<tr>
+								<td>
+									<b>
+										<ul id="toolsmenu">
+
+
+											<li style="cursor:pointer" bgcolor="#6495ED"> <b>Tools</b>
+												<ul>
+													<!--<li style='margin-top:3px;'><a href="#" title="Cilck to view active layers" style="cursor:pointer"  onClick='active(false)'>Active layers</a></li> -->
+
+													<li style='margin-top:3px;'><a href="#"
+															title="Cilck to activate Map Navigation"
+															style="cursor:pointer" onClick='se()'>Navigation Tools</a>
+													</li>
+													<li><a href="#" title="My Layers" style="cursor:pointer"
+															onClick='pop("#useradded_data",320,350,100,500);'>My
+															Layers</a></li>
+													<!--<li style='margin-top:3px;'><a href="#" title="Add Point of Interest Data" style="cursor:pointer"  onClick='actvRemarks()'>Add Content</a></li> -->
+													<li><a href="#" title="Shapefile,WMS Layer" style="cursor:pointer"
+															onClick="add()">Add Layer</a></li>
+													<li><a href="#"
+															title="Online Shapefile Creation(Point,Polygon,Line)"
+															onClick="services('usrtasks/Draw/newdraw.php',1)">Draw</a>
+													</li>
+													<li><a href="#" title='Area Measurement' id="polygon"
+															onClick="toggleControl(this)">Measure Area</a></li>
+													<li><a href="#" title='Distance Measurement' id="line"
+															onClick="toggleControl(this)">Measure Distance</a></li>
+
+													<!--<li><a href="#" title='Print the Active Layers' id="line" onClick='load_video("#printDialog","usrtasks/Print/loadingprint.php","Print Map","350","300")'>Print</a></li> -->
+													<li><a href="#" title="Find directions from Source to Destination"
+															onClick="loadnavigation('#navigationframe','usrtasks/Navigation/navigation.php','Get Directions', 500, 500)">Get
+															Directions</a></li>
+													<!--<li><a href="#" title="Search near by POI locations" onClick="loadproximity('#proximityframe','usrtasks/Proximity/proximity.php','Proximity Analayis', 500, 320)">Proximity</a>-->
+													<!--<<li><a href="#" title="Click to add Bhuvan WMS or External WMS Layers" onClick="loadwmsmgr('#wmslayerframe','usrtasks/wms/wmsmanager.php','WMS Manager', 500, 500)">WMS Manager</a>
+													</li>
+													li><a href="#" title="Click to Print in PDF Format" onClick='active(true)' >Print</a>
+													</li> -->
+												</ul>
+												<!--</li>-->
+										</ul>
+								</td>
+								<td>&nbsp;|&nbsp;<a href="#" onClick="sendlink()"
+										title='Map On Your Page/Embeddbale HTML'
+										style="font-family: Arial; font-size: 12px; color: white"><b>Link</b></a>&nbsp;|&nbsp;
+								</td>
+								<td>
+									<a target='_blank' href="https://bhuvan.nrsc.gov.in"
+										title='Click to visit Bhuvan Home page'
+										style="font-family: Arial; font-size: 12px; color: white"><b>Home</b></a>
+									</b>
+								</td>
+								<td id='tempd' style="display:none">
+									&nbsp;&nbsp;<a href='#' title="See All Available Datasets"
+										onclick='temporaldisplay()'><img src='img/clockon.png' width=20 height=20
+											id='Temporalimg'></img></a> &nbsp;&nbsp;
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<div id="mapdiv">
+			<!--Print-->
+			<div id="LoadingDiv" style="display:none"> </div>
+			<table height="100%" width="100%">
+				<tr>
+					<td id="LeftAreaTD" height="87%"
+						style="vertical-align:top; width:350px;border-right:#26599A 2px solid" align="center">
+						<div id='lp' class='lp' style='overflow:auto;height:500px;width:350px'> </div>
+
+
+		</div>
+
+		<!--add layer dialogue div-->
+		<div title='ADD Layer' id='addlayers'>
+			<span id='clrpicker' style='display:none;'>
+				<b>Select Color</b> &nbsp
+				<input id='clr' class='color' title='color picker'
+					style='cursor: pointer; background-image: none; background-color: rgb(102, 255, 0); color: rgb(0, 0, 0);'
+					value='00ff00' size='6'>
+			</span>
+			<span id='layers'></span>
+		</div>
+		</td>
+		<td height="100%" width="100%" id="rightmap">
+			<div id="nav" style='visibility:visible'>
+				<div id="radio">
+					<table>
+						<tr>
+							<td>
+								<!--   new code bhuvan hydrology-->
+								<input type="radio" id="radio1" name="radio1" checked="checked" value='m'
+									onclick="map_hybrid(true, false,false,false)" />
+								<label for="radio1" onmouseover='shownew(1)'>Map&nbsp;|
+
+									<img id="south" align="middle" width="10" height="10" src="img/south-mini.png">
+								</label>
+								<!--   new code bhuvan hydrology-->
+							</td>
+							<td>
+								<input type="radio" id="radio2" name="radio1" value='s'
+									onclick="map_hybrid(false, true, false, false);" />
+								<label for="radio2">Satellite</label>
+							</td>
+							<td>
+								<input type="radio" id="radio3" name="radio1" value='h'
+									onclick="map_hybrid(false, true, true, false)" />
+								<label for="radio3">Hybrid</label>
+							</td>
+							<td>
+								<input type="radio" id="radio4" name="radio1" value='t'
+									onclick="map_hybrid(false, false, false, true),setpanzoombar(5)" />
+								<label for="radio4">Terrain</label>
+							</td>
+
+							<td>
+								<input type="checkbox" id="chkbox1" title="Click here to get more..." />
+								<label for="chkbox1" onclick="showNav()"><span id='more'>More</span></label>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<!--   new code bhuvan hydrology-->
+				<div id="accordionnew" onclick="shownew(0)"
+					style="cursor:pointer;width:250px;height:100px;margin:5px;border:solid 1px #6495ED;background-color:white; visibility:hidden;position:absolute; top:2.5em; left:0.1em;">
+
+					<br />
+					<div>
+						<div style='float:left;'>&nbsp;&nbsp;</div>
+						<div id='baseadmin' style='float:left;cursor:pointer;border:solid 1px #000000;'
+							onclick='mapselection(1,0)'><img style='align:left;vertical-align:middle' width="65"
+								height="58" src="img/admin.png"><br />&nbsp;Base Admin&nbsp;<br>
+						</div>
+						<div style='float:left;'>&nbsp;&nbsp;<br></div>
+						<div id='basehydro' style='float:left;cursor:pointer;border:0' onclick='mapselection(0,1)'><img
+								style='vertical-align:middle' width="65" height="58"
+								src="img/hydri.png"><br />&nbsp;Base Hydrology&nbsp;
+						</div>
+						<img width="15px" height="15px" onclick="shownew(0)" src="img/closetool.jpg">
+
+					</div>
+
+
+				</div>
+				<!-- end-->
+
+
+
+				<div id="accordion"
+					style="width:332px;height:300px; overflow-y:auto;visibility:hidden; position:absolute; top:2.6em; left:0.5em;background-color: rgb(238,238,238)">
+
+					<div>
+						<div style='margin:20px;overflow: auto;'>
+
+							<form name="fpform">
+								<input type="hidden" name="csrf" value="ae80a3ad264fa83b19a7ce2c48be5c3dcd23c6f9" />
+
+								<div id="fppluslevel0" style="overflow: auto; ">
+									<p align="left">
+										<img onclick="handleClick('fppluslevel0','fpminuslevel0')" src="img/plus.bmp">
+										<input id="fpphotoplus" type="checkbox" onclick="selectFPAll()">&nbsp;Field
+										Photographs/Info(FP/FI)
+									</p>
+								</div>
+								<div id="fpminuslevel0" style="display: none; overflow: auto; ">
+									<p align="left">
+										<img onclick="handleClick('fpminuslevel0','fppluslevel0')" src="img/minus.bmp">
+										<input id="fpphotominus" type="checkbox" onclick="selectFPAll()">&nbsp;Field
+										Photographs/Info(FP/FI)
+										<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox20749" type="checkbox"
+											onchange="FP_changeurl()" value="Crop">
+										&nbsp;Crop
+
+										<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox7168" type="checkbox"
+											onchange="FP_changeurl()" value="Land Cover and Natural Resources">
+										&nbsp;Land Cover & Natural Resources
+										<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox22905" type="checkbox"
+											onchange="FP_changeurl()" value="Landslides">
+										&nbsp;Landslides
+										<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox16002" type="checkbox"
+											onchange="FP_changeurl()" value="POI">
+										&nbsp;POI
+										<br />
+										&nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox22920" type="checkbox"
+											onchange="FP_changeurl()" value="RiverBankErosion">
+										&nbsp;RiverBankErosion
+										<br />
+										<input type='checkbox' id='cluster' onclick='clusterlayer(this)' name='radmaps'
+											style='float:left' />&nbsp;FP/FI Cluster
+									</p>
+								</div>
+							</form>
+							<!-- infrastructureplus: visible by default - DO NOT change display -->
+							<div id="infrastructureplus"></div>
+							<div id="infrastructureminus" style="display:none;"></div>
+
+							<input type='checkbox'
+								onclick='if(this.checked) AddLayer("vector:city_hq","base_town",0); else parent.removelayer("base_town",false);'
+								style='float:left' /><label for='chkbx5' style='float:left'>Settlement
+								Locations</label><br>
+							<input type='checkbox' id='chkcities'
+								onclick='if(this.checked) AddLayer("vector:towns_onelac_mod_final","a1lakh",0); else removelayer("a1lakh",false);'
+								name='cities' style='float:left' /><label for='chkbx1' style='float:left'>Cities/Towns
+								(Population > 1 Lakh)</label><br>
+							<div id="hydropluslevel0" style="overflow: auto; ">
+								<img align='left' onclick="handleClick('hydropluslevel0','hydrominuslevel0')"
+									src="img/plus.bmp"> <label for='chkbx' style='float:left'>&nbsp; &nbsp;Hydrological
+									Boundary</label>
+							</div>
+							<div id="hydrominuslevel0" style="display: none; overflow: auto;">
+								<img align='left' onclick="handleClick('hydrominuslevel0','hydropluslevel0')"
+									src="img/minus.bmp"><label for='chkbx' style='float:left'>&nbsp; &nbsp;Hydrological
+									Boundary</label><br>
+								<input type='checkbox'
+									onclick='if(this.checked) AddLayer("sde:basin","basin12","http://bhuvan-panchayat.nrsc.gov.in:8080/geoserver/sde/wms"); else removelayer("basin12",false);'
+									style='float:left' /><label for='chkbx5' style='float:left'>Basin</label><br>
+								<input type='checkbox'
+									onclick='if(this.checked) AddLayer("sde:subbasin","subbasin12","http://bhuvan-panchayat.nrsc.gov.in:8080/geoserver/sde/wms"); else removelayer("subbasin12",false);'
+									style='float:left' /><label for='chkbx5' style='float:left'>Subbasin</label><br>
+								<input id='8' type='checkbox' onclick='if(this.checked) watershed(1); else watershed(0)'
+									style='float:left'><label for='rad4' style='float:left'>Watershed</label><br>
+							</div>
+
+
+						</div>
+
+					</div>
+
+				</div> <!--accordian-->
+			</div> <!--nav-->
+			<div id='map'>
+				<img id="hideshowimg" src="img/maximize.png" title="Hide/Show Left Panel"
+					style='z-index:3000;position:fixed;cursor:pointer;top:50%' onClick="hideshowmap()" />
+			</div>
+		</td>
+		</tr>
+		</table>
+
+	</div> <!--mapdiv-->
+	<div class="map-ts-overlay" id="map-ts-overlay"></div>
+	<div id="footer">
+		<table width="99.5%" height='28px' style="">
+			<tr width="250px">
+				<td><b><a href='https://bhuvan.nrsc.gov.in/forum' style='color:black'
+							target='_blank'>&nbsp;&nbsp;Discussion Forum</a></b>&nbsp;|<b>&nbsp;<a href='#'
+							style='color:black' title='Email this Map link' onclick='sendMail()'>Send
+							Mail</a>&nbsp;</b><!--|<b>&nbsp;<a href='#' title='Click to view the legend' onclick='legend()'>Legend</a>&nbsp;</b> -->
+				</td>
+				<td width="250px" height="10px" style=" text-align:right;" valign="top">
+					<b><a href="#" onclick="load_video('#contactus','contactus.php','Contact Us','350','430')"
+							style='color:black' style="cursor:pointer">Contact us</a></b> | <b>
+						<a href="#" style='color:black'
+							onclick="load_video('#contactus','disclaimer.php','Disclaimer','350','430')"
+							style="cursor:pointer">Disclaimer</a></b>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</div> <!--main-->
+	<div id="search" title="Search Results" align="left" style="display: none;">
+		<span>
+			<h1><b>Select a location</b></h1>
+			<h2>We couldn't find exact match for your search. Did you mean<br></h2>
+		</span>
+		<div id="livesearch"></div>
+	</div>
+
+	<div id="link" title="Paste HTML to embed in website" align="left" style="display: none;">
+		<span class="des"></span>
+	</div>
+	<div id="toolframe" style="display: none;">
+		<iframe id="startPageFrame" src="" width="300px" height="450px"></iframe>
+	</div>
+	<div id="legenddiv" style="display: none;overflow:auto"></div>
+	<div id="LogoutFrame" style="display: none;"></div>
+	<div id="LoginFrame" style="display: none;"></div>
+	<div id="loadingpanel" class='olControlLoadingPanel'></div>
+	<div id="useradded_data" style='border:#456789 2px solid;width:300px;display:none'>
+
+		<p style='padding:0px 3px;'>&nbsp;&nbsp;<b>User Added Layers</b></p>
+		<div id='usrdiv' style='height:500px;overflow:auto'>
+			<div id="poidiv" style="display:none"></div>
+			<div id="wmslayerframe" style="display:none"></div>
+			<div id="contactus" style="display:none"></div>
+			<div id="shape" style="display:none"></div>
+			<div id="mylayers"></div>
+		</div>
+	</div>
+	<div id="link" title="Paste HTML to embed in website" align="left" style="display: none;">
+		<span class="des"></span>
+	</div>
+	<div id="temporaldiv"
+		style='display:none;padding:5px;border:#456789 2px solid;background-color:#D2DBEC;width:220px;max-height:500px; overflow:auto;position:absolute;right:15px;bottom:280px;Z-index:30000'>
+	</div>
+	<!-- Navigation & proximity & Print  -->
+	<div id="navigationframe" style="display: none;"></div>
+	<div id="proximityframe" style="display: none;"></div>
+
+</body>
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	var pagetitle = 'Lighting-ECV';
+	var sourceurl = 'usrtasks/heatwave/lightning_ecv_integrated.php';
+	//function to load quick link which is a dialog box, containing accordion
+	jQuery(document).ready(function () {
+		$("#radio").buttonset();
+		// Infrastructure layer - loaded via JS so LinkedIn scraper cant read it
+		document.getElementById('infrastructureplus').innerHTML = `
+            <div style="overflow:auto;">
+                <img align='left' onclick="handleClick('infrastructureplus','infrastructureminus')" src="img/plus.bmp"> 
+                <label for='chkbx' style='float:left'>&nbsp; &nbsp;Infrastructure (Road & Rail)</label>
+            </div>`;
+
+		document.getElementById('infrastructureminus').innerHTML = `
+            <div style="overflow:auto;">
+                <img align='left' onclick="handleClick('infrastructureminus','infrastructureplus')" src="img/minus.bmp">
+                <label for='chkbx' style='float:left'>&nbsp; &nbsp;Infrastructure (Road & Rail)</label><br>
+                <input type='checkbox' id='chkbxsurvey' onclick='if(this.checked) surveyindia(true); else surveyindia(false)' name='surveymaps' style='float:left'/>
+                <label for='chkbxsurvey' style='float:left'>Survey Of India</label><br>				
+                <input type='checkbox' id='chktrans' onclick='if(this.checked) transport(true); else transport(false)' name='railandroad' style='float:left'/>
+                <label for='chktrans' style='float:left'>Bhuvan</label><br>
+                <p style="text-align:justify; font-family: Arial; font-size: 10px; color: red">
+                    <b>Disclaimer:</b> This is version 1.0 data. Improvements are being done. NSRC/ISRO disowns responsibility for any inadvertent errors, beyond its limitations.
+                </p>
+            </div>`;
+	});
+	function i2() {
+		var t1 = window.innerHeight - 145; //-160 
+		var t2 = t1 - 10;
+		document.getElementById("lp").style.height = t2 + "px";
+		document.getElementById("mapdiv").style.height = t1 + "px";
+		document.getElementById("map").style.height = t1 + "px";
+	}
+</script>
+<!-- Navigation & proximity & Print -->
+<script src="OpenLayersfull.js"></script>
+<script src="usrtasks/heatwave/heatwave.js"></script>
+<script src="lib/uncomp/m5uncomp24012016.js"></script>
+
+</html>

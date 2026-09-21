@@ -1,0 +1,2833 @@
+/* =========================================================
+   MEGHDHRISTI NOWCAST
+========================================================= */
+
+.nowcast-page {
+
+    width: min(
+        1400px,
+        calc(100% - 56px)
+    );
+
+    margin: auto;
+
+    padding-top: 125px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.nowcast-hero {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding:
+        35px 0 30px;
+}
+
+
+.nowcast-kicker {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #71849a;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+
+.nowcast-kicker span {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--cyan);
+
+    box-shadow:
+        0 0 12px var(--cyan);
+
+}
+
+
+.nowcast-hero h1 {
+
+    max-width: 700px;
+
+    margin-top: 12px;
+
+    font-family: var(--display);
+
+    font-size: clamp(
+        42px,
+        5vw,
+        66px
+    );
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+}
+
+
+.nowcast-hero h1 span {
+
+    display: block;
+
+    color: var(--cyan);
+}
+
+
+.nowcast-hero p {
+
+    max-width: 620px;
+
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.nowcast-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 180px;
+
+    padding: 13px 16px;
+
+    border: 1px solid
+        rgba(33,230,149,.18);
+
+    border-radius: 13px;
+
+    background:
+        rgba(33,230,149,.045);
+}
+
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 14px var(--green);
+}
+
+
+.nowcast-status strong {
+
+    display: block;
+
+    color: var(--green);
+
+    font-size: 9px;
+
+    letter-spacing: .8px;
+}
+
+
+.nowcast-status small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #65758a;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.nowcast-summary {
+
+    display: grid;
+
+    grid-template-columns:
+        1.7fr
+        .75fr
+        .75fr
+        .75fr;
+
+    gap: 1px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.summary-location,
+.summary-stat {
+
+    min-height: 94px;
+
+    padding: 20px;
+
+    background:
+        rgba(7,17,31,.82);
+}
+
+
+.summary-location span,
+.summary-stat span {
+
+    display: block;
+
+    color: #607188;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.summary-location strong {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: #e7f1fc;
+
+    font-family: var(--display);
+
+    font-size: 18px;
+}
+
+
+.summary-location small {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #72839a;
+
+    font-size: 9px;
+}
+
+
+.summary-stat strong {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color: #e7f1fc;
+
+    font-family: var(--display);
+
+    font-size: 25px;
+}
+
+
+.summary-stat .cyan {
+    color: var(--cyan);
+}
+
+
+.summary-stat .red {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.trajectory-panel,
+.risk-evolution-panel,
+.impact-panel {
+
+    margin-top: 16px;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 21px;
+
+    background:
+        rgba(7,16,29,.72);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.25);
+}
+
+
+.panel-heading {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.panel-heading > div > span {
+
+    color: #64768d;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+.panel-heading h2 {
+
+    margin-top: 5px;
+
+    color: #eaf3ff;
+
+    font-family: var(--display);
+
+    font-size: 19px;
+}
+
+
+.trajectory-confidence {
+
+    text-align: right;
+}
+
+
+.trajectory-confidence small {
+
+    display: block;
+
+    color: #66788f;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.trajectory-confidence strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--cyan);
+
+    font-family: var(--display);
+
+    font-size: 27px;
+}
+
+
+/* =========================================================
+   TRAJECTORY MAP
+========================================================= */
+
+.trajectory-map {
+
+    position: relative;
+
+    height: 500px;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(69,146,200,.14);
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle at 12% 75%,
+            rgba(46,219,255,.12),
+            transparent 23%
+        ),
+        linear-gradient(
+            130deg,
+            #061927,
+            #081324 55%,
+            #10102b
+        );
+}
+
+
+.trajectory-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .5;
+
+    background-image:
+        linear-gradient(
+            rgba(72,168,221,.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(72,168,221,.055) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+}
+
+
+.impact-zone {
+
+    position: absolute;
+
+    left: 5%;
+
+    bottom: 10%;
+
+    width: 230px;
+
+    height: 230px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(46,219,255,.11);
+
+    box-shadow:
+        0 0 0 35px rgba(46,219,255,.025),
+        0 0 0 70px rgba(46,219,255,.018);
+}
+
+
+.trajectory-svg {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+.trajectory-area {
+
+    fill:
+        rgba(91,120,255,.11);
+
+    stroke:
+        rgba(102,128,255,.08);
+
+    stroke-width: 1;
+}
+
+
+.trajectory-line {
+
+    fill: none;
+
+    stroke:
+        url(#trajectoryGradient);
+
+    stroke-width: 4;
+
+    stroke-linecap: round;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(46,219,255,.55)
+        );
+}
+
+
+/* =========================================================
+   FORECAST POINTS
+========================================================= */
+
+.forecast-point {
+
+    position: absolute;
+
+    z-index: 5;
+
+    width: 52px;
+    height: 52px;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(108,151,255,.48);
+
+    border-radius: 50%;
+
+    background:
+        rgba(6,20,38,.92);
+
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 0 10px
+        rgba(78,126,255,.045);
+
+    transition:
+        .25s ease;
+}
+
+
+.forecast-point:hover {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+
+    border-color:
+        var(--cyan);
+
+    box-shadow:
+        0 0 0 13px
+        rgba(46,219,255,.08),
+        0 0 25px
+        rgba(46,219,255,.2);
+}
+
+
+.forecast-point.current {
+
+    border-color:
+        var(--cyan);
+
+    box-shadow:
+        0 0 0 11px
+        rgba(46,219,255,.08),
+        0 0 25px
+        rgba(46,219,255,.28);
+}
+
+
+.forecast-point.future {
+
+    border-color:
+        var(--purple);
+}
+
+
+.point-icon {
+
+    font-size: 18px;
+}
+
+
+.forecast-point small {
+
+    position: absolute;
+
+    top: 59px;
+
+    white-space: nowrap;
+
+    color: #8092a8;
+
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.trajectory-tooltip {
+
+    position: absolute;
+
+    z-index: 20;
+
+    left: 27%;
+
+    top: 28%;
+
+    min-width: 170px;
+
+    padding: 13px;
+
+    border:
+        1px solid
+        rgba(46,219,255,.18);
+
+    border-radius: 12px;
+
+    background:
+        rgba(3,13,25,.88);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 18px 40px
+        rgba(0,0,0,.4);
+}
+
+
+.trajectory-tooltip span {
+
+    display: block;
+
+    color: #5f748b;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.trajectory-tooltip strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--red);
+
+    font-size: 12px;
+}
+
+
+.trajectory-tooltip small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #71849b;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   STORM VECTOR
+========================================================= */
+
+.storm-vector {
+
+    position: absolute;
+
+    top: 30px;
+
+    right: 25px;
+
+    padding: 10px 13px;
+
+    border:
+        1px solid
+        rgba(46,219,255,.14);
+
+    border-radius: 10px;
+
+    background:
+        rgba(3,14,27,.68);
+
+    color: var(--cyan);
+
+    font-family: var(--display);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.storm-vector small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #5d7188;
+
+    font-family: var(--font);
+
+    font-size: 6px;
+
+    letter-spacing: .8px;
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.trajectory-legend {
+
+    position: absolute;
+
+    left: 18px;
+
+    bottom: 17px;
+
+    display: flex;
+
+    gap: 15px;
+
+    padding: 8px 11px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(3,13,24,.78);
+
+    color: #74869b;
+
+    font-size: 7px;
+}
+
+
+.trajectory-legend span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.trajectory-legend i {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+}
+
+
+.current-dot {
+    background: var(--cyan);
+}
+
+
+.predicted-dot {
+    background: var(--purple);
+}
+
+
+.impact-dot {
+    background: var(--red);
+}
+
+
+/* =========================================================
+   FORECAST CARDS
+========================================================= */
+
+.forecast-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-top: 16px;
+}
+
+
+.forecast-card {
+
+    position: relative;
+
+    min-height: 175px;
+
+    padding: 21px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 18px;
+
+    background:
+        rgba(7,16,29,.72);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+
+.forecast-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(46,219,255,.25);
+}
+
+
+.card-kicker {
+
+    color: #64758c;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.forecast-card > strong {
+
+    display: block;
+
+    margin-top: 17px;
+
+    color: #eaf4ff;
+
+    font-family: var(--display);
+
+    font-size: 35px;
+}
+
+
+.forecast-card > strong small {
+
+    color: #6c8098;
+
+    font-family: var(--font);
+
+    font-size: 10px;
+}
+
+
+.forecast-card > strong.purple {
+    color: var(--purple);
+}
+
+
+.forecast-card > strong.green {
+    color: var(--green);
+}
+
+
+.forecast-card p {
+
+    margin-top: 13px;
+
+    color: #718197;
+
+    font-size: 9px;
+
+    line-height: 1.55;
+}
+
+
+.mini-progress {
+
+    height: 5px;
+
+    margin-top: 13px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+
+.mini-progress span {
+
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        var(--cyan);
+
+    box-shadow:
+        0 0 10px var(--cyan);
+}
+
+
+.purple-bar span {
+
+    background: var(--purple);
+
+    box-shadow:
+        0 0 10px var(--purple);
+}
+
+
+.green-bar span {
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
+}
+
+
+.direction-compass {
+
+    position: absolute;
+
+    top: 45px;
+
+    right: 25px;
+
+    color: var(--cyan);
+
+    font-size: 42px;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(46,219,255,.4)
+        );
+}
+
+
+/* =========================================================
+   RISK CHART
+========================================================= */
+
+.risk-chart {
+
+    position: relative;
+
+    height: 300px;
+
+    margin-top: 25px;
+
+    padding-left: 45px;
+}
+
+
+.risk-chart svg {
+
+    width: 100%;
+
+    height: 250px;
+
+    overflow: visible;
+}
+
+
+.risk-area {
+
+    fill:
+        url(#riskFill);
+}
+
+
+.risk-line {
+
+    fill: none;
+
+    stroke:
+        var(--cyan);
+
+    stroke-width: 4;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(46,219,255,.45)
+        );
+}
+
+
+.chart-highlight {
+
+    fill:
+        var(--cyan);
+
+    stroke:
+        #071526;
+
+    stroke-width: 4;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            var(--cyan)
+        );
+}
+
+
+.chart-y {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    height: 250px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    color: #52657b;
+
+    font-size: 7px;
+}
+
+
+.chart-x {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding:
+        5px 0 0;
+
+    color: #5d7188;
+
+    font-size: 8px;
+
+    font-weight: 700;
+}
+
+
+.live-pill {
+
+    padding: 6px 9px;
+
+    border:
+        1px solid
+        rgba(33,230,149,.18);
+
+    border-radius: 999px;
+
+    background:
+        rgba(33,230,149,.05);
+
+    color: var(--green);
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   IMPACT GRID
+========================================================= */
+
+.impact-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.1fr
+        .9fr;
+
+    gap: 16px;
+}
+
+
+.area-list,
+.factor-list {
+
+    margin-top: 20px;
+}
+
+
+.area-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+
+.area-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(46,219,255,.06);
+
+    color: var(--cyan);
+}
+
+
+.area-row > div:nth-child(2) {
+
+    flex: 1;
+}
+
+
+.area-row strong {
+
+    display: block;
+
+    color: #dce8f5;
+
+    font-size: 10px;
+}
+
+
+.area-row small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #687b92;
+
+    font-size: 8px;
+}
+
+
+.area-risk {
+
+    padding: 5px 7px;
+
+    border-radius: 6px;
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+
+.area-risk.high {
+
+    color: var(--red);
+
+    background:
+        rgba(255,77,95,.07);
+}
+
+
+.area-risk.moderate {
+
+    color: var(--yellow);
+
+    background:
+        rgba(255,201,40,.06);
+}
+
+
+.area-risk.watch {
+
+    color: var(--cyan);
+
+    background:
+        rgba(46,219,255,.06);
+}
+
+
+/* FACTORS */
+
+.factor {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+
+.factor span {
+
+    display: block;
+
+    color: #d5e1ef;
+
+    font-size: 10px;
+}
+
+
+.factor small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #65788f;
+
+    font-size: 8px;
+}
+
+
+.factor strong {
+
+    color: var(--cyan);
+
+    font-family: var(--display);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   DECISION
+========================================================= */
+
+.decision-panel {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 16px;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        rgba(255,77,95,.22);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(255,77,95,.08),
+            rgba(7,16,29,.78)
+        );
+}
+
+
+.decision-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    flex: 0 0 48px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,77,95,.09);
+
+    color: var(--red);
+
+    font-size: 20px;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,77,95,.08);
+}
+
+
+.decision-content {
+
+    flex: 1;
+}
+
+
+.decision-content > span {
+
+    color: var(--red);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.decision-content h2 {
+
+    margin-top: 5px;
+
+    color: #eef5ff;
+
+    font-family: var(--display);
+
+    font-size: 17px;
+}
+
+
+.decision-content p {
+
+    max-width: 680px;
+
+    margin-top: 5px;
+
+    color: #7d8ca1;
+
+    font-size: 9px;
+
+    line-height: 1.55;
+}
+
+
+.decision-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px 14px;
+
+    border:
+        1px solid
+        rgba(255,77,95,.25);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,77,95,.07);
+
+    color: #ff7180;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+.decision-button:hover {
+
+    background:
+        rgba(255,77,95,.13);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .forecast-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .impact-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 760px) {
+
+    .nowcast-page {
+
+        width:
+            calc(100% - 24px);
+
+        padding-top: 100px;
+    }
+
+
+    .nowcast-hero {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .nowcast-summary {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .summary-location {
+
+        grid-column:
+            span 2;
+    }
+
+
+    .trajectory-map {
+
+        height: 390px;
+    }
+
+
+    .trajectory-tooltip {
+
+        display: none;
+    }
+
+
+    .forecast-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .decision-panel {
+
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .decision-button {
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .nowcast-summary {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .summary-location {
+
+        grid-column: span 1;
+    }
+
+
+    .trajectory-map {
+
+        height: 330px;
+    }
+
+
+    .storm-vector {
+
+        top: 15px;
+
+        right: 15px;
+    }
+
+
+    .trajectory-legend {
+
+        gap: 7px;
+
+        font-size: 6px;
+    }
+
+}
+
+/* =========================================================
+   ENHANCED NOWCAST TRAJECTORY
+========================================================= */
+
+.trajectory-panel {
+    position: relative;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.trajectory-subtitle {
+
+    margin-top: 6px;
+
+    color: #5f7188;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+.trajectory-confidence {
+    min-width: 100px;
+}
+
+
+.trajectory-confidence strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--cyan);
+
+    font-family: var(--display);
+
+    font-size: 34px;
+
+    line-height: 1;
+}
+
+
+#confidenceTrend {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--green);
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.trajectory-map {
+
+    position: relative;
+
+    height: 500px;
+
+    margin-top: 22px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(70,150,210,.16);
+
+    border-radius: 18px;
+
+    background:
+
+        radial-gradient(
+            circle at 12% 72%,
+            rgba(46,219,255,.10),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            circle at 90% 25%,
+            rgba(144,104,255,.08),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #061a28,
+            #071423 55%,
+            #101029
+        );
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.trajectory-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .42;
+
+    background-image:
+
+        linear-gradient(
+            rgba(73,170,220,.055) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(73,170,220,.055) 1px,
+            transparent 1px
+        );
+
+    background-size: 48px 48px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+
+.map-vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.14),
+            transparent 25%,
+            transparent 75%,
+            rgba(0,0,0,.18)
+        ),
+
+        linear-gradient(
+            0deg,
+            rgba(2,8,18,.4),
+            transparent 35%
+        );
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   RADAR RINGS
+========================================================= */
+
+.storm-radar-ring {
+
+    position: absolute;
+
+    left: 9.5%;
+
+    top: 75.6%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid
+        rgba(46,219,255,.15);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.ring-a {
+
+    width: 95px;
+    height: 95px;
+}
+
+
+.ring-b {
+
+    width: 190px;
+    height: 190px;
+
+    opacity: .55;
+}
+
+
+.ring-c {
+
+    width: 285px;
+    height: 285px;
+
+    opacity: .28;
+}
+
+
+.ring-a::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    border-radius: inherit;
+
+    box-shadow:
+        0 0 25px
+        rgba(46,219,255,.15);
+
+    animation:
+        radarPulse 2.4s
+        ease-out
+        infinite;
+}
+
+
+@keyframes radarPulse {
+
+    0% {
+        transform: scale(.8);
+        opacity: .8;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   SVG
+========================================================= */
+
+.trajectory-svg {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 3;
+
+    overflow: visible;
+}
+
+
+.trajectory-corridor {
+
+    fill:
+        url(#corridorGradient);
+
+    stroke:
+        rgba(100,130,255,.08);
+
+    stroke-width: 1;
+}
+
+
+.trajectory-glow {
+
+    fill: none;
+
+    stroke:
+        rgba(46,219,255,.28);
+
+    stroke-width: 13;
+
+    stroke-linecap: round;
+
+    filter:
+        blur(9px);
+}
+
+
+.trajectory-line {
+
+    fill: none;
+
+    stroke:
+        url(#trajectoryGradient);
+
+    stroke-width: 4;
+
+    stroke-linecap: round;
+
+    filter:
+        url(#trajectoryGlow);
+}
+
+
+.trajectory-tracker {
+
+    fill:
+        #ffffff;
+
+    stroke:
+        var(--cyan);
+
+    stroke-width: 4;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            var(--cyan)
+        );
+
+    transition:
+        cx .45s ease,
+        cy .45s ease;
+}
+
+
+/* =========================================================
+   MAP LABELS
+========================================================= */
+
+.map-label {
+
+    position: absolute;
+
+    z-index: 4;
+
+    color:
+        rgba(143,169,193,.48);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.map-label span {
+
+    display: inline-block;
+
+    width: 4px;
+
+    height: 4px;
+
+    margin-right: 5px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(122,170,205,.5);
+}
+
+
+.label-bhubaneswar {
+
+    left: 13%;
+
+    bottom: 25%;
+}
+
+
+.label-khordha {
+
+    left: 36%;
+
+    bottom: 37%;
+}
+
+
+.label-cuttack {
+
+    left: 61%;
+
+    bottom: 48%;
+}
+
+
+.label-bhadrak {
+
+    left: 76%;
+
+    top: 24%;
+}
+
+
+/* =========================================================
+   FORECAST POINTS
+========================================================= */
+
+.forecast-point {
+
+    position: absolute;
+
+    z-index: 8;
+
+    width: 54px;
+
+    height: 54px;
+
+    padding: 0;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(100,150,240,.42);
+
+    border-radius: 50%;
+
+    background:
+        rgba(4,16,31,.9);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+
+        transform .25s ease,
+
+        border-color .25s ease,
+
+        box-shadow .25s ease,
+
+        background .25s ease;
+}
+
+
+.forecast-point:hover {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.12);
+
+    border-color:
+        var(--cyan);
+
+    background:
+        rgba(8,27,43,.96);
+
+    box-shadow:
+
+        0 0 0 8px
+        rgba(46,219,255,.05),
+
+        0 0 30px
+        rgba(46,219,255,.28);
+}
+
+
+.forecast-point.selected {
+
+    border-color:
+        var(--cyan);
+
+    box-shadow:
+
+        0 0 0 7px
+        rgba(46,219,255,.08),
+
+        0 0 35px
+        rgba(46,219,255,.28);
+}
+
+
+.forecast-point.selected::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -9px;
+
+    border:
+        1px solid
+        rgba(46,219,255,.25);
+
+    border-radius: 50%;
+
+    animation:
+        selectedPulse 2s
+        ease-out
+        infinite;
+}
+
+
+@keyframes selectedPulse {
+
+    0% {
+        transform: scale(.8);
+        opacity: .8;
+    }
+
+    100% {
+        transform: scale(1.45);
+        opacity: 0;
+    }
+}
+
+
+.point-core {
+
+    font-size: 17px;
+
+    line-height: 1;
+}
+
+
+.point-time {
+
+    position: absolute;
+
+    top: 61px;
+
+    white-space: nowrap;
+
+    color: #788aa0;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.trajectory-tooltip {
+
+    position: absolute;
+
+    z-index: 20;
+
+    left: 27%;
+
+    top: 28%;
+
+    width: 190px;
+
+    padding: 14px;
+
+    border:
+        1px solid
+        rgba(46,219,255,.18);
+
+    border-radius: 13px;
+
+    background:
+        rgba(3,13,25,.9);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 22px 50px
+        rgba(0,0,0,.38);
+
+    pointer-events: none;
+
+    transition:
+        left .3s ease,
+        top .3s ease;
+}
+
+
+.tooltip-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.tooltip-header > span:first-child {
+
+    color: #65798f;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.tooltip-risk {
+
+    color: var(--red);
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+
+.trajectory-tooltip > strong {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: #eaf5ff;
+
+    font-family: var(--display);
+
+    font-size: 25px;
+}
+
+
+.trajectory-tooltip > small {
+
+    color: #687b91;
+
+    font-size: 7px;
+}
+
+
+.tooltip-divider {
+
+    height: 1px;
+
+    margin:
+        11px 0;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+
+.tooltip-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 8px;
+}
+
+
+.tooltip-stats span {
+
+    color: #66798f;
+
+    font-size: 7px;
+}
+
+
+.tooltip-stats b {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #dce8f5;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   VECTOR
+========================================================= */
+
+.storm-vector {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 20px;
+
+    z-index: 10;
+
+    min-width: 105px;
+
+    padding: 10px 12px;
+
+    border:
+        1px solid
+        rgba(46,219,255,.15);
+
+    border-radius: 10px;
+
+    background:
+        rgba(3,13,25,.75);
+
+    backdrop-filter:
+        blur(14px);
+}
+
+
+.storm-vector span {
+
+    color: var(--cyan);
+
+    font-family: var(--display);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.storm-vector small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #53677e;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.trajectory-legend {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 17px;
+
+    bottom: 17px;
+
+    display: flex;
+
+    gap: 14px;
+
+    padding: 8px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    border-radius: 8px;
+
+    background:
+        rgba(3,12,23,.78);
+
+    backdrop-filter:
+        blur(10px);
+
+    color: #71849a;
+
+    font-size: 7px;
+}
+
+
+.trajectory-legend span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.trajectory-legend i {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+}
+
+
+.legend-current {
+    background: var(--cyan);
+}
+
+
+.legend-predicted {
+    background: var(--purple);
+}
+
+
+.legend-corridor {
+
+    width: 11px !important;
+
+    border-radius: 2px !important;
+
+    background:
+        rgba(100,130,255,.35);
+}
+
+
+/* =========================================================
+   FORECAST CONTROLS
+========================================================= */
+
+.forecast-controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    margin-top: 14px;
+
+    min-height: 82px;
+
+    padding: 17px 20px;
+
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 15px;
+
+    background: rgba(4,12,23,.72);
+
+    backdrop-filter: blur(16px);
+}
+
+.forecast-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    width: 155px;
+    min-height: 48px;
+
+    padding: 12px 16px;
+
+    border: 1px solid rgba(46,219,255,.22);
+    border-radius: 11px;
+
+    background: rgba(46,219,255,.06);
+
+    color: #a8bacd;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.forecast-play span:first-child {
+    color: var(--cyan);
+    font-size: 13px;
+}
+
+.forecast-play:hover {
+
+    color: white;
+
+    border-color:
+        rgba(46,219,255,.4);
+
+    background:
+        rgba(46,219,255,.09);
+}
+
+
+.forecast-play span:first-child {
+
+    color: var(--cyan);
+
+    font-size: 11px;
+}
+
+
+.forecast-slider-wrap {
+
+    flex: 1;
+    padding: 4px 0;
+}
+
+
+.forecast-slider-labels {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: #586b81;
+
+    font-size: 6px;
+
+    font-weight: 800;
+}
+
+
+.forecast-slider {
+    width: 100%;
+    height: 6px;
+
+    appearance: none;
+
+    border-radius: 99px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+.forecast-slider::-webkit-slider-thumb {
+
+    appearance: none;
+
+    width: 13px;
+
+    height: 13px;
+
+    border:
+        2px solid
+        #071524;
+
+    border-radius: 50%;
+
+    background:
+        var(--cyan);
+
+    box-shadow:
+        0 0 10px
+        rgba(46,219,255,.55);
+}
+
+
+.forecast-slider::-moz-range-thumb {
+
+    width: 13px;
+
+    height: 13px;
+
+    border:
+        2px solid
+        #071524;
+
+    border-radius: 50%;
+
+    background:
+        var(--cyan);
+}
+
+
+.forecast-current-time {
+
+    min-width: 85px;
+
+    text-align: right;
+}
+
+
+.forecast-current-time small {
+
+    display: block;
+
+    color: #566a81;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: .7px;
+}
+
+
+.forecast-current-time strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--cyan);
+
+    font-family: var(--display);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   SELECTED FORECAST
+========================================================= */
+
+.selected-forecast {
+    display: grid;
+
+    grid-template-columns:
+        2.3fr
+        .8fr
+        .8fr
+        .8fr
+        .8fr;
+
+    gap: 1px;
+
+    margin-top: 14px;
+
+    min-height: 115px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+
+.selected-forecast-main,
+.selected-stat {
+    min-height: 115px;
+
+    padding: 22px;
+    
+    background:
+        rgba(6,16,29,.84);
+}
+
+.selected-forecast-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.selected-icon {
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 48px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(46,219,255,.08);
+
+    color:
+        var(--cyan);
+
+    font-size: 20px;
+
+    box-shadow:
+        0 0 22px
+        rgba(46,219,255,.08);
+}
+
+
+.selected-forecast-main span {
+
+    display: block;
+
+    color: #5e7188;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.selected-forecast-main strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--red);
+
+    font-family: var(--display);
+
+    font-size: 17px;
+
+    line-height: 1.1;
+}
+
+.selected-forecast-main small {
+    display: block;
+
+    max-width: 430px;
+
+    margin-top: 6px;
+
+    color: #71849a;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+.selected-stat span {
+
+    display: block;
+
+    color: #566a81;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+}
+
+
+.selected-stat strong {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #dce8f5;
+
+    font-family: var(--display);
+
+    font-size: 22px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .selected-forecast {
+
+        grid-template-columns:
+            1.6fr
+            1fr
+            1fr;
+    }
+
+
+    .selected-forecast-main {
+
+        grid-column:
+            span 3;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .trajectory-map {
+
+        height: 400px;
+    }
+
+
+    .trajectory-tooltip {
+
+        display: none;
+    }
+
+
+    .forecast-controls {
+
+        flex-wrap: wrap;
+    }
+
+
+    .forecast-slider-wrap {
+
+        order: 3;
+
+        flex-basis: 100%;
+    }
+
+
+    .selected-forecast {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .selected-forecast-main {
+
+        grid-column:
+            span 2;
+    }
+
+
+    .selected-stat {
+
+        min-height: 75px;
+    }
+
+
+    .map-label {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .trajectory-map {
+
+        height: 350px;
+    }
+
+
+    .trajectory-legend {
+
+        display: none;
+    }
+
+
+    .storm-vector {
+
+        top: 12px;
+
+        right: 12px;
+    }
+
+
+    .forecast-point {
+
+        width: 45px;
+        height: 45px;
+    }
+
+
+    .forecast-controls {
+
+        gap: 10px;
+    }
+
+
+    .forecast-play {
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+
+    .forecast-current-time {
+
+        display: none;
+    }
+
+}

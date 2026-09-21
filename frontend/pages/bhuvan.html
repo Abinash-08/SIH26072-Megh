@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        MeghDhristi | Bhuvan Lightning Intelligence
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/navbar.css">
+
+
+
+    <!-- Leaflet -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+
+    <!-- Bhuvan CSS -->
+
+    <link rel="stylesheet" href="../css/bhuvan.css">
+
+</head>
+
+<body>
+
+    <!-- SAME BACKGROUND AS DASHBOARD -->
+
+    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-purple"></div>
+    <div class="ambient ambient-blue"></div>
+
+    <div class="grid-background"></div>
+    <div class="noise"></div>
+
+    <header class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <!-- BRAND -->
+
+            <a href="index.html" class="brand">
+
+                <!-- LOGO -->
+                <div class="brand-logo">
+
+                    <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="brand-logo-image">
+
+                    <!-- Radar arcs -->
+
+                    <path d="M20 42
+                   A32 32 0 0 1 80 42" fill="none" stroke="currentColor" stroke-width="2" opacity=".35" />
+
+                    <path d="M27 38
+                   A25 25 0 0 1 73 38" fill="none" stroke="currentColor" stroke-width="2" opacity=".5" />
+
+                    <path d="M34 35
+                   A18 18 0 0 1 66 35" fill="none" stroke="currentColor" stroke-width="2" opacity=".7" />
+
+
+                    <!-- Cloud -->
+
+                    <path d="
+                    M25 62
+                    C20 62 16 58 16 53
+                    C16 48 20 44 25 44
+                    C27 37 33 33 40 33
+                    C49 33 56 39 57 47
+                    C59 45 62 44 65 44
+                    C71 44 76 49 76 55
+                    C76 61 71 65 65 65
+                    H25
+                " fill="rgba(20,35,55,.9)" stroke="currentColor" stroke-width="3" />
+
+
+                    <!-- Lightning -->
+
+                    <path d="
+                    M48 39
+                    L36 57
+                    H45
+                    L40 75
+                    L59 52
+                    H50
+                    Z
+                " fill="currentColor" />
+
+
+                    <!-- Rain -->
+
+                    <path d="M28 70 L24 78" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        opacity=".65" />
+
+                    <path d="M67 70 L63 78" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        opacity=".65" />
+
+                    </svg>
+
+                </div>
+
+
+                <!-- DIVIDER -->
+
+                <div class="brand-divider"></div>
+
+
+                <!-- BRAND TEXT -->
+
+                <div class="brand-copy">
+
+                    <div class="brand-name">
+                        MEGH<span>DRISHTI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        AI-POWERED THUNDERSTORM NOWCASTING
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- MAIN NAVIGATION -->
+
+            <div class="nav-links">
+
+                <a href="../index.html" class="nav-link active">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 11.5 12 4l9 7.5" />
+                            <path d="M5 10.5V20h14v-9.5" />
+                            <path d="M9 20v-6h6v6" />
+                        </svg>
+                    </span>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <a href="pages/live-map.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" />
+                            <circle cx="12" cy="9" r="2.3" />
+                        </svg>
+                    </span>
+
+                    <span>Live Map</span>
+
+                </a>
+
+
+                <a href="pages/nowcast.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="M12 7v5l3 2" />
+                        </svg>
+                    </span>
+
+                    <span>Nowcast</span>
+
+                </a>
+
+
+                <a href="pages/analytics.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 19V9" />
+                            <path d="M10 19V5" />
+                            <path d="M16 19v-7" />
+                            <path d="M22 19V3" />
+                        </svg>
+                    </span>
+
+                    <span>Analytics</span>
+
+                </a>
+
+
+                <a href="pages/alerts.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+                        </svg>
+                    </span>
+
+                    <span>Alerts</span>
+
+                </a>
+
+
+                <a href="pages/system.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V20h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6v-2.4h.9a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L8 8.6l1.7-1.7.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V5h2.4v.8a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.7 1.7-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.2V14h-.2a1.7 1.7 0 0 0-1.5 1Z" />
+                        </svg>
+                    </span>
+
+                    <span>System</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- NAV RIGHT -->
+
+            <div class="nav-right">
+
+                <div class="live-indicator">
+
+                    <span class="live-pulse"></span>
+
+                    <div class="live-info">
+
+                        <strong>LIVE</strong>
+
+                        <span id="navClock">
+                            --:--:-- IST
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="nav-separator"></div>
+
+
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- MOBILE NAV -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="index.html" class="mobile-link active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="pages/live-map.html" class="mobile-link">
+                <span>◉</span>
+                Live Map
+            </a>
+
+            <a href="pages/nowcast.html" class="mobile-link">
+                <span>◷</span>
+                Nowcast
+            </a>
+
+            <a href="pages/analytics.html" class="mobile-link">
+                <span>▥</span>
+                Analytics
+            </a>
+
+            <a href="pages/alerts.html" class="mobile-link">
+                <span>ϟ</span>
+                Alerts
+            </a>
+
+            <a href="pages/system.html" class="mobile-link">
+                <span>⚙</span>
+                System
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+     MAIN
+    ========================================================= -->
+
+    <main class="page-shell bhuvan-page">
+        <!-- =====================================================
+     BHUVAN LIGHTNING INTELLIGENCE
+====================================================== -->
+
+        <section class="bhuvan-intelligence-section">
+
+            <div class="bhuvan-section-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        LIVE OBSERVATION • NRSC / ISRO
+                    </span>
+
+                    <h2>
+                        Lightning Intelligence
+                    </h2>
+
+                    <p>
+                        Observe real-time lightning activity,
+                        identify high-risk zones and inspect
+                        the underlying Bhuvan spatial grid.
+                    </p>
+
+                </div>
+
+
+                <div class="bhuvan-live-status">
+
+                    <span class="bhuvan-live-dot"></span>
+
+                    <div>
+                        <strong id="bhuvanConnectionStatus">
+                            CHECKING...
+                        </strong>
+                        <strong id="bhuvanDataStatus">
+                            ● CHECKING
+                        </strong>
+                        <small>NRSC / ISRO</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+         INTELLIGENCE CARDS
+    ============================================== -->
+
+            <div class="bhuvan-dashboard-grid">
+
+
+                <!-- LIGHTNING ACTIVITY -->
+
+                <article class="bhuvan-feature-card lightning-feature 
+            onclick=" openBhuvanPage()">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>
+                            LIGHTNING ACTIVITY
+                        </span>
+
+                        <strong>
+                            Hourly Observations
+                        </strong>
+
+                        <p>
+                            View the latest lightning activity
+                            across the Bhuvan spatial grid.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-arrow">
+                        ↗
+                    </div>
+
+                </article>
+
+
+
+                <!-- SPATIAL GRID -->
+
+                <article class="bhuvan-feature-card grid-feature">
+
+                    <div class="feature-icon">
+                        ◈
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>
+                            SPATIAL INTELLIGENCE
+                        </span>
+
+                        <strong>
+                            Grid-level Detection
+                        </strong>
+
+                        <p>
+                            Locate lightning activity down to
+                            the corresponding Bhuvan grid.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-arrow">
+                        ↗
+                    </div>
+
+                </article>
+
+
+
+                <!-- NOWCAST -->
+
+                <article class="bhuvan-feature-card ai-feature">
+
+                    <div class="feature-icon">
+                        ◉
+                    </div>
+
+                    <div class="feature-content">
+
+                        <span>
+                            MEGHDHRISHTI AI
+                        </span>
+
+                        <strong>
+                            Observation → Nowcast
+                        </strong>
+
+                        <p>
+                            Lightning observations become
+                            inputs for thunderstorm prediction.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-arrow">
+                        ↗
+                    </div>
+
+                </article>
+
+            </div>
+
+
+
+            <!-- =============================================
+         LIVE DATA PREVIEW
+    ============================================== -->
+
+            <div class="bhuvan-preview">
+
+                <div class="preview-left">
+
+                    <div class="preview-top">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                CURRENT OBSERVATION
+                            </span>
+
+                            <h3>
+                                Lightning Activity Map
+                            </h3>
+
+                        </div>
+
+
+                        <span class="preview-badge">
+                            LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="preview-visual">
+
+                        <!-- REAL BHUVAN MAP -->
+                        <div id="bhuvan-map"></div>
+
+                        <!-- MAP STATUS -->
+                        <div class="map-live-badge">
+                            <span class="bhuvan-live-dot"></span>
+                            BHUVAN • HOURLY LIGHTNING
+                        </div>
+
+                        <!-- USER LOCATION -->
+                        <div class="preview-location">
+
+                            <span class="location-pulse"></span>
+
+                            <strong>
+                                YOUR LOCATION
+                            </strong>
+
+                            <small id="dashboardCoordinates">
+                                Detecting coordinates...
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LIVE STATS -->
+                <div class="preview-stats">
+
+                    <!-- OBSERVATION -->
+
+                    <div class="preview-stat">
+
+                        <span>
+                            OBSERVATION
+                        </span>
+
+                        <strong id="dashboardObservation">
+                            LOADING...
+                        </strong>
+
+                        <small>
+                            Bhuvan hourly lightning
+                        </small>
+
+                    </div>
+
+
+                    <!-- GRID -->
+
+                    <div class="preview-stat">
+
+                        <span>
+                            GRID
+                        </span>
+
+                        <strong id="dashboardGrid">
+                            ----
+                        </strong>
+
+                        <small>
+                            Bhuvan spatial reference
+                        </small>
+
+                    </div>
+
+
+                    <!-- SOURCE -->
+
+                    <div class="preview-stat">
+
+                        <span>
+                            SOURCE
+                        </span>
+
+                        <strong>
+                            NRSC
+                        </strong>
+
+                        <small>
+                            ISRO / Bhuvan
+                        </small>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="preview-stat">
+
+                        <span>
+                            STATUS
+                        </span>
+
+                        <strong id="bhuvanDataStatus" class="status-online">
+                            ● CONNECTING
+                        </strong>
+
+                        <small>
+                            Bhuvan WMS connection
+                        </small>
+
+                    </div>
+
+
+                    <!-- CTA -->
+
+                    <button type="button" class="bhuvan-main-cta" onclick="window.location.href='../pages/bhuvan.html'">
+
+                        <span>
+                            Explore Live Bhuvan Map
+                        </span>
+
+                        <strong>
+                            ↗
+                        </strong>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================================
+     MEGHDHRISHTI INTELLIGENCE EXTENSIONS
+========================================================= -->
+
+        <section class="md-intelligence">
+
+            <!-- ================= LOCATION RISK SCANNER ================= -->
+
+            <div class="md-card md-location-card">
+
+                <div class="md-card-header">
+                    <div>
+                        <span class="md-kicker">LOCATION INTELLIGENCE</span>
+                        <h3>📍 Location Risk Scanner</h3>
+                    </div>
+
+                    <span class="md-status-pill" id="mdRiskStatus">
+                        SCANNING
+                    </span>
+                </div>
+
+                <div class="md-location-main">
+
+                    <div class="md-location-score">
+                        <div class="md-score-ring" id="mdRiskRing">
+                            <span id="mdRiskScore">--</span>
+                            <small>RISK</small>
+                        </div>
+
+                        <strong id="mdRiskLabel">
+                            ANALYSING
+                        </strong>
+
+                        <span id="mdRiskDescription">
+                            Waiting for location intelligence...
+                        </span>
+                    </div>
+
+                    <div class="md-location-data">
+
+                        <div class="md-data-row">
+                            <span>LOCATION</span>
+                            <strong id="mdLocation">
+                                Detecting...
+                            </strong>
+                        </div>
+
+                        <div class="md-data-row">
+                            <span>COORDINATES</span>
+                            <strong id="mdCoordinates">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="md-data-row">
+                            <span>BHUVAN GRID</span>
+                            <strong id="mdGrid">
+                                ----
+                            </strong>
+                        </div>
+
+                        <div class="md-data-row">
+                            <span>DATA SOURCE</span>
+                            <strong>NRSC / ISRO</strong>
+                        </div>
+
+                        <div class="md-data-row">
+                            <span>MAP STATUS</span>
+                            <strong id="mdMapStatus">
+                                CONNECTING
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button type="button" class="md-scan-button" id="mdScanLocation">
+                    ⚡ SCAN MY LOCATION
+                </button>
+
+            </div>
+
+
+            <!-- ================= AI EXPLAINABILITY ================= -->
+
+            <div class="md-card md-ai-card">
+
+                <div class="md-card-header">
+
+                    <div>
+                        <span class="md-kicker">MEGHDHRISHTI AI</span>
+                        <h3>🧠 Why is the system alerting?</h3>
+                    </div>
+
+                    <span class="md-ai-badge">
+                        EXPLAINABLE AI
+                    </span>
+
+                </div>
+
+                <p class="md-ai-description">
+                    Atmospheric signals contributing to the current
+                    thunderstorm assessment.
+                </p>
+
+                <div class="md-feature-list">
+
+                    <div class="md-feature">
+                        <div>
+                            <span>⚡ Lightning Activity</span>
+                            <small id="mdLightningValue">Awaiting data</small>
+                        </div>
+
+                        <div class="md-progress">
+                            <span id="mdLightningBar"></span>
+                        </div>
+
+                        <strong id="mdLightningPercent">--</strong>
+                    </div>
+
+
+                    <div class="md-feature">
+                        <div>
+                            <span>⚡ Lightning Density</span>
+                            <small>Atmospheric model</small>
+                        </div>
+
+                        <div class="md-progress">
+                            <span id="mdRadarBar"></span>
+                        </div>
+
+                        <strong id="mdRadarPercent">--</strong>
+                    </div>
+
+
+                    <div class="md-feature">
+                        <div>
+                            <span>🔥 Convective Energy</span>
+                            <small>CAPE Model input</small>
+                        </div>
+
+                        <div class="md-progress">
+                            <span id="mdSatelliteBar"></span>
+                        </div>
+
+                        <strong id="mdSatellitePercent">--</strong>
+                    </div>
+
+
+                    <div class="md-feature">
+                        <div>
+                            <span>🌧 Moisture & Cloud Conditions</span>
+                            <small>Live atmospheric observation</small>
+                        </div>
+
+                        <div class="md-progress">
+                            <span id="mdAtmosphereBar"></span>
+                        </div>
+
+                        <strong id="mdAtmospherePercent">--</strong>
+                    </div>
+
+                </div>
+
+                <div class="md-confidence">
+
+                    <div>
+                        <span>DATA CONFIDENCE</span>
+                        <strong id="mdConfidence">
+                            Awaiting ML model
+                        </strong>
+                    </div>
+
+                    <div class="md-confidence-bar">
+                        <span id="mdConfidenceBar"></span>
+                    </div>
+
+                </div>
+
+                <small class="md-ai-note">
+                    Live atmospheric and model-derived indicators.
+                    ML inference will replace the prototype scoring layer.
+                </small>
+
+            </div>
+
+
+            <!-- ================= LIGHTNING TREND ================= -->
+
+            <div class="md-card md-trend-card">
+
+                <div class="md-card-header">
+
+                    <div>
+                        <span class="md-kicker">TEMPORAL INTELLIGENCE</span>
+                        <h3>📈 Lightning Activity Trend</h3>
+                    </div>
+
+                    <div class="md-trend-status">
+                        <span id="mdTrendArrow">→</span>
+                        <strong id="mdTrendLabel">
+                            WAITING
+                        </strong>
+                    </div>
+
+                </div>
+
+                <div class="md-chart">
+
+                    <div class="md-y-axis">
+                        <span>HIGH</span>
+                        <span>MED</span>
+                        <span>LOW</span>
+                    </div>
+
+                    <div class="md-chart-area">
+
+                        <svg id="mdTrendChart" viewBox="0 0 700 240" preserveAspectRatio="none">
+
+                            <defs>
+
+                                <linearGradient id="mdTrendGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-opacity=".35" />
+
+                                    <stop offset="100%" stop-opacity="0" />
+
+                                </linearGradient>
+
+                            </defs>
+
+                            <path id="mdTrendArea" d="" class="md-chart-area-fill" />
+
+                            <path id="mdTrendLine" d="" class="md-chart-line" />
+
+                            <g id="mdTrendPoints"></g>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+                <div class="md-time-labels">
+
+                    <span>-6H</span>
+                    <span>-5H</span>
+                    <span>-4H</span>
+                    <span>-3H</span>
+                    <span>-2H</span>
+                    <span>-1H</span>
+                    <span>NOW</span>
+
+                </div>
+
+                <div class="md-trend-footer">
+
+                    <div>
+                        <span>OBSERVATIONS</span>
+                        <strong id="mdObservationCount">
+                            --
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>CHANGE</span>
+                        <strong id="mdTrendChange">
+                            --
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>STATUS</span>
+                        <strong id="mdTrendDataStatus">
+                            WAITING FOR FEED
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+    <!-- =====================================================
+         FOOTER
+        ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-main">
+
+
+            <!-- Brand -->
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="footer-logo">
+
+                    <div class="footer-logo-icon">
+                        <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="footer-logo-image">
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            MEGH<span>DRISHTI</span>
+                        </strong>
+
+                        <small>
+                            AI-POWERED THUNDERSTORM NOWCASTING
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <p>
+                    Smarter predictions.
+                    Safer communities.
+                </p>
+
+
+                <p class="footer-powered">
+                    Powered by AI. Driven by real-time data.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Twitter">
+                        𝕏
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        in
+                    </a>
+
+                    <a href="#" aria-label="GitHub">
+                        ◉
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product -->
+
+            <div class="footer-column">
+
+                <h3>
+                    PRODUCT
+                </h3>
+
+                <a href="index.html">
+                    Dashboard
+                </a>
+
+                <a href="pages/live-map.html">
+                    Live Map
+                </a>
+
+                <a href="pages/nowcast.html">
+                    Nowcast
+                </a>
+
+                <a href="pages/analytics.html">
+                    Analytics
+                </a>
+
+                <a href="pages/alerts.html">
+                    Alerts
+                </a>
+
+            </div>
+
+
+            <!-- Resources -->
+
+            <div class="footer-column">
+
+                <h3>
+                    RESOURCES
+                </h3>
+
+                <a href="#">
+                    Documentation
+                </a>
+
+                <a href="#">
+                    API Reference
+                </a>
+
+                <a href="#">
+                    User Guide
+                </a>
+
+                <a href="#">
+                    Research
+                </a>
+
+                <a href="#">
+                    Help Center
+                </a>
+
+            </div>
+
+
+            <!-- Company -->
+
+            <div class="footer-column">
+
+                <h3>
+                    COMPANY
+                </h3>
+
+                <a href="#">
+                    About Us
+                </a>
+
+                <a href="#">
+                    Our Mission
+                </a>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Team
+                </a>
+
+            </div>
+
+
+            <!-- Newsletter -->
+
+            <div class="footer-column newsletter">
+
+                <h3>
+                    STAY INFORMED
+                </h3>
+
+                <p>
+                    Get weather intelligence
+                    and important alerts.
+                </p>
+
+
+                <form id="newsletterForm">
+
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" autocomplete="email"
+                        required>
+
+                    <button type="submit">
+                        →
+                    </button>
+
+                </form>
+
+
+                <small id="newsletterMessage">
+                    We respect your privacy.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span> MEGHDRISHTI.
+                All rights reserved.
+            </span>
+
+
+            <div>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="#">
+                    Data Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Leaflet -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- Bhuvan page JS -->
+
+    <script src="../js/bhuvan_page.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/app.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="../js/map.js"></script>
+    <script src="../js/bhuvan-intelligence.js"></script>
+
+</body>
+
+</html>

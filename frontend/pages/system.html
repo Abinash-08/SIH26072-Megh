@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEGHDRISHTI — System Intelligence</title>
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         GLOBAL STYLES
+    ====================================================== -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Your existing navbar styling -->
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <!-- System page -->
+    <link rel="stylesheet" href="../css/system.css">
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         AMBIENT BACKGROUND
+    ====================================================== -->
+
+    <div class="ambient ambient-cyan"></div>
+
+    <div class="ambient ambient-purple"></div>
+
+    <div class="ambient ambient-blue"></div>
+
+    <div class="grid-background"></div>
+
+    <div class="noise"></div>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <!-- BRAND -->
+
+            <a href="../index.html" class="brand">
+
+                <div class="brand-logo">
+
+                    <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="brand-logo-image">
+
+                </div>
+
+
+                <div class="brand-divider"></div>
+
+
+                <div class="brand-copy">
+
+                    <div class="brand-name">
+                        MEGH<span>DRISHTI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        AI-POWERED THUNDERSTORM NOWCASTING
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="nav-links">
+
+                <a href="../index.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 11.5 12 4l9 7.5" />
+                            <path d="M5 10.5V20h14v-9.5" />
+                            <path d="M9 20v-6h6v6" />
+                        </svg>
+                    </span>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <a href="live-map.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" />
+                            <circle cx="12" cy="9" r="2.3" />
+                        </svg>
+                    </span>
+
+                    <span>Live Map</span>
+
+                </a>
+
+
+                <a href="nowcast.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="M12 7v5l3 2" />
+                        </svg>
+                    </span>
+
+                    <span>Nowcast</span>
+
+                </a>
+
+
+                <a href="analytics.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 19V9" />
+                            <path d="M10 19V5" />
+                            <path d="M16 19v-7" />
+                            <path d="M22 19V3" />
+                        </svg>
+                    </span>
+
+                    <span>Analytics</span>
+
+                </a>
+
+
+                <a href="alerts.html" class="nav-link">
+
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+                        </svg>
+                    </span>
+
+                    <span>Alerts</span>
+
+                </a>
+
+
+                <a href="system.html" class="nav-link active">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle cx="12" cy="12" r="3" />
+
+                            <path d="
+                                M19.4 15
+                                a1.7 1.7 0 0 0 .3 1.9
+                                l.1.1-1.7 1.7-.1-.1
+                                a1.7 1.7 0 0 0-1.9-.3
+                                1.7 1.7 0 0 0-1 1.5V20
+                                h-2.4v-.2
+                                a1.7 1.7 0 0 0-1-1.5
+                                1.7 1.7 0 0 0-1.9.3
+                                l-.1.1L8 17l.1-.1
+                                a1.7 1.7 0 0 0 .3-1.9
+                                1.7 1.7 0 0 0-1.5-1H6
+                                v-2.4h.9
+                                a1.7 1.7 0 0 0 1.5-1
+                                1.7 1.7 0 0 0-.3-1.9
+                                L8 8.6l1.7-1.7.1.1
+                                a1.7 1.7 0 0 0 1.9.3
+                                1.7 1.7 0 0 0 1-1.5V5
+                                h2.4v.8
+                                a1.7 1.7 0 0 0 1 1.5
+                                1.7 1.7 0 0 0 1.9-.3
+                                l.1-.1 1.7 1.7-.1.1
+                                a1.7 1.7 0 0 0-.3 1.9
+                                1.7 1.7 0 0 0 1.5 1
+                                h.2V14h-.2
+                                a1.7 1.7 0 0 0-1.5 1Z" />
+
+                        </svg>
+
+                    </span>
+
+                    <span>System</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="nav-right">
+
+                <div class="live-indicator">
+
+                    <span class="live-pulse"></span>
+
+                    <div class="live-info">
+
+                        <strong>LIVE</strong>
+
+                        <span id="navClock">
+                            --:--:-- IST
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nav-separator"></div>
+
+
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- MOBILE -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="../index.html" class="mobile-link">
+
+                <span>⌂</span>
+                Dashboard
+
+            </a>
+
+            <a href="live-map.html" class="mobile-link">
+
+                <span>◉</span>
+                Live Map
+
+            </a>
+
+            <a href="nowcast.html" class="mobile-link">
+
+                <span>◷</span>
+                Nowcast
+
+            </a>
+
+            <a href="analytics.html" class="mobile-link">
+
+                <span>▥</span>
+                Analytics
+
+            </a>
+
+            <a href="alerts.html" class="mobile-link">
+
+                <span>ϟ</span>
+                Alerts
+
+            </a>
+
+            <a href="system.html" class="mobile-link active">
+
+                <span>⚙</span>
+                System
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="system-page">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="system-hero">
+
+            <div>
+
+                <div class="system-eyebrow">
+
+                    <span class="status-dot"></span>
+
+                    PLATFORM OBSERVABILITY
+
+                </div>
+
+
+                <h1>
+                    System Intelligence
+                </h1>
+
+
+                <p>
+
+                    Real-time health monitoring for the
+                    MEGHDRISHTI weather intelligence stack.
+
+                </p>
+
+            </div>
+
+
+            <div class="system-header-status">
+
+                <div class="system-status-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        ALL SYSTEMS OPERATIONAL
+                    </strong>
+
+                    <span>
+                        Last diagnostic
+                        <b id="diagnosticTime">
+                            just now
+                        </b>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CORE STATUS
+        ================================================== -->
+
+        <section class="system-health-grid">
+
+
+            <!-- OVERALL HEALTH -->
+
+            <article class="health-card primary-health">
+
+                <div class="health-card-top">
+
+                    <div>
+
+                        <span class="system-label">
+                            SYSTEM HEALTH
+                        </span>
+
+                        <h2>
+                            Operational
+                        </h2>
+
+                    </div>
+
+                    <span class="health-badge">
+                        94.54%
+                    </span>
+
+                </div>
+
+
+                <div class="health-gauge">
+
+                    <svg viewBox="0 0 200 120">
+
+                        <path class="gauge-track" d="M 25 105
+                               A 75 75 0 0 1 175 105" />
+
+                        <path class="gauge-progress" d="M 25 105
+                               A 75 75 0 0 1 175 105" />
+
+                    </svg>
+
+
+                    <div class="gauge-center">
+
+                        <strong>
+                            99.98
+                        </strong>
+
+                        <span>
+                            UPTIME
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="health-footer">
+
+                    <span>
+                        30-day availability
+                    </span>
+
+                    <strong class="green">
+                        Excellent
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- DATA FRESHNESS -->
+
+            <article class="health-card">
+
+                <div class="health-icon cyan">
+                    ◉
+                </div>
+
+                <span class="system-label">
+                    DATA FRESHNESS
+                </span>
+
+                <div class="big-number">
+                    <span id="freshnessValue">
+                        18
+                    </span>
+                    <small>sec</small>
+                </div>
+
+                <p>
+                    Latest observation received
+                </p>
+
+
+                <div class="status-line">
+
+                    <span class="live-dot"></span>
+
+                    Ingestion healthy
+
+                </div>
+
+            </article>
+
+
+
+            <!-- MODEL -->
+
+            <article class="health-card">
+
+                <div class="health-icon purple">
+                    ◇
+                </div>
+
+                <span class="system-label">
+                    AI MODEL RUNTIME
+                </span>
+
+                <div class="big-number">
+                    42
+                    <small>ms</small>
+                </div>
+
+                <p>
+                    Average inference latency
+                </p>
+
+
+                <div class="status-line">
+
+                    <span class="live-dot"></span>
+
+                    Inference stable
+
+                </div>
+
+            </article>
+
+
+
+            <!-- API -->
+
+            <article class="health-card">
+
+                <div class="health-icon blue">
+                    ↯
+                </div>
+
+                <span class="system-label">
+                    API RESPONSE
+                </span>
+
+                <div class="big-number">
+                    126
+                    <small>ms</small>
+                </div>
+
+                <p>
+                    Current p95 response time
+                </p>
+
+
+                <div class="latency-indicator">
+
+                    <span style="width:31%"></span>
+
+                </div>
+
+                <div class="latency-caption">
+
+                    <span>
+                        Target &lt; 250ms
+                    </span>
+
+                    <strong>
+                        GOOD
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATA PIPELINE
+        ================================================== -->
+
+        <section class="system-panel pipeline-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="system-label">
+                        REAL-TIME DATA FABRIC
+                    </span>
+
+                    <h2>
+                        Intelligence Pipeline
+                    </h2>
+
+                    <p>
+                        Live status of the data path powering
+                        thunderstorm detection and nowcasting.
+                    </p>
+
+                </div>
+
+
+                <div class="pipeline-live">
+
+                    <span></span>
+                    STREAMING
+
+                </div>
+
+            </div>
+
+
+            <div class="pipeline">
+
+
+                <!-- NODE 1 -->
+
+                <div class="pipeline-node">
+
+                    <div class="node-icon radar">
+                        ◉
+                    </div>
+
+                    <div class="node-content">
+
+                        <strong>
+                            Radar Feed
+                        </strong>
+
+                        <span>
+                            Doppler observations
+                        </span>
+
+                        <small>
+                            2.4 MB/s
+                        </small>
+
+                    </div>
+
+                    <div class="node-status">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-connector">
+                    <span></span>
+                </div>
+
+
+                <!-- NODE 2 -->
+
+                <div class="pipeline-node">
+
+                    <div class="node-icon satellite">
+                        ◈
+                    </div>
+
+                    <div class="node-content">
+
+                        <strong>
+                            Satellite
+                        </strong>
+
+                        <span>
+                            Cloud imagery
+                        </span>
+
+                        <small>
+                            1.8 MB/s
+                        </small>
+
+                    </div>
+
+                    <div class="node-status">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-connector">
+                    <span></span>
+                </div>
+
+
+                <!-- NODE 3 -->
+
+                <div class="pipeline-node">
+
+                    <div class="node-icon lightning">
+                        ϟ
+                    </div>
+
+                    <div class="node-content">
+
+                        <strong>
+                            Lightning
+                        </strong>
+
+                        <span>
+                            Electrical activity
+                        </span>
+
+                        <small>
+                            860 events/min
+                        </small>
+
+                    </div>
+
+                    <div class="node-status">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-connector">
+                    <span></span>
+                </div>
+
+
+                <!-- NODE 4 -->
+
+                <div class="pipeline-node model-node">
+
+                    <div class="node-icon model">
+                        AI
+                    </div>
+
+                    <div class="node-content">
+
+                        <strong>
+                            Nowcast Engine
+                        </strong>
+
+                        <span>
+                            Convective prediction
+                        </span>
+
+                        <small>
+                            42 ms inference
+                        </small>
+
+                    </div>
+
+                    <div class="node-status">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="pipeline-connector">
+                    <span></span>
+                </div>
+
+
+                <!-- NODE 5 -->
+
+                <div class="pipeline-node">
+
+                    <div class="node-icon output">
+                        ⚡
+                    </div>
+
+                    <div class="node-content">
+
+                        <strong>
+                            Alert Engine
+                        </strong>
+
+                        <span>
+                            Risk escalation
+                        </span>
+
+                        <small>
+                            0 queued
+                        </small>
+
+                    </div>
+
+                    <div class="node-status">
+                        <span></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OBSERVABILITY GRID
+        ================================================== -->
+
+        <section class="observability-grid">
+
+
+            <!-- COMPUTE -->
+
+            <article class="system-panel resource-panel">
+
+                <div class="panel-heading compact">
+
+                    <div>
+
+                        <span class="system-label">
+                            COMPUTE
+                        </span>
+
+                        <h2>
+                            Resource Utilization
+                        </h2>
+
+                    </div>
+
+                    <span class="panel-live-text">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="resource-list">
+
+
+                    <div class="resource-item">
+
+                        <div class="resource-header">
+
+                            <span>
+                                CPU
+                            </span>
+
+                            <strong id="cpuValue">
+                                38%
+                            </strong>
+
+                        </div>
+
+                        <div class="resource-track">
+
+                            <span id="cpuBar" class="cyan-fill" style="width:38%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource-item">
+
+                        <div class="resource-header">
+
+                            <span>
+                                GPU
+                            </span>
+
+                            <strong id="gpuValue">
+                                61%
+                            </strong>
+
+                        </div>
+
+                        <div class="resource-track">
+
+                            <span id="gpuBar" class="purple-fill" style="width:61%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource-item">
+
+                        <div class="resource-header">
+
+                            <span>
+                                Memory
+                            </span>
+
+                            <strong id="memoryValue">
+                                47%
+                            </strong>
+
+                        </div>
+
+                        <div class="resource-track">
+
+                            <span id="memoryBar" class="blue-fill" style="width:47%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource-item">
+
+                        <div class="resource-header">
+
+                            <span>
+                                Storage
+                            </span>
+
+                            <strong>
+                                64%
+                            </strong>
+
+                        </div>
+
+                        <div class="resource-track">
+
+                            <span class="green-fill" style="width:64%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="resource-footer">
+
+                    <span>
+                        Cluster capacity
+                    </span>
+
+                    <strong>
+                        Healthy
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- MODEL RUNTIME -->
+
+            <article class="system-panel model-panel">
+
+                <div class="panel-heading compact">
+
+                    <div>
+
+                        <span class="system-label">
+                            AI OPERATIONS
+                        </span>
+
+                        <h2>
+                            Model Runtime
+                        </h2>
+
+                    </div>
+
+                    <span class="version-pill">
+                        v2.4.1
+                    </span>
+
+                </div>
+
+
+                <div class="model-status-main">
+
+                    <div class="model-orbit">
+
+                        <div class="orbit-ring ring-a"></div>
+
+                        <div class="orbit-ring ring-b"></div>
+
+                        <div class="orbit-core">
+                            AI
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Nowcast Transformer
+                        </strong>
+
+                        <span>
+                            Production inference model
+                        </span>
+
+                        <small>
+                            Last deployed 2h 14m ago
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="model-metrics">
+
+                    <div>
+
+                        <span>
+                            Inference
+                        </span>
+
+                        <strong>
+                            42ms
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Queue
+                        </span>
+
+                        <strong>
+                            03
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Accuracy
+                        </span>
+
+                        <strong>
+                            91.4%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="model-state">
+
+                    <span class="live-dot"></span>
+
+                    Production model responding normally
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SERVICE MATRIX -->
+
+            <article class="system-panel service-panel">
+
+                <div class="panel-heading compact">
+
+                    <div>
+
+                        <span class="system-label">
+                            SERVICE MESH
+                        </span>
+
+                        <h2>
+                            Service Health
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-list">
+
+
+                    <div class="service-row">
+
+                        <div class="service-name">
+
+                            <span class="service-icon cyan">
+                                ◉
+                            </span>
+
+                            Radar ingestion
+
+                        </div>
+
+                        <strong class="healthy">
+                            HEALTHY
+                        </strong>
+
+                    </div>
+
+
+                    <div class="service-row">
+
+                        <div class="service-name">
+
+                            <span class="service-icon purple">
+                                ◈
+                            </span>
+
+                            Satellite processing
+
+                        </div>
+
+                        <strong class="healthy">
+                            HEALTHY
+                        </strong>
+
+                    </div>
+
+
+                    <div class="service-row">
+
+                        <div class="service-name">
+
+                            <span class="service-icon yellow">
+                                ϟ
+                            </span>
+
+                            Lightning engine
+
+                        </div>
+
+                        <strong class="healthy">
+                            HEALTHY
+                        </strong>
+
+                    </div>
+
+
+                    <div class="service-row">
+
+                        <div class="service-name">
+
+                            <span class="service-icon blue">
+                                AI
+                            </span>
+
+                            Nowcast inference
+
+                        </div>
+
+                        <strong class="healthy">
+                            HEALTHY
+                        </strong>
+
+                    </div>
+
+
+                    <div class="service-row">
+
+                        <div class="service-name">
+
+                            <span class="service-icon green">
+                                ↗
+                            </span>
+
+                            Alert dispatcher
+
+                        </div>
+
+                        <strong class="healthy">
+                            HEALTHY
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECONDARY OBSERVABILITY
+        ================================================== -->
+
+        <section class="secondary-grid">
+
+
+            <!-- API PERFORMANCE -->
+
+            <article class="system-panel api-panel">
+
+                <div class="panel-heading compact">
+
+                    <div>
+
+                        <span class="system-label">
+                            API OBSERVABILITY
+                        </span>
+
+                        <h2>
+                            Request Performance
+                        </h2>
+
+                    </div>
+
+                    <span class="api-status">
+                        STABLE
+                    </span>
+
+                </div>
+
+
+                <div class="spark-chart">
+
+                    <div class="chart-grid-lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <svg viewBox="0 0 600 190" preserveAspectRatio="none">
+
+                        <defs>
+
+                            <linearGradient id="apiGradient" x1="0" y1="0" x2="0" y2="1">
+
+                                <stop offset="0%" stop-color="#2edbff" stop-opacity=".35" />
+
+                                <stop offset="100%" stop-color="#2edbff" stop-opacity="0" />
+
+                            </linearGradient>
+
+                        </defs>
+
+
+                        <path class="chart-area" d="
+                            M0 132
+                            L40 125
+                            L80 128
+                            L120 105
+                            L160 112
+                            L200 88
+                            L240 96
+                            L280 73
+                            L320 82
+                            L360 61
+                            L400 76
+                            L440 58
+                            L480 69
+                            L520 48
+                            L560 60
+                            L600 45
+                            L600 190
+                            L0 190
+                            Z" />
+
+
+                        <path class="chart-line" d="
+                            M0 132
+                            L40 125
+                            L80 128
+                            L120 105
+                            L160 112
+                            L200 88
+                            L240 96
+                            L280 73
+                            L320 82
+                            L360 61
+                            L400 76
+                            L440 58
+                            L480 69
+                            L520 48
+                            L560 60
+                            L600 45" />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="chart-footer">
+
+                    <div>
+
+                        <span>
+                            P50
+                        </span>
+
+                        <strong>
+                            82ms
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            P95
+                        </span>
+
+                        <strong>
+                            126ms
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            P99
+                        </span>
+
+                        <strong>
+                            184ms
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- DEPLOYMENT -->
+
+            <article class="system-panel deployment-panel">
+
+                <div class="panel-heading compact">
+
+                    <div>
+
+                        <span class="system-label">
+                            RELEASE CONTROL
+                        </span>
+
+                        <h2>
+                            Deployment Status
+                        </h2>
+
+                    </div>
+
+                    <span class="deployment-live">
+                        STABLE
+                    </span>
+
+                </div>
+
+
+                <div class="deployment-version">
+
+                    <div class="version-icon">
+                        v2
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Nowcast Engine 2.4.1
+                        </strong>
+
+                        <span>
+                            Production
+                        </span>
+
+                    </div>
+
+                    <b>
+                        100%
+                    </b>
+
+                </div>
+
+
+                <div class="deployment-progress">
+
+                    <span></span>
+
+                </div>
+
+
+                <div class="deployment-meta">
+
+                    <span>
+                        Deployed 2h 14m ago
+                    </span>
+
+                    <span>
+                        No rollback events
+                    </span>
+
+                </div>
+
+
+                <div class="deployment-tags">
+
+                    <span>
+                        GPU
+                    </span>
+
+                    <span>
+                        TensorRT
+                    </span>
+
+                    <span>
+                        Production
+                    </span>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- =====================================================
+     EMERGENCY SMS ALERT CENTER
+====================================================== -->
+
+        <section class="system-panel sms-alert-panel">
+
+            <div class="panel-heading sms-heading">
+
+                <div>
+
+                    <span class="system-label">
+                        PUBLIC WARNING SYSTEM
+                    </span>
+
+                    <h2>
+                        Emergency SMS Alert
+                    </h2>
+
+                    <p>
+                        Send localized thunderstorm and lightning
+                        warnings directly to affected communities.
+                    </p>
+
+                </div>
+
+                <div class="sms-live-status">
+
+                    <span class="live-dot"></span>
+
+                    SMS GATEWAY READY
+
+                </div>
+
+            </div>
+
+
+            <div class="sms-layout">
+
+
+                <!-- =================================================
+             LEFT — ALERT CONFIGURATION
+        ================================================== -->
+
+                <!-- =====================================================
+     MASS MESSAGE COMPOSER
+====================================================== -->
+
+                <div class="sms-preview-area">
+
+                    <div class="sms-preview-header">
+
+                        <div>
+
+                            <span class="system-label">
+                                PUBLIC WARNING COMPOSER
+                            </span>
+
+                            <strong>
+                                Create Alert Message
+                            </strong>
+
+                        </div>
+
+                        <div class="sms-counter">
+
+                            <span id="smsHeaderCharacterCount">
+                                0
+                            </span>
+
+                            / 320
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PREBUILT MESSAGES -->
+
+                    <div class="message-library">
+
+                        <div class="library-header">
+
+                            <span>
+                                QUICK WARNING TEMPLATES
+                            </span>
+
+                            <span>
+                                SELECT A TEMPLATE
+                            </span>
+
+                        </div>
+
+
+                        <div class="template-grid">
+
+                            <button type="button" class="message-template active" data-template="thunderstorm">
+
+                                <span class="template-icon">
+                                    ⛈
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Thunderstorm Warning
+                                    </strong>
+
+                                    <small>
+                                        Severe storm approaching
+                                    </small>
+
+                                </div>
+
+                            </button>
+
+
+                            <button type="button" class="message-template" data-template="lightning">
+
+                                <span class="template-icon">
+                                    ⚡
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Lightning Alert
+                                    </strong>
+
+                                    <small>
+                                        High lightning probability
+                                    </small>
+
+                                </div>
+
+                            </button>
+
+
+                            <button type="button" class="message-template" data-template="safety">
+
+                                <span class="template-icon">
+                                    🛡
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Safety Advisory
+                                    </strong>
+
+                                    <small>
+                                        Stay indoors and safe
+                                    </small>
+
+                                </div>
+
+                            </button>
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CUSTOM MESSAGE -->
+
+                    <div class="custom-message-area">
+
+                        <div class="custom-message-header">
+
+                            <div>
+
+                                <label>
+                                    MESSAGE CONTENT
+                                </label>
+
+                                <span class="message-subtitle">
+                                    Edit the warning before mass dispatch
+                                </span>
+
+                            </div>
+
+                            <span id="messageTypeLabel" class="message-type-badge">
+
+                                TEMPLATE
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="message-editor">
+
+                            <textarea id="smsTextarea" maxlength="320" spellcheck="true"
+                                placeholder="Write your emergency warning here..."></textarea>
+
+
+                            <div class="editor-footer">
+
+                                <span>
+                                    English / Hindi supported
+                                </span>
+
+                                <span>
+                                    <strong id="smsCharacterCount">
+                                        0
+                                    </strong>
+                                    / 320 characters
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="message-helper">
+
+                            <span>
+                                Review the message carefully before dispatching.
+                            </span>
+
+                            <button type="button" id="generateSms">
+
+                                ✦ Generate from live data
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MASS DELIVERY SUMMARY -->
+
+                    <div class="mass-delivery-summary">
+
+                        <div class="summary-item">
+
+                            <span>
+                                TARGET
+                            </span>
+
+                            <strong id="summaryZone">
+                                Bhubaneswar Metro
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                RECIPIENTS
+                            </span>
+
+                            <strong id="summaryRecipients">
+                                24,860
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                LANGUAGE
+                            </span>
+
+                            <strong id="summaryLanguage">
+                                English
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <span>
+                                CHANNEL
+                            </span>
+
+                            <strong>
+                                SMS
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="sms-actions">
+
+                        <button type="button" class="generate-sms-btn" id="previewMassSms">
+
+                            ◉ Preview Alert
+
+                        </button>
+
+
+                        <button type="button" class="send-sms-btn mass-send-btn" id="sendSms">
+
+                            ⚡ Dispatch Mass Alert
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="sms-send-status" id="smsSendStatus">
+
+                        <span class="status-check">
+                            ✓
+                        </span>
+
+                        Mass notification gateway ready
+
+                    </div>
+
+                </div>
+                <!-- =====================================================
+     RIGHT SIDE — LIVE ALERT INTELLIGENCE
+===================================================== -->
+
+                <section class="alert-preview-panel">
+
+                    <!-- PANEL HEADER -->
+
+                    <div class="preview-panel-header">
+
+                        <div>
+
+                            <span class="panel-eyebrow">
+                                MESSAGE PREVIEW
+                            </span>
+
+                            <h2>
+                                Emergency Weather Alert
+                            </h2>
+
+                        </div>
+
+                        <div class="preview-live">
+
+                            <span></span>
+                            LIVE
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE / SMS PREVIEW -->
+
+                    <div class="phone-preview">
+
+                        <div class="phone-top">
+
+                            <span>
+                                MEGHDRISHTI
+                            </span>
+
+                            <span id="previewTime">
+                                NOW
+                            </span>
+
+                        </div>
+
+
+                        <div class="sms-bubble">
+
+                            <div class="sms-bubble-header">
+
+                                <div class="alert-symbol">
+                                    ⚡
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        WEATHER WARNING
+                                    </strong>
+
+                                    <small>
+                                        MEGHDRISHTI
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="preview-message" id="smsMessage">
+
+                                MEGHDRISHTI WARNING ALERT:
+                                Thunderstorm with lightning is
+                                expected across Bhubaneswar Metro
+                                within 15 minutes. Stay indoors,
+                                avoid open areas, trees and
+                                electrical equipment.
+
+                            </div>
+
+
+                            <div class="preview-message-footer">
+
+                                <span id="previewLocation">
+                                    Bhubaneswar Metro
+                                </span>
+
+                                <span id="previewMessageTime">
+                                    15:08 IST
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AUDIENCE IMPACT -->
+
+                    <div class="impact-section">
+
+                        <div class="impact-header">
+
+                            <span>
+                                AUDIENCE IMPACT
+                            </span>
+
+                            <span class="impact-live">
+                                LIVE ESTIMATE
+                            </span>
+
+                        </div>
+
+
+                        <div class="impact-grid">
+
+                            <div class="impact-card">
+
+                                <span class="impact-icon">
+                                    ◉
+                                </span>
+
+                                <div>
+
+                                    <strong id="previewRecipients">
+                                        24,860
+                                    </strong>
+
+                                    <small>
+                                        Recipients
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="impact-card">
+
+                                <span class="impact-icon risk">
+                                    ⚡
+                                </span>
+
+                                <div>
+
+                                    <strong id="previewRisk">
+                                        HIGH
+                                    </strong>
+
+                                    <small>
+                                        Risk Level
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="impact-card">
+
+                                <span class="impact-icon language">
+                                    文
+                                </span>
+
+                                <div>
+
+                                    <strong id="previewLanguage">
+                                        EN
+                                    </strong>
+
+                                    <small>
+                                        Language
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="impact-card">
+
+                                <span class="impact-icon">
+                                    ◷
+                                </span>
+
+                                <div>
+
+                                    <strong id="previewEta">
+                                        15 MIN
+                                    </strong>
+
+                                    <small>
+                                        Estimated Arrival
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DELIVERY PIPELINE -->
+
+                    <div class="delivery-section">
+
+                        <div class="delivery-header">
+
+                            <span>
+                                DELIVERY CHANNELS
+                            </span>
+
+                            <span>
+                                SYSTEM STATUS
+                            </span>
+
+                        </div>
+
+
+                        <div class="delivery-row">
+
+                            <div class="delivery-name">
+
+                                <span class="delivery-dot"></span>
+
+                                SMS Gateway
+
+                            </div>
+
+                            <strong>
+                                READY
+                            </strong>
+
+                        </div>
+
+
+                        <div class="delivery-row">
+
+                            <div class="delivery-name">
+
+                                <span class="delivery-dot"></span>
+
+                                Emergency Network
+
+                            </div>
+
+                            <strong>
+                                READY
+                            </strong>
+
+                        </div>
+
+
+                        <div class="delivery-row">
+
+                            <div class="delivery-name">
+
+                                <span class="delivery-dot"></span>
+
+                                Location Targeting
+
+                            </div>
+
+                            <strong>
+                                ACTIVE
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DISPATCH READINESS -->
+
+                    <div class="dispatch-readiness">
+
+                        <div>
+
+                            <span>
+                                DISPATCH READINESS
+                            </span>
+
+                            <strong>
+                                98%
+                            </strong>
+
+                        </div>
+
+                        <div class="readiness-bar">
+
+                            <span></span>
+
+                        </div>
+
+                        <small>
+                            All required emergency communication
+                            services are operational.
+                        </small>
+
+                    </div>
+
+
+                    <!-- PREVIEW ACTION -->
+
+                    <button type="button" class="right-dispatch-btn" id="rightDispatchButton">
+
+                        <span>
+                            ⚡
+                        </span>
+
+                        Dispatch Mass Alert
+
+                        <b>
+                            →
+                        </b>
+
+                    </button>
+
+                </section>
+
+            </div>
+
+
+
+
+
+            <!-- =================================================
+             EVENT LOG
+        ================================================== -->
+
+            <section class="system-panel event-log-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="system-label">
+                            SYSTEM AUDIT TRAIL
+                        </span>
+
+                        <h2>
+                            Recent System Events
+                        </h2>
+
+                    </div>
+
+
+                    <button class="clear-events" id="refreshEvents">
+
+                        ↻ Refresh
+
+                    </button>
+
+                </div>
+
+
+                <div class="event-log" id="systemEventLog">
+
+                    <div class="system-event">
+
+                        <span class="event-indicator green"></span>
+
+                        <div>
+
+                            <strong>
+                                Satellite ingestion synchronized
+                            </strong>
+
+                            <span>
+                                MODIS observation stream updated successfully
+                            </span>
+
+                        </div>
+
+                        <time>
+                            02m
+                        </time>
+
+                    </div>
+
+
+                    <div class="system-event">
+
+                        <span class="event-indicator cyan"></span>
+
+                        <div>
+
+                            <strong>
+                                Nowcast model completed inference cycle
+                            </strong>
+
+                            <span>
+                                42ms execution time · confidence 91.4%
+                            </span>
+
+                        </div>
+
+                        <time>
+                            04m
+                        </time>
+
+                    </div>
+
+
+                    <div class="system-event">
+
+                        <span class="event-indicator purple"></span>
+
+                        <div>
+
+                            <strong>
+                                Model heartbeat acknowledged
+                            </strong>
+
+                            <span>
+                                Production inference node responding normally
+                            </span>
+
+                        </div>
+
+                        <time>
+                            07m
+                        </time>
+
+                    </div>
+
+
+                    <div class="system-event">
+
+                        <span class="event-indicator green"></span>
+
+                        <div>
+
+                            <strong>
+                                Lightning feed synchronized
+                            </strong>
+
+                            <span>
+                                860 electrical events processed
+                            </span>
+
+                        </div>
+
+                        <time>
+                            11m
+                        </time>
+
+                    </div>
+
+
+                    <div class="system-event">
+
+                        <span class="event-indicator yellow"></span>
+
+                        <div>
+
+                            <strong>
+                                Cache optimization completed
+                            </strong>
+
+                            <span>
+                                Prediction cache refreshed successfully
+                            </span>
+
+                        </div>
+
+                        <time>
+                            18m
+                        </time>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+            <footer class="footer">
+
+                <div class="footer-main">
+
+
+                    <!-- BRAND -->
+
+                    <div class="footer-brand">
+
+                        <a href="../index.html" class="footer-logo">
+
+                            <div class="footer-logo-icon">
+                                <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="footer-logo-image">
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    MEGH<span>DRISHTI</span>
+                                </strong>
+
+                                <small>
+                                    AI-POWERED THUNDERSTORM NOWCASTING
+                                </small>
+
+                            </div>
+
+                        </a>
+
+
+                        <p>
+                            Smarter predictions.
+                            Safer communities.
+                        </p>
+
+
+                        <p class="footer-powered">
+                            Powered by AI. Driven by real-time data.
+                        </p>
+
+
+                        <div class="social-links">
+
+                            <a href="#" aria-label="Twitter">
+                                𝕏
+                            </a>
+
+                            <a href="#" aria-label="LinkedIn">
+                                in
+                            </a>
+
+                            <a href="#" aria-label="GitHub">
+                                ◉
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT -->
+
+                    <div class="footer-column">
+
+                        <h3>
+                            PRODUCT
+                        </h3>
+
+                        <a href="../index.html">
+                            Dashboard
+                        </a>
+
+                        <a href="live-map.html">
+                            Live Map
+                        </a>
+
+                        <a href="nowcast.html">
+                            Nowcast
+                        </a>
+
+                        <a href="analytics.html">
+                            Analytics
+                        </a>
+
+                        <a href="alerts.html">
+                            Alerts
+                        </a>
+
+                    </div>
+
+
+                    <!-- RESOURCES -->
+
+                    <div class="footer-column">
+
+                        <h3>
+                            RESOURCES
+                        </h3>
+
+                        <a href="#">
+                            Documentation
+                        </a>
+
+                        <a href="#">
+                            API Reference
+                        </a>
+
+                        <a href="#">
+                            User Guide
+                        </a>
+
+                        <a href="#">
+                            Research
+                        </a>
+
+                        <a href="#">
+                            Help Center
+                        </a>
+
+                    </div>
+
+
+                    <!-- COMPANY -->
+
+                    <div class="footer-column">
+
+                        <h3>
+                            COMPANY
+                        </h3>
+
+                        <a href="#">
+                            About Us
+                        </a>
+
+                        <a href="#">
+                            Our Mission
+                        </a>
+
+                        <a href="#">
+                            Contact
+                        </a>
+
+                        <a href="#">
+                            Team
+                        </a>
+
+                    </div>
+
+
+                    <!-- NEWSLETTER -->
+
+                    <div class="footer-column newsletter">
+
+                        <h3>
+                            STAY INFORMED
+                        </h3>
+
+                        <p>
+                            Get weather intelligence
+                            and important alerts.
+                        </p>
+
+
+                        <form id="newsletterForm">
+
+                            <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+
+                            <button type="submit">
+                                →
+                            </button>
+
+                        </form>
+
+
+                        <small id="newsletterMessage">
+                            We respect your privacy.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-bottom">
+
+                    <span>
+                        © <span id="year"></span>
+                        MEGHDRISHTI.
+                        All rights reserved.
+                    </span>
+
+
+                    <div>
+
+                        <a href="#">
+                            Privacy
+                        </a>
+
+                        <a href="#">
+                            Terms
+                        </a>
+
+                        <a href="#">
+                            Data Policy
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         JS
+    ====================================================== -->
+
+    <script src="../js/navbar.js"></script>
+
+    <script src="../js/system.js"></script>
+
+</body>
+
+</html>

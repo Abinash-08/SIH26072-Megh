@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | MEGHDRISHTI</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/analytics.css">
+
+    <!-- Chart.js — loaded ONCE -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         BACKGROUND
+    ========================================================== -->
+
+    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-purple"></div>
+    <div class="ambient ambient-blue"></div>
+
+    <div class="grid-background"></div>
+    <div class="noise"></div>
+
+
+    <!-- =========================================================
+         NAVBAR
+    ========================================================== -->
+
+    <header class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <!-- BRAND -->
+
+            <a href="../index.html" class="brand">
+
+                <div class="brand-logo">
+
+                    <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="brand-logo-image">
+                </div>
+
+
+                <div class="brand-divider"></div>
+
+
+                <div class="brand-copy">
+
+                    <div class="brand-name">
+                        MEGH<span>DRISHTI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        AI-POWERED THUNDERSTORM NOWCASTING
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="nav-links">
+
+                <a href="../index.html" class="nav-link">
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <a href="live-map.html" class="nav-link">
+
+
+                    <span>Live Map</span>
+
+                </a>
+
+
+                <a href="nowcast.html" class="nav-link">
+                    <span>Nowcast</span>
+
+                </a>
+
+
+                <a href="analytics.html" class="nav-link active" aria-current="page">
+
+                    <span>Analytics</span>
+
+                </a>
+
+
+                <a href="alerts.html" class="nav-link">
+
+                    <span>Alerts</span>
+
+                </a>
+
+
+                <a href="system.html" class="nav-link">
+
+
+                    </span>
+
+                    <span>System</span>
+
+                </a>
+
+            </div>
+
+
+            <!-- NAV RIGHT -->
+
+            <div class="nav-right">
+
+                <div class="live-indicator">
+
+                    <span class="live-pulse"></span>
+
+                    <div class="live-info">
+
+                        <strong>LIVE</strong>
+
+                        <span id="navClock">
+                            --:--:-- IST
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nav-separator"></div>
+
+
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- MOBILE NAV -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="../index.html" class="mobile-link">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="live-map.html" class="mobile-link">
+                <span>◉</span>
+                Live Map
+            </a>
+
+            <a href="nowcast.html" class="mobile-link">
+                <span>◷</span>
+                Nowcast
+            </a>
+
+            <a href="analytics.html" class="mobile-link active" aria-current="page">
+                <span>▥</span>
+                Analytics
+            </a>
+
+            <a href="alerts.html" class="mobile-link">
+                <span>ϟ</span>
+                Alerts
+            </a>
+
+            <a href="system.html" class="mobile-link">
+                <span>⚙</span>
+                System
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         ANALYTICS
+    ========================================================== -->
+
+    <main class="analytics-page-shell">
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="analytics-hero">
+
+            <div class="analytics-hero-copy">
+
+                <div class="analytics-eyebrow">
+
+                    <span class="eyebrow-pulse"></span>
+
+                    MODEL INTELLIGENCE · REAL-TIME ANALYTICS
+
+                </div>
+
+
+                <h1>
+                    See the storm
+                    <span>behind the signal.</span>
+                </h1>
+
+
+                <p>
+                    Analyze thunderstorm evolution, model confidence,
+                    lightning risk and 2–5 hour forecast performance
+                    in one operational view.
+                </p>
+
+            </div>
+
+
+            <div class="analytics-engine-card">
+
+                <div class="engine-orbit">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <b>AI</b>
+
+                </div>
+
+
+                <div class="engine-copy">
+
+                    <span>ANALYTICS ENGINE</span>
+
+                    <strong id="engineStatus">
+                        PROCESSING
+                    </strong>
+
+                    <small id="engineUpdated">
+                        Updated just now
+                    </small>
+
+                </div>
+
+
+                <div class="engine-live">
+
+                    <i></i>
+                    LIVE
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             NOWCAST TOOLBAR
+        ====================================================== -->
+
+        <section class="analytics-toolbar">
+
+            <div class="period-switcher">
+
+                <span class="toolbar-label">
+                    NOWCAST HORIZON
+                </span>
+
+                <button class="period-btn active" data-period="2h" type="button">
+                    2 HR
+                </button>
+
+                <button class="period-btn" data-period="3h" type="button">
+                    3 HR
+                </button>
+
+                <button class="period-btn" data-period="4h" type="button">
+                    4 HR
+                </button>
+
+                <button class="period-btn" data-period="5h" type="button">
+                    5 HR
+                </button>
+
+            </div>
+
+
+            <div class="toolbar-actions">
+
+                <div class="stream-chip">
+
+                    <span></span>
+
+                    MULTI-SOURCE STREAM ACTIVE
+
+                </div>
+
+
+                <button class="refresh-analytics" id="refreshAnalytics" type="button">
+
+                    <span>↻</span>
+
+                    Refresh
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             KPI CARDS
+        ====================================================== -->
+
+        <section class="analytics-kpi-grid">
+
+
+            <!-- Accuracy -->
+
+            <article class="analytics-kpi-card cyan">
+
+                <div class="kpi-card-top">
+
+                    <div class="kpi-icon">
+                        ◈
+                    </div>
+
+                    <span>
+                        PREDICTION ACCURACY
+                    </span>
+
+                    <b class="kpi-trend up">
+                        +4.8%
+                    </b>
+
+                </div>
+
+
+                <strong class="kpi-number" id="accuracyValue">
+                    87.4%
+                </strong>
+
+
+                <div class="kpi-foot">
+
+                    <span>
+                        vs previous forecast
+                    </span>
+
+                    <div class="kpi-mini-line">
+
+                        <i style="height:38%"></i>
+                        <i style="height:50%"></i>
+                        <i style="height:43%"></i>
+                        <i style="height:62%"></i>
+                        <i style="height:58%"></i>
+                        <i style="height:75%"></i>
+                        <i style="height:69%"></i>
+                        <i style="height:91%"></i>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Lead time -->
+
+            <article class="analytics-kpi-card purple">
+
+                <div class="kpi-card-top">
+
+                    <div class="kpi-icon">
+                        ◷
+                    </div>
+
+                    <span>
+                        EARLY WARNING LEAD TIME
+                    </span>
+
+                    <b class="kpi-trend up">
+                        +6 min
+                    </b>
+
+                </div>
+
+
+                <strong class="kpi-number" id="leadTimeValue">
+                    38 <small>min</small>
+                </strong>
+
+
+                <div class="kpi-foot">
+
+                    <span>
+                        before peak conditions
+                    </span>
+
+                    <div class="kpi-mini-line">
+
+                        <i style="height:30%"></i>
+                        <i style="height:46%"></i>
+                        <i style="height:42%"></i>
+                        <i style="height:61%"></i>
+                        <i style="height:72%"></i>
+                        <i style="height:67%"></i>
+                        <i style="height:84%"></i>
+                        <i style="height:92%"></i>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- False alarm -->
+
+            <article class="analytics-kpi-card red">
+
+                <div class="kpi-card-top">
+
+                    <div class="kpi-icon">
+                        !
+                    </div>
+
+                    <span>
+                        FALSE ALARM RATE
+                    </span>
+
+                    <b class="kpi-trend good">
+                        −2.1%
+                    </b>
+
+                </div>
+
+
+                <strong class="kpi-number" id="falseAlarmValue">
+                    8.6%
+                </strong>
+
+
+                <div class="kpi-foot">
+
+                    <span>
+                        lower is better
+                    </span>
+
+                    <div class="kpi-risk-track">
+                        <i style="width:31%"></i>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Data quality -->
+
+            <article class="analytics-kpi-card green">
+
+                <div class="kpi-card-top">
+
+                    <div class="kpi-icon">
+                        ✓
+                    </div>
+
+                    <span>
+                        DATA QUALITY
+                    </span>
+
+                    <b class="kpi-trend good">
+                        EXCELLENT
+                    </b>
+
+                </div>
+
+
+                <strong class="kpi-number" id="dataQualityValue">
+                    96.8%
+                </strong>
+
+
+                <div class="kpi-foot">
+
+                    <span>
+                        sensor + satellite availability
+                    </span>
+
+                    <div class="kpi-quality-track">
+
+                        <i style="width:96.8%"></i>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================================
+             CHART GRID
+        ====================================================== -->
+
+        <section class="analytics-chart-grid">
+
+
+            <!-- ACCURACY -->
+
+            <article class="glass-chart-card chart-wide">
+
+                <div class="chart-card-header">
+
+                    <div>
+
+                        <span class="chart-kicker">
+                            NOWCAST PERFORMANCE
+                        </span>
+
+                        <h2>
+                            2–5 Hour Prediction Accuracy
+                        </h2>
+
+                        <p>
+                            Accuracy and confidence across the
+                            thunderstorm nowcast horizon.
+                        </p>
+
+                    </div>
+
+
+                    <div class="chart-summary">
+
+                        <strong id="accuracySummary">
+                            87.4%
+                        </strong>
+
+                        <span>
+                            current 2–5 hr accuracy
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-canvas-wrap">
+
+                    <canvas id="accuracyChart"></canvas>
+
+                </div>
+
+            </article>
+
+
+            <!-- RISK DISTRIBUTION -->
+
+            <article class="glass-chart-card risk-chart-card">
+
+                <div class="chart-card-header compact">
+
+                    <div>
+
+                        <span class="chart-kicker">
+                            RISK DISTRIBUTION
+                        </span>
+
+                        <h2>
+                            Storm Severity Mix
+                        </h2>
+
+                    </div>
+
+
+                    <span class="live-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="risk-donut-wrap">
+
+                    <canvas id="riskChart"></canvas>
+
+                    <div class="risk-donut-center">
+
+                        <strong id="eventTotal">
+                            248
+                        </strong>
+
+                        <span>
+                            EVENTS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-legend">
+
+                    <div>
+                        <i class="dot severe"></i>
+                        <span>Severe</span>
+                        <strong>24%</strong>
+                    </div>
+
+                    <div>
+                        <i class="dot high"></i>
+                        <span>High</span>
+                        <strong>42%</strong>
+                    </div>
+
+                    <div>
+                        <i class="dot moderate"></i>
+                        <span>Moderate</span>
+                        <strong>21%</strong>
+                    </div>
+
+                    <div>
+                        <i class="dot low"></i>
+                        <span>Low</span>
+                        <strong>13%</strong>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- VALIDATION -->
+
+            <article class="glass-chart-card chart-wide">
+
+                <div class="chart-card-header">
+
+                    <div>
+
+                        <span class="chart-kicker">
+                            NOWCAST VALIDATION
+                        </span>
+
+                        <h2>
+                            Predicted vs Observed Storm Intensity
+                        </h2>
+
+                        <p>
+                            Validation of the AI nowcast against
+                            observed thunderstorm behaviour across
+                            the 2–5 hour forecast horizon.
+                        </p>
+
+                    </div>
+
+
+                    <div class="metric-badge">
+
+                        <span>
+                            RMSE
+                        </span>
+
+                        <strong>
+                            0.18
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-canvas-wrap validation-canvas">
+
+                    <canvas id="validationChart"></canvas>
+
+                </div>
+
+            </article>
+
+
+            <!-- REGIONAL -->
+
+            <article class="glass-chart-card regional-card">
+
+                <div class="chart-card-header compact">
+
+                    <div>
+
+                        <span class="chart-kicker">
+                            REGIONAL INTELLIGENCE
+                        </span>
+
+                        <h2>
+                            Activity Concentration
+                        </h2>
+
+                    </div>
+
+
+                    <span class="source-badge">
+                        REGIONAL
+                    </span>
+
+                </div>
+
+
+                <div class="chart-canvas-wrap regional-canvas">
+
+                    <canvas id="regionalChart"></canvas>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================================
+             MODEL QUALITY + SIGNAL HEALTH
+        ====================================================== -->
+
+        <section class="analytics-secondary-grid">
+
+
+            <!-- MODEL QUALITY -->
+
+            <article class="glass-panel model-quality-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="chart-kicker">
+                            MODEL QUALITY
+                        </span>
+
+                        <h2>
+                            Operational Scorecard
+                        </h2>
+
+                    </div>
+
+
+                    <span class="score-pill">
+                        A+
+                    </span>
+
+                </div>
+
+
+                <div class="quality-list">
+
+
+                    <div class="quality-row">
+
+                        <div class="quality-label">
+
+                            <span>
+                                Precision
+                            </span>
+
+                            <small>
+                                storm detection
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            91.2%
+                        </strong>
+
+                        <div class="quality-bar">
+                            <i style="width:91.2%"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quality-row">
+
+                        <div class="quality-label">
+
+                            <span>
+                                Recall
+                            </span>
+
+                            <small>
+                                event capture
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            88.7%
+                        </strong>
+
+                        <div class="quality-bar purple">
+                            <i style="width:88.7%"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quality-row">
+
+                        <div class="quality-label">
+
+                            <span>
+                                Lightning F1
+                            </span>
+
+                            <small>
+                                hazard classification
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            89.6%
+                        </strong>
+
+                        <div class="quality-bar green">
+                            <i style="width:89.6%"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quality-row">
+
+                        <div class="quality-label">
+
+                            <span>
+                                Lead-time quality
+                            </span>
+
+                            <small>
+                                useful warning delivered
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            94.1%
+                        </strong>
+
+                        <div class="quality-bar orange">
+                            <i style="width:94.1%"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SIGNAL HEALTH -->
+
+            <article class="glass-panel signal-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="chart-kicker">
+                            SIGNAL HEALTH
+                        </span>
+
+                        <h2>
+                            Input Stream Status
+                        </h2>
+
+                    </div>
+
+
+                    <span class="healthy-pill">
+                        HEALTHY
+                    </span>
+
+                </div>
+
+
+                <div class="signal-list">
+
+
+                    <div class="signal-row">
+
+                        <span class="signal-icon">
+                            ◉
+                        </span>
+
+                        <div>
+                            <strong>Satellite</strong>
+                            <small>imagery stream</small>
+                        </div>
+
+                        <b>
+                            99.1%
+                        </b>
+
+                    </div>
+
+
+                    <div class="signal-row">
+
+                        <span class="signal-icon">
+                            ϟ
+                        </span>
+
+                        <div>
+                            <strong>Lightning</strong>
+                            <small>strike feed</small>
+                        </div>
+
+                        <b>
+                            98.4%
+                        </b>
+
+                    </div>
+
+
+                    <div class="signal-row">
+
+                        <span class="signal-icon">
+                            ◇
+                        </span>
+
+                        <div>
+                            <strong>Radar</strong>
+                            <small>reflectivity feed</small>
+                        </div>
+
+                        <b>
+                            96.7%
+                        </b>
+
+                    </div>
+
+
+                    <div class="signal-row">
+
+                        <span class="signal-icon">
+                            ◎
+                        </span>
+
+                        <div>
+                            <strong>Surface</strong>
+                            <small>station observations</small>
+                        </div>
+
+                        <b>
+                            93.8%
+                        </b>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- AI INSIGHT -->
+
+            <article class="glass-panel insight-panel">
+
+                <div class="insight-symbol">
+                    ✦
+                </div>
+
+
+                <div class="insight-copy">
+
+                    <span class="chart-kicker">
+                        AI ANALYTICS INSIGHT
+                    </span>
+
+
+                    <h2 id="insightTitle">
+                        Storm risk is increasing through
+                        the 2–4 hour window.
+                    </h2>
+
+
+                    <p id="insightText">
+                        Satellite texture, lightning density and
+                        storm-motion signals are showing stronger
+                        agreement. The model currently indicates the
+                        highest confidence during the short-to-medium
+                        2–5 hour forecast horizon.
+                    </p>
+
+
+                    <div class="insight-tags">
+
+                        <span>
+                            LIGHTNING ↑
+                        </span>
+
+                        <span>
+                            CONFIDENCE ↑
+                        </span>
+
+                        <span>
+                            2–5 HR NOWCAST
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="insight-score">
+
+                    <span>
+                        RELIABILITY
+                    </span>
+
+                    <strong>
+                        94%
+                    </strong>
+
+                    <small>
+                        HIGH
+                    </small>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================================
+             2–5 HOUR STORM EVOLUTION
+        ====================================================== -->
+
+        <section class="hourly-panel nowcast-profile-panel">
+
+            <div class="hourly-heading">
+
+                <div>
+
+                    <span class="chart-kicker">
+                        AI NOWCAST HORIZON
+                    </span>
+
+                    <h2>
+                        2–5 Hour Storm Evolution
+                    </h2>
+
+                    <p class="section-description">
+                        Track how storm probability, lightning activity
+                        and model confidence evolve across the forecast window.
+                    </p>
+
+                </div>
+
+
+                <span class="forecast-chip">
+                    2–5 HR NOWCAST
+                </span>
+
+            </div>
+
+
+            <div class="hourly-grid" id="hourlyGrid">
+
+                <!-- Generated dynamically by analytics.js -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DATA NOTE
+        ====================================================== -->
+
+
+        <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+        <footer class="footer">
+
+            <div class="footer-main">
+
+
+                <!-- BRAND -->
+
+                <div class="footer-brand">
+
+                    <a href="../index.html" class="footer-logo">
+
+                        <div class="footer-logo-icon">
+                            <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="footer-logo-image">
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                MEGH<span>DRISHTI</span>
+                            </strong>
+
+                            <small>
+                                AI-POWERED THUNDERSTORM NOWCASTING
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+                    <p>
+                        Smarter predictions.
+                        Safer communities.
+                    </p>
+
+
+                    <p class="footer-powered">
+                        Powered by AI. Driven by real-time data.
+                    </p>
+
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Twitter">
+                            𝕏
+                        </a>
+
+                        <a href="#" aria-label="LinkedIn">
+                            in
+                        </a>
+
+                        <a href="#" aria-label="GitHub">
+                            ◉
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        PRODUCT
+                    </h3>
+
+                    <a href="../index.html">
+                        Dashboard
+                    </a>
+
+                    <a href="live-map.html">
+                        Live Map
+                    </a>
+
+                    <a href="nowcast.html">
+                        Nowcast
+                    </a>
+
+                    <a href="analytics.html">
+                        Analytics
+                    </a>
+
+                    <a href="alerts.html">
+                        Alerts
+                    </a>
+
+                    <a href="system.html">
+                        System
+                    </a>
+
+                </div>
+
+
+                <!-- RESOURCES -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        RESOURCES
+                    </h3>
+
+                    <a href="#">
+                        Documentation
+                    </a>
+
+                    <a href="#">
+                        API Reference
+                    </a>
+
+                    <a href="#">
+                        User Guide
+                    </a>
+
+                    <a href="#">
+                        Research
+                    </a>
+
+                    <a href="#">
+                        Help Center
+                    </a>
+
+                </div>
+
+
+                <!-- COMPANY -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        COMPANY
+                    </h3>
+
+                    <a href="#">
+                        About Us
+                    </a>
+
+                    <a href="#">
+                        Our Mission
+                    </a>
+
+                    <a href="#">
+                        Contact
+                    </a>
+
+                    <a href="#">
+                        Team
+                    </a>
+
+                </div>
+
+
+                <!-- NEWSLETTER -->
+
+                <div class="footer-column newsletter">
+
+                    <h3>
+                        STAY INFORMED
+                    </h3>
+
+                    <p>
+                        Get weather intelligence
+                        and important alerts.
+                    </p>
+
+
+                    <form id="newsletterForm">
+
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email" autocomplete="email"
+                            required>
+
+                        <button type="submit">
+                            →
+                        </button>
+
+                    </form>
+
+
+                    <small id="newsletterMessage">
+                        We respect your privacy.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+                <span>
+
+                    ©
+                    <span id="year"></span>
+                    MEGHDRISHTI.
+                    All rights reserved.
+
+                </span>
+
+
+                <div>
+
+                    <a href="#">
+                        Privacy
+                    </a>
+
+                    <a href="#">
+                        Terms
+                    </a>
+
+                    <a href="#">
+                        Data Policy
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+        <!-- =========================================================
+         SCRIPTS
+    ========================================================== -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+        <script src="../js/navbar.js"></script>
+        <script src="../js/analytics.js"></script>
+
+</body>
+
+</html>

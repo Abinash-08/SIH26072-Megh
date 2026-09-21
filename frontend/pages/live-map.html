@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Live Map | MEGHDRISHTI
+    </title>
+
+
+    <!-- =====================================================
+         LEAFLET
+    ====================================================== -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- =====================================================
+         GLOBAL STYLES
+    ====================================================== -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link rel="stylesheet" href="../css/live-map.css">
+
+</head>
+
+
+<body class="live-map-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="live-map-bg"></div>
+
+    <!-- =========================================================
+     MEGHDRISHTI NAVBAR
+========================================================= -->
+
+    <header class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <!-- BRAND -->
+
+            <a href="../index.html" class="brand">
+
+                <!-- LOGO -->
+
+                <div class="brand-logo">
+
+                    <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="brand-logo-image">
+
+                </div>
+
+
+                <!-- DIVIDER -->
+
+                <div class="brand-divider"></div>
+
+
+                <!-- BRAND TEXT -->
+
+                <div class="brand-copy">
+
+                    <div class="brand-name">
+                        MEGH<span>DRISHTI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        AI-POWERED THUNDERSTORM NOWCASTING
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- =====================================================
+             MAIN NAVIGATION
+        ====================================================== -->
+
+            <div class="nav-links">
+
+                <!-- Dashboard -->
+
+                <a href="../index.html" class="nav-link">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M3 11.5 12 4l9 7.5" />
+
+                            <path d="M5 10.5V20h14v-9.5" />
+
+                            <path d="M9 20v-6h6v6" />
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <!-- Live Map -->
+
+                <a href="live-map.html" class="nav-link active">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" />
+
+                            <circle cx="12" cy="9" r="2.3" />
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Live Map
+                    </span>
+
+                </a>
+
+
+                <!-- Nowcast -->
+
+                <a href="nowcast.html" class="nav-link">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle cx="12" cy="12" r="8" />
+
+                            <path d="M12 7v5l3 2" />
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Nowcast
+                    </span>
+
+                </a>
+
+
+                <!-- Analytics -->
+
+                <a href="analytics.html" class="nav-link">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M4 19V9" />
+
+                            <path d="M10 19V5" />
+
+                            <path d="M16 19v-7" />
+
+                            <path d="M22 19V3" />
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Analytics
+                    </span>
+
+                </a>
+
+
+                <!-- Alerts -->
+
+                <a href="alerts.html" class="nav-link">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        Alerts
+                    </span>
+
+                </a>
+
+
+                <!-- System -->
+
+                <a href="system.html" class="nav-link">
+
+                    <span class="nav-svg">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <circle cx="12" cy="12" r="3" />
+
+                            <path d="
+                                M19.4 15
+                                a1.7 1.7 0 0 0 .3 1.9
+                                l.1.1
+                                -1.7 1.7
+                                -.1-.1
+                                a1.7 1.7 0 0 0-1.9-.3
+                                1.7 1.7 0 0 0-1 1.5
+                                V20
+                                h-2.4
+                                v-.2
+                                a1.7 1.7 0 0 0-1-1.5
+                                1.7 1.7 0 0 0-1.9.3
+                                l-.1.1
+                                L8 17
+                                l.1-.1
+                                a1.7 1.7 0 0 0 .3-1.9
+                                1.7 1.7 0 0 0-1.5-1
+                                H6
+                                v-2.4
+                                h.9
+                                a1.7 1.7 0 0 0 1.5-1
+                                1.7 1.7 0 0 0-.3-1.9
+                                L8 8.6
+                                l1.7-1.7
+                                .1.1
+                                a1.7 1.7 0 0 0 1.9.3
+                                1.7 1.7 0 0 0 1-1.5
+                                V5
+                                h2.4
+                                v.8
+                                a1.7 1.7 0 0 0 1 1.5
+                                1.7 1.7 0 0 0 1.9-.3
+                                l.1-.1
+                                1.7 1.7
+                                -.1.1
+                                a1.7 1.7 0 0 0-.3 1.9
+                                1.7 1.7 0 0 0 1.5 1
+                                h.2
+                                V14
+                                h-.2
+                                a1.7 1.7 0 0 0-1.5 1Z
+                            " />
+
+                        </svg>
+
+                    </span>
+
+                    <span>
+                        System
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- =====================================================
+             NAV RIGHT
+        ====================================================== -->
+
+            <div class="nav-right">
+
+                <div class="live-indicator">
+
+                    <span class="live-pulse"></span>
+
+                    <div class="live-info">
+
+                        <strong>
+                            LIVE
+                        </strong>
+
+                        <span id="navClock">
+                            --:--:-- IST
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nav-separator"></div>
+
+
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- =====================================================
+         MOBILE NAVIGATION
+    ====================================================== -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="../index.html" class="mobile-link">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <a href="live-map.html" class="mobile-link active">
+                <span>◉</span>
+                Live Map
+            </a>
+
+
+            <a href="nowcast.html" class="mobile-link">
+                <span>◷</span>
+                Nowcast
+            </a>
+
+
+            <a href="analytics.html" class="mobile-link">
+                <span>▥</span>
+                Analytics
+            </a>
+
+
+            <a href="alerts.html" class="mobile-link">
+                <span>ϟ</span>
+                Alerts
+            </a>
+
+
+            <a href="system.html" class="mobile-link">
+                <span>⚙</span>
+                System
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="live-map-main">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="live-map-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    REAL-TIME WEATHER INTELLIGENCE
+                </span>
+
+                <h1>
+                    Live Storm Map
+                </h1>
+
+                <p>
+                    Monitor thunderstorm activity,
+                    satellite imagery and storm movement
+                    around your location.
+                </p>
+
+            </div>
+
+
+            <div class="map-live-pill">
+
+                <span></span>
+
+                LIVE DATA STREAM
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAP CONTAINER
+        ================================================== -->
+
+        <section class="live-map-shell">
+
+
+            <!-- MAP -->
+
+            <div id="satelliteMap" class="live-map-canvas"></div>
+
+
+
+            <!-- =================================================
+                 TOP LEFT MAP STATUS
+            ================================================= -->
+
+            <div class="live-map-status">
+
+                <div class="status-indicator"></div>
+
+                <div>
+
+                    <strong>
+                        SATELLITE INTELLIGENCE
+                    </strong>
+
+                    <small id="liveImageryDate">
+                        TODAY
+                    </small>
+
+                </div>
+
+
+                <span class="data-source">
+                    NASA GIBS
+                </span>
+
+            </div>
+
+
+
+
+            <!-- =================================================
+                 ACTIVE STORM PANEL
+            ================================================== -->
+
+            <aside class="live-storm-card">
+
+                <div class="storm-card-header">
+
+                    <div>
+
+                        <span>
+                            ACTIVE STORM
+                        </span>
+
+                        <h2>
+                            Thunderstorm Cell
+                        </h2>
+
+                    </div>
+
+
+                    <div class="storm-severity">
+                        HIGH
+                    </div>
+
+                </div>
+
+
+                <div class="storm-card-grid">
+
+
+                    <div class="storm-data">
+
+                        <span>
+                            LOCATION
+                        </span>
+
+                        <strong id="liveStormLocation">
+                            Detecting...
+                        </strong>
+
+                    </div>
+
+
+                    <div class="storm-data">
+
+                        <span>
+                            COORDINATES
+                        </span>
+
+                        <strong id="liveStormCoordinates">
+                            Locating...
+                        </strong>
+
+                    </div>
+
+
+                    <div class="storm-data">
+
+                        <span>
+                            DIRECTION
+                        </span>
+
+                        <strong>
+                            NE
+                        </strong>
+
+                    </div>
+
+
+                    <div class="storm-data">
+
+                        <span>
+                            SPEED
+                        </span>
+
+                        <strong>
+                            28 km/h
+                        </strong>
+
+                    </div>
+
+
+                    <div class="storm-data">
+
+                        <span>
+                            THUNDERSTORM
+                        </span>
+
+                        <strong class="cyan-value">
+                            82%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="storm-data">
+
+                        <span>
+                            LIGHTNING
+                        </span>
+
+                        <strong class="purple-value">
+                            91%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="storm-card-footer">
+
+                    <span class="risk-dot"></span>
+
+                    HIGH LIGHTNING RISK
+
+                </div>
+
+            </aside>
+
+
+
+            <!-- =================================================
+                 LOCATION
+            ================================================== -->
+
+            <div class="live-location-card">
+
+                <div class="location-icon">
+                    ◎
+                </div>
+
+
+                <div>
+
+                    <span>
+                        YOUR LOCATION
+                    </span>
+
+                    <strong id="liveLocation">
+                        Detecting...
+                    </strong>
+
+                    <small id="liveCoordinates">
+                        Locating...
+                    </small>
+
+                </div>
+
+
+                <button id="liveRefreshLocation" type="button" title="Refresh location">
+                    ↻
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DATE CONTROL
+            ================================================== -->
+
+            <div class="live-date-control">
+
+                <button id="livePreviousDay" type="button">
+                    ‹
+                </button>
+
+
+                <div>
+
+                    <span>
+                        IMAGERY DATE
+                    </span>
+
+                    <strong id="liveDate">
+                        TODAY
+                    </strong>
+
+                </div>
+
+
+                <button id="liveNextDay" type="button">
+                    ›
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MAP LEGEND
+            ================================================== -->
+
+            <div class="live-map-legend">
+
+                <span>
+                    LIGHT
+                </span>
+
+                <div class="legend-bar"></div>
+
+                <span>
+                    HEAVY
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STORM DIRECTION
+            ================================================== -->
+
+            <div class="storm-direction">
+
+                <div class="direction-arrow">
+                    ↗
+                </div>
+
+                <div>
+
+                    <span>
+                        STORM MOVEMENT
+                    </span>
+
+                    <strong>
+                        NE · 28 km/h
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+        <!-- =========================================================
+     STORM IMPACT INTELLIGENCE
+========================================================= -->
+
+        <section class="impact-intelligence">
+
+            <!-- HEADER -->
+
+            <div class="impact-header">
+
+                <div>
+
+                    <span class="impact-kicker">
+                        STORM IMPACT INTELLIGENCE
+                    </span>
+
+                    <h2>
+                        Projected Storm Footprint
+                    </h2>
+
+                    <p>
+                        AI-estimated movement and potential impact
+                        around your detected location.
+                    </p>
+
+                </div>
+
+
+                <div class="cell-id">
+
+                    <span>
+                        ACTIVE CELL
+                    </span>
+
+                    <strong>
+                        MD-204
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+         QUICK INTELLIGENCE
+    ====================================================== -->
+
+            <div class="impact-stats">
+
+
+                <!-- LOCATION -->
+
+                <article class="impact-stat">
+
+                    <div class="impact-icon">
+                        ◎
+                    </div>
+
+                    <div>
+
+                        <span>
+                            CURRENT CELL
+                        </span>
+
+                        <strong>
+                            20.2444° N
+                        </strong>
+
+                        <small>
+                            85.7916° E
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MOVEMENT -->
+
+                <article class="impact-stat">
+
+                    <div class="impact-icon">
+                        ↗
+                    </div>
+
+                    <div>
+
+                        <span>
+                            MOVEMENT
+                        </span>
+
+                        <strong>
+                            NE · 28 km/h
+                        </strong>
+
+                        <small>
+                            Moving northeast
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <!-- IMPACT -->
+
+                <article class="impact-stat">
+
+                    <div class="impact-icon warning">
+                        ⚠
+                    </div>
+
+                    <div>
+
+                        <span>
+                            PROJECTED IMPACT
+                        </span>
+
+                        <strong>
+                            3 Districts
+                        </strong>
+
+                        <small>
+                            Potentially affected
+                        </small>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POPULATION -->
+
+                <article class="impact-stat">
+
+                    <div class="impact-icon">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <span>
+                            EXPOSURE
+                        </span>
+
+                        <strong>
+                            ~1.2M
+                        </strong>
+
+                        <small>
+                            Population estimate
+                        </small>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- =================================================
+             BOTTOM INFORMATION
+        ================================================== -->
+
+            <section class="live-map-info-grid">
+
+
+                <article class="live-info-card">
+
+                    <span>
+                        CURRENT CONDITIONS
+                    </span>
+
+                    <strong>
+                        Active Thunderstorm
+                    </strong>
+
+                    <p>
+                        Storm activity detected near
+                        your current location.
+                    </p>
+
+                </article>
+
+
+                <article class="live-info-card">
+
+                    <span>
+                        LIGHTNING RISK
+                    </span>
+
+                    <strong class="danger">
+                        HIGH
+                    </strong>
+
+                    <p>
+                        Increased lightning probability
+                        within the active storm cell.
+                    </p>
+
+                </article>
+                <article class="live-info-card freshness-card">
+
+                    <span>
+                        DATA FRESHNESS
+                    </span>
+
+                    <strong>
+                        LIVE
+                    </strong>
+
+                    <p>
+                        Satellite and location streams
+                        are actively connected.
+                    </p>
+
+                    <div class="freshness-items">
+
+                        <div>
+                            <span></span>
+                            Satellite
+                            <b>LIVE</b>
+                        </div>
+
+                        <div>
+                            <span></span>
+                            Location
+                            <b>LIVE</b>
+                        </div>
+
+                        <div>
+                            <span></span>
+                            Nowcast
+                            <b>READY</b>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+    </main>
+    <!-- =========================================================
+     FOOTER
+========================================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-main">
+
+
+            <!-- =================================================
+             BRAND
+        ================================================== -->
+
+            <div class="footer-brand">
+
+                <a href="../index.html" class="footer-logo">
+
+                    <div class="footer-logo-icon">
+                        <img src="../assets/logo.png" alt="MEGHDRISHTI 
+                        Logo" class="footer-logo-image">
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            MEGH<span>DRISHTI</span>
+                        </strong>
+
+                        <small>
+                            AI-POWERED THUNDERSTORM NOWCASTING
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <p>
+                    Smarter predictions.
+                    Safer communities.
+                </p>
+
+
+                <p class="footer-powered">
+                    Powered by AI. Driven by real-time data.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Twitter">
+                        𝕏
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        in
+                    </a>
+
+                    <a href="#" aria-label="GitHub">
+                        ◉
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+             PRODUCT
+        ================================================== -->
+
+            <div class="footer-column">
+
+                <h3>
+                    PRODUCT
+                </h3>
+
+
+                <a href="../index.html">
+                    Dashboard
+                </a>
+
+
+                <a href="live-map.html">
+                    Live Map
+                </a>
+
+
+                <a href="nowcast.html">
+                    Nowcast
+                </a>
+
+
+                <a href="analytics.html">
+                    Analytics
+                </a>
+
+
+                <a href="alerts.html">
+                    Alerts
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+             RESOURCES
+        ================================================== -->
+
+            <div class="footer-column">
+
+                <h3>
+                    RESOURCES
+                </h3>
+
+
+                <a href="#">
+                    Documentation
+                </a>
+
+
+                <a href="#">
+                    API Reference
+                </a>
+
+
+                <a href="#">
+                    User Guide
+                </a>
+
+
+                <a href="#">
+                    Research
+                </a>
+
+
+                <a href="#">
+                    Help Center
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+             COMPANY
+        ================================================== -->
+
+            <div class="footer-column">
+
+                <h3>
+                    COMPANY
+                </h3>
+
+
+                <a href="#">
+                    About Us
+                </a>
+
+
+                <a href="#">
+                    Our Mission
+                </a>
+
+
+                <a href="#">
+                    Contact
+                </a>
+
+
+                <a href="#">
+                    Team
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+             NEWSLETTER
+        ================================================== -->
+
+            <div class="footer-column newsletter">
+
+                <h3>
+                    STAY INFORMED
+                </h3>
+
+
+                <p>
+                    Get weather intelligence
+                    and important alerts.
+                </p>
+
+
+                <form id="newsletterForm">
+
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" autocomplete="email"
+                        required>
+
+
+                    <button type="submit">
+                        →
+                    </button>
+
+                </form>
+
+
+                <small id="newsletterMessage">
+                    We respect your privacy.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+         FOOTER BOTTOM
+    ================================================== -->
+
+        <div class="footer-bottom">
+
+            <span>
+
+                ©
+                <span id="year"></span>
+                MEGHDRISHTI.
+                All rights reserved.
+
+            </span>
+
+
+            <div>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+
+                <a href="#">
+                    Terms
+                </a>
+
+
+                <a href="#">
+                    Data Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         LEAFLET
+    ====================================================== -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/app.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="../js/map.js"></script>
+
+
+    <script>
+
+        /*
+         * Tell map.js that this page is
+         * the full Live Map.
+         */
+
+        document.body.dataset.page =
+            "live-map";
+
+    </script>
+
+
+</body>
+
+</html>

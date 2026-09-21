@@ -1,0 +1,16 @@
+{
+    "a2_observations": 59,
+    "a2_features": 11,
+    "radar_tensor_files": 2,
+    "radar_unique_timestamps": 1,
+    "radar_sequences": 0,
+    "sequence_length": 5,
+    "radar_shape": [
+        128,
+        128,
+        1
+    ],
+    "a2_ready": true,
+    "radar_ready": false,
+    "training_ready": false
+}

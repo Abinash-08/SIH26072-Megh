@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alerts | MEGHDRISHTI</title>
+
+    <!-- Fonts: same family as index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Shared dashboard foundation -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <!-- Alerts only -->
+    <link rel="stylesheet" href="../css/alerts.css">
+</head>
+
+<body>
+
+    <!-- Same ambient system as index.html -->
+    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-purple"></div>
+    <div class="ambient ambient-blue"></div>
+
+    <div class="grid-background"></div>
+    <div class="noise"></div>
+
+
+    <!-- =========================================================
+         SHARED NAVBAR — Alerts active
+    ========================================================== -->
+
+    <header class="navbar-wrapper">
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="brand">
+
+                <div class="brand-logo">
+                    <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="brand-logo-image">
+                </div>
+
+                <div class="brand-divider"></div>
+
+                <div class="brand-copy">
+                    <div class="brand-name">
+                        MEGH<span>DRISHTI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        AI-POWERED THUNDERSTORM NOWCASTING
+                    </div>
+                </div>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="../index.html" class="nav-link">
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 11.5 12 4l9 7.5" />
+                            <path d="M5 10.5V20h14v-9.5" />
+                            <path d="M9 20v-6h6v6" />
+                        </svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="live-map.html" class="nav-link">
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" />
+                            <circle cx="12" cy="9" r="2.3" />
+                        </svg>
+                    </span>
+                    <span>Live Map</span>
+                </a>
+
+                <a href="nowcast.html" class="nav-link">
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="8" />
+                            <path d="M12 7v5l3 2" />
+                        </svg>
+                    </span>
+                    <span>Nowcast</span>
+                </a>
+
+                <a href="analytics.html" class="nav-link">
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 19V9" />
+                            <path d="M10 19V5" />
+                            <path d="M16 19v-7" />
+                            <path d="M22 19V3" />
+                        </svg>
+                    </span>
+                    <span>Analytics</span>
+                </a>
+
+                <a href="alerts.html" class="nav-link active" aria-current="page">
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" />
+                        </svg>
+                    </span>
+                    <span>Alerts</span>
+                </a>
+
+                <a href="system.html" class="nav-link">
+                    <span class="nav-svg">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 1.7-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V20h-2.4v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1L8 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H6v-2.4h.9a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9L8 8.6l1.7-1.7.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.7 1.7-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.2V14h-.2a1.7 1.7 0 0 0-1.5 1Z" />
+                        </svg>
+                    </span>
+                    <span>System</span>
+                </a>
+
+            </div>
+
+
+            <div class="nav-right">
+
+                <div class="live-indicator">
+                    <span class="live-pulse"></span>
+
+                    <div class="live-info">
+                        <strong>LIVE</strong>
+                        <span id="navClock">--:--:-- IST</span>
+                    </div>
+                </div>
+
+                <div class="nav-separator"></div>
+
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="../index.html" class="mobile-link">
+                <span>⌂</span> Dashboard
+            </a>
+
+            <a href="live-map.html" class="mobile-link">
+                <span>◉</span> Live Map
+            </a>
+
+            <a href="nowcast.html" class="mobile-link">
+                <span>◷</span> Nowcast
+            </a>
+
+            <a href="analytics.html" class="mobile-link">
+                <span>▥</span> Analytics
+            </a>
+
+            <a href="alerts.html" class="mobile-link active">
+                <span>ϟ</span> Alerts
+            </a>
+
+            <a href="system.html" class="mobile-link">
+                <span>⚙</span> System
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         ALERT COMMAND CENTER
+    ========================================================== -->
+
+    <main class="alerts-page">
+
+
+        <!-- HERO -->
+        <section class="alert-hero">
+
+            <div>
+
+                <div class="alert-kicker">
+                    <i></i>
+                    LIVE ALERT COMMAND CENTER
+                </div>
+
+                <h1>
+                    Know the threat.
+                    <span>Act before impact.</span>
+                </h1>
+
+                <p>
+                    MEGHDRISHTI continuously converts thunderstorm,
+                    lightning and nowcast intelligence into prioritized
+                    warnings — so the operator sees what matters first.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button class="alert-action primary" id="refreshAlerts">
+                        ↻ Refresh Feed
+                    </button>
+
+                    <a href="nowcast.html" class="alert-action">
+                        ◷ Open Nowcast
+                    </a>
+
+                    <a href="live-map.html" class="alert-action">
+                        ◉ Inspect Live Map
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <aside class="alert-command">
+
+                <div class="command-head">
+                    <span>THREAT POSTURE</span>
+                    <strong>● LIVE</strong>
+                </div>
+
+                <div class="command-center">
+
+                    <div class="risk-orbit">
+                        <b>ϟ</b>
+                    </div>
+
+                    <div class="command-value">
+                        <strong>HIGH</strong>
+                        <span>Regional thunderstorm risk</span>
+                    </div>
+
+                </div>
+
+                <div class="command-bottom">
+
+                    <span>
+                        ACTIVE ALERTS
+                        <b id="activeAlertCount">3</b>
+                    </span>
+
+                    <span>
+                        UPDATED
+                        <b id="lastAlertUpdate">--:--:-- IST</b>
+                    </span>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+
+        <!-- LIVE STATUS -->
+        <section class="alert-status">
+
+            <div class="status-cell red">
+                <div class="status-icon">ϟ</div>
+                <div>
+                    <small>CRITICAL</small>
+                    <strong>1 active</strong>
+                </div>
+            </div>
+
+            <div class="status-cell orange">
+                <div class="status-icon">⚠</div>
+                <div>
+                    <small>HIGH</small>
+                    <strong>1 active</strong>
+                </div>
+            </div>
+
+            <div class="status-cell">
+                <div class="status-icon">◈</div>
+                <div>
+                    <small>MODERATE</small>
+                    <strong>1 active</strong>
+                </div>
+            </div>
+
+            <div class="status-cell green">
+                <div class="status-icon">✓</div>
+                <div>
+                    <small>SYSTEM</small>
+                    <strong id="systemState">ALL STREAMS NOMINAL</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ALERT FEED -->
+        <section class="alert-section">
+
+            <div class="alert-section-head">
+
+                <div>
+                    <small>PRIORITIZED INCIDENTS</small>
+                    <h2>Active Alert Feed</h2>
+                    <p>Sorted by operational severity and immediacy.</p>
+                </div>
+
+                <div class="alert-filters">
+                    <button class="alert-filter active" data-filter="all">ALL</button>
+                    <button class="alert-filter" data-filter="active">ACTIVE</button>
+                    <button class="alert-filter" data-filter="critical">CRITICAL</button>
+                    <button class="alert-filter" data-filter="high">HIGH</button>
+                    <button class="alert-filter" data-filter="moderate">MODERATE</button>
+                </div>
+
+            </div>
+
+
+            <div class="alert-feed">
+
+
+                <!-- CRITICAL -->
+                <article class="alert-card critical" data-severity="critical"
+                    data-location="Bhubaneswar Metropolitan Sector"
+                    data-message="Rapidly strengthening convective activity with elevated lightning probability. Immediate situational awareness is recommended for exposed outdoor activity.">
+
+                    <div class="card-top">
+
+                        <span class="severity">
+                            <i></i>
+                            CRITICAL
+                        </span>
+
+                        <time>02 min ago</time>
+
+                    </div>
+
+                    <div class="card-title">
+
+                        <div class="card-icon">ϟ</div>
+
+                        <div>
+                            <h3>Lightning Escalation</h3>
+                            <p>Rapid increase in electrical activity.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-metrics">
+
+                        <div>
+                            <small>LIGHTNING</small>
+                            <strong>91%</strong>
+                        </div>
+
+                        <div>
+                            <small>ARRIVAL</small>
+                            <strong>~12m</strong>
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            <strong>94%</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <div class="card-location">
+                            SECTOR
+                            <b>Bhubaneswar Metro</b>
+                        </div>
+
+                        <button class="card-action view-details">
+                            View details →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- HIGH -->
+                <article class="alert-card high" data-severity="high" data-location="Cuttack Urban Corridor"
+                    data-message="A mature thunderstorm cell is moving northeast. Wind and rainfall impacts may increase during the next nowcast window.">
+
+                    <div class="card-top">
+
+                        <span class="severity">
+                            <i></i>
+                            HIGH
+                        </span>
+
+                        <time>06 min ago</time>
+
+                    </div>
+
+                    <div class="card-title">
+
+                        <div class="card-icon">⛈</div>
+
+                        <div>
+                            <h3>Storm Cell Advancing</h3>
+                            <p>Cell motion aligned with populated corridor.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-metrics">
+
+                        <div>
+                            <small>INTENSITY</small>
+                            <strong>82%</strong>
+                        </div>
+
+                        <div>
+                            <small>SPEED</small>
+                            <strong>28 km/h</strong>
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            <strong>88%</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <div class="card-location">
+                            SECTOR
+                            <b>Cuttack Corridor</b>
+                        </div>
+
+                        <button class="card-action view-details">
+                            View details →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MODERATE -->
+                <article class="alert-card moderate" data-severity="moderate" data-location="Khordha Regional Sector"
+                    data-message="Moderate convective development detected. The system is watching for intensification and will escalate automatically if thresholds are crossed.">
+
+                    <div class="card-top">
+
+                        <span class="severity">
+                            <i></i>
+                            MODERATE
+                        </span>
+
+                        <time>11 min ago</time>
+
+                    </div>
+
+                    <div class="card-title">
+
+                        <div class="card-icon">☁</div>
+
+                        <div>
+                            <h3>Convective Watch</h3>
+                            <p>Developing cell under observation.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-metrics">
+
+                        <div>
+                            <small>PROBABILITY</small>
+                            <strong>64%</strong>
+                        </div>
+
+                        <div>
+                            <small>WINDOW</small>
+                            <strong>~25m</strong>
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            <strong>81%</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <div class="card-location">
+                            SECTOR
+                            <b>Khordha Region</b>
+                        </div>
+
+                        <button class="card-action view-details">
+                            View details →
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- RESOLVED -->
+                <article class="alert-card high resolved" data-severity="high" data-location="Puri Coastal Sector"
+                    data-message="Earlier storm activity has weakened below the active warning threshold. Continue monitoring the next nowcast cycle.">
+
+                    <div class="card-top">
+
+                        <span class="severity">
+                            <i></i>
+                            RESOLVED
+                        </span>
+
+                        <time>24 min ago</time>
+
+                    </div>
+
+                    <div class="card-title">
+
+                        <div class="card-icon">✓</div>
+
+                        <div>
+                            <h3>Coastal Cell Weakening</h3>
+                            <p>Risk dropped below active threshold.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card-metrics">
+
+                        <div>
+                            <small>RISK</small>
+                            <strong>31%</strong>
+                        </div>
+
+                        <div>
+                            <small>STATUS</small>
+                            <strong>LOW</strong>
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            <strong>90%</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <div class="card-location">
+                            SECTOR
+                            <b>Puri Coast</b>
+                        </div>
+
+                        <button class="card-action done view-details">
+                            Acknowledged ✓
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORKFLOW -->
+        <section class="workflow-grid">
+
+            <article class="glass-panel">
+
+                <div class="alert-section-head">
+                    <div>
+                        <small>RESPONSE PIPELINE</small>
+                        <h2>Alert Lifecycle</h2>
+                    </div>
+                </div>
+
+                <div class="workflow">
+
+                    <div class="workflow-step active">
+                        <b>01 · DETECT</b>
+                        <strong>Signal</strong>
+                        <span>Radar, lightning and satellite streams identify an anomaly.</span>
+                    </div>
+
+                    <div class="workflow-step active">
+                        <b>02 · SCORE</b>
+                        <strong>Prioritize</strong>
+                        <span>AI confidence and severity determine operational priority.</span>
+                    </div>
+
+                    <div class="workflow-step active">
+                        <b>03 · WARN</b>
+                        <strong>Alert</strong>
+                        <span>Critical conditions surface immediately in the command feed.</span>
+                    </div>
+
+                    <div class="workflow-step">
+                        <b>04 · ACT</b>
+                        <strong>Respond</strong>
+                        <span>Operator acknowledges and routes the warning to action.</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="glass-panel">
+
+                <div class="alert-section-head">
+                    <div>
+                        <small>OPERATIONAL CHECKLIST</small>
+                        <h2>Response Channels</h2>
+                    </div>
+                </div>
+
+                <div class="response-list">
+
+                    <div class="response-row">
+                        <div class="response-icon">◉</div>
+                        <div>
+                            <strong>Radar feed</strong>
+                            <small>Latest scan synchronized</small>
+                        </div>
+                        <span class="response-state">READY</span>
+                    </div>
+
+                    <div class="response-row">
+                        <div class="response-icon">ϟ</div>
+                        <div>
+                            <strong>Lightning feed</strong>
+                            <small>Electrical activity stream active</small>
+                        </div>
+                        <span class="response-state">READY</span>
+                    </div>
+
+                    <div class="response-row">
+                        <div class="response-icon">◈</div>
+                        <div>
+                            <strong>AI nowcast</strong>
+                            <small>60-minute prediction available</small>
+                        </div>
+                        <span class="response-state">READY</span>
+                    </div>
+
+                    <div class="response-row">
+                        <div class="response-icon">⌁</div>
+                        <div>
+                            <strong>Notification engine</strong>
+                            <small>Escalation rules loaded</small>
+                        </div>
+                        <span class="response-state">READY</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- THREAT ZONES -->
+        <section class="glass-panel alert-section">
+
+            <div class="alert-section-head">
+
+                <div>
+                    <small>REGIONAL SITUATIONAL AWARENESS</small>
+                    <h2>Threat Zones</h2>
+                    <p>Operational risk bands derived from current nowcast intelligence.</p>
+                </div>
+
+            </div>
+
+            <div class="zone-grid">
+
+                <div class="zone red">
+                    <div class="zone-head">
+                        <span class="zone-name">Bhubaneswar Metro</span>
+                        <span class="zone-level">CRITICAL</span>
+                    </div>
+                    <div class="zone-track"><span style="width:92%"></span></div>
+                    <small>Lightning probability 91% · arrival ~12 min</small>
+                </div>
+
+                <div class="zone orange">
+                    <div class="zone-head">
+                        <span class="zone-name">Cuttack Corridor</span>
+                        <span class="zone-level">HIGH</span>
+                    </div>
+                    <div class="zone-track"><span style="width:78%"></span></div>
+                    <small>Storm intensity 82% · movement NE</small>
+                </div>
+
+                <div class="zone yellow">
+                    <div class="zone-head">
+                        <span class="zone-name">Khordha Region</span>
+                        <span class="zone-level">WATCH</span>
+                    </div>
+                    <div class="zone-track"><span style="width:61%"></span></div>
+                    <small>Convective probability 64% · monitoring</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EVENT STREAM -->
+        <section class="workflow-grid">
+
+            <article class="glass-panel">
+
+                <div class="alert-section-head">
+                    <div>
+                        <small>REAL-TIME AUDIT TRAIL</small>
+                        <h2>Event Stream</h2>
+                    </div>
+                </div>
+
+                <div class="event-stream">
+
+                    <div class="event">
+                        <i class="event-dot red"></i>
+                        <div>
+                            <strong>Lightning threshold crossed</strong>
+                            <small>Bhubaneswar Metropolitan Sector</small>
+                        </div>
+                        <b>02m</b>
+                    </div>
+
+                    <div class="event">
+                        <i class="event-dot orange"></i>
+                        <div>
+                            <strong>Storm cell movement updated</strong>
+                            <small>Cuttack Urban Corridor · NE 28 km/h</small>
+                        </div>
+                        <b>06m</b>
+                    </div>
+
+                    <div class="event">
+                        <i class="event-dot orange"></i>
+                        <div>
+                            <strong>Nowcast confidence increased</strong>
+                            <small>Model confidence now 88%</small>
+                        </div>
+                        <b>08m</b>
+                    </div>
+
+                    <div class="event">
+                        <i class="event-dot green"></i>
+                        <div>
+                            <strong>Coastal alert resolved</strong>
+                            <small>Puri Coastal Sector</small>
+                        </div>
+                        <b>24m</b>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="glass-panel">
+
+                <div class="alert-section-head">
+                    <div>
+                        <small>ALERT GOVERNANCE</small>
+                        <h2>Decision Rules</h2>
+                    </div>
+                </div>
+
+                <div class="response-list">
+
+                    <div class="response-row">
+                        <div class="response-icon">01</div>
+                        <div>
+                            <strong>Critical lightning</strong>
+                            <small>Escalate immediately when risk ≥ 85%</small>
+                        </div>
+                        <span class="response-state">ACTIVE</span>
+                    </div>
+
+                    <div class="response-row">
+                        <div class="response-icon">02</div>
+                        <div>
+                            <strong>Severe cell</strong>
+                            <small>Escalate when intensity ≥ 80%</small>
+                        </div>
+                        <span class="response-state">ACTIVE</span>
+                    </div>
+
+                    <div class="response-row">
+                        <div class="response-icon">03</div>
+                        <div>
+                            <strong>Confidence gate</strong>
+                            <small>Prioritize high-confidence predictions</small>
+                        </div>
+                        <span class="response-state">ACTIVE</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- CRITICAL DETAIL -->
+        <section class="detail-strip">
+
+            <div class="detail-icon">ϟ</div>
+
+            <div class="detail-content">
+
+                <small>PRIORITY 01 · IMMEDIATE ATTENTION</small>
+
+                <h2>High Lightning Risk — Bhubaneswar Metro</h2>
+
+                <p>
+                    Electrical activity is increasing rapidly and the AI nowcast
+                    estimates a high probability of continued lightning during
+                    the next short-term prediction window. Use the Live Map and
+                    Nowcast views to inspect the cell before taking action.
+                </p>
+
+            </div>
+
+            <button class="detail-action" id="detailAcknowledge">
+                Acknowledge Critical Alert
+            </button>
+
+        </section>
+
+
+        <!-- =========================================================
+             FOOTER — same structure as index.html
+        ========================================================== -->
+
+        <footer class="footer">
+
+            <div class="footer-main">
+
+                <div class="footer-brand">
+
+                    <a href="../index.html" class="footer-logo">
+
+                        <div class="footer-logo-icon">
+                            <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="footer-logo-image">
+                        </div>
+
+                        <div>
+                            <strong>
+                                MEGH<span>DRISHTI</span>
+                            </strong>
+
+                            <small>
+                                AI-POWERED THUNDERSTORM NOWCASTING
+                            </small>
+                        </div>
+
+                    </a>
+
+                    <p>
+                        Smarter predictions.
+                        Safer communities.
+                    </p>
+
+                    <p class="footer-powered">
+                        Powered by AI. Driven by real-time data.
+                    </p>
+
+                    <div class="social-links">
+
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="GitHub">◉</a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>PRODUCT</h3>
+
+                    <a href="../index.html">Dashboard</a>
+                    <a href="live-map.html">Live Map</a>
+                    <a href="nowcast.html">Nowcast</a>
+                    <a href="analytics.html">Analytics</a>
+                    <a href="alerts.html">Alerts</a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>RESOURCES</h3>
+
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">User Guide</a>
+                    <a href="#">Research</a>
+                    <a href="#">Help Center</a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>COMPANY</h3>
+
+                    <a href="#">About Us</a>
+                    <a href="#">Our Mission</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Team</a>
+
+                </div>
+
+
+                <div class="footer-column newsletter">
+
+                    <h3>STAY INFORMED</h3>
+
+                    <p>
+                        Get weather intelligence
+                        and important alerts.
+                    </p>
+
+                    <form id="newsletterForm">
+
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email" autocomplete="email"
+                            required>
+
+                        <button type="submit">→</button>
+
+                    </form>
+
+                    <small id="newsletterMessage">
+                        We respect your privacy.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © <span id="year"></span> MEGHDRISHTI.
+                    All rights reserved.
+                </span>
+
+                <div>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Data Policy</a>
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- DETAIL MODAL -->
+    <div class="alert-modal" id="alertModal">
+
+        <div class="modal-card">
+
+            <div class="modal-head">
+
+                <div>
+                    <small id="modalSeverity">ALERT</small>
+                    <h2 id="modalTitle">Alert Details</h2>
+                </div>
+
+                <button class="modal-close" id="modalClose" aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="modal-row">
+                    <span>Sector</span>
+                    <strong id="modalLocation">—</strong>
+                </div>
+
+                <div class="modal-row">
+                    <span>Issued</span>
+                    <strong id="modalTime">—</strong>
+                </div>
+
+                <div class="modal-row">
+                    <span>Primary risk</span>
+                    <strong id="modalRisk">—</strong>
+                </div>
+
+            </div>
+
+            <div class="modal-note" id="modalMessage">
+                —
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+    <div class="alert-toast" id="alertToast">
+
+        <strong>SYSTEM UPDATE</strong>
+        <span id="toastText">Ready.</span>
+
+    </div>
+
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/alerts.js"></script>
+
+</body>
+
+</html>

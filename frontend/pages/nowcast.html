@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        MEGHDRISHTI — AI Nowcast
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <link rel="stylesheet" href="../css/nowcast.css">
+    <link
+    rel="stylesheet"
+    href="../css/nowcast-animation.css">
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="ambient ambient-cyan"></div>
+    <div class="ambient ambient-purple"></div>
+    <div class="ambient ambient-blue"></div>
+
+    <div class="grid-background"></div>
+    <div class="noise"></div>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar-wrapper">
+
+        <nav class="navbar">
+
+
+            <!-- BRAND -->
+
+            <a href="../index.html" class="brand">
+
+                <div class="brand-logo">
+
+                    <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="brand-logo-image">
+
+                </div>
+
+
+                <div class="brand-divider"></div>
+
+
+                <div class="brand-copy">
+
+                    <div class="brand-name">
+                        MEGH<span>DRISHTI</span>
+                    </div>
+
+                    <div class="brand-tagline">
+                        AI-POWERED THUNDERSTORM NOWCASTING
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <!-- NAV -->
+
+            <div class="nav-links">
+
+                <a href="../index.html" class="nav-link">
+                    <span class="nav-svg"></span>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a href="live-map.html" class="nav-link">
+                    <span class="nav-svg"></span>
+                    <span>Live Map</span>
+                </a>
+
+
+                <a href="nowcast.html" class="nav-link active">
+                    <span class="nav-svg"></span>
+                    <span>Nowcast</span>
+                </a>
+
+
+                <a href="analytics.html" class="nav-link">
+                    <span class="nav-svg"></span>
+                    <span>Analytics</span>
+                </a>
+
+
+                <a href="alerts.html" class="nav-link">
+                    <span class="nav-svg"></span>
+                    <span>Alerts</span>
+                </a>
+
+
+                <a href="system.html" class="nav-link">
+                    <span class="nav-svg"></span>
+                    <span>System</span>
+                </a>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="nav-right">
+
+                <div class="live-indicator">
+
+                    <span class="live-pulse"></span>
+
+                    <div class="live-info">
+
+                        <strong>LIVE</strong>
+
+                        <span id="navClock">
+                            --:--:-- IST
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="nav-separator"></div>
+
+
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- MOBILE -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="../index.html" class="mobile-link">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="live-map.html" class="mobile-link">
+                <span>◉</span>
+                Live Map
+            </a>
+
+            <a href="nowcast.html" class="mobile-link active">
+                <span>◷</span>
+                Nowcast
+            </a>
+
+            <a href="analytics.html" class="mobile-link">
+                <span>▥</span>
+                Analytics
+            </a>
+
+            <a href="alerts.html" class="mobile-link">
+                <span>ϟ</span>
+                Alerts
+            </a>
+
+            <a href="system.html" class="mobile-link">
+                <span>⚙</span>
+                System
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="nowcast-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="nowcast-hero">
+
+            <div>
+
+                <div class="nowcast-kicker">
+
+                    <span></span>
+
+                    AI NOWCAST ENGINE
+
+                </div>
+
+
+                <h1>
+                Where the storm
+                <span>moves next.</span>
+                </h1>
+
+
+                <p>
+                    A continuously updated short-range forecast extending
+                    from 2 to 5 hours for storm movement, intensity and
+                    lightning risk.
+                </p>
+
+            </div>
+
+
+            <div class="nowcast-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>
+                        NOWCAST ACTIVE
+                    </strong>
+
+                    <small>
+                        Updated just now
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CURRENT STORM SUMMARY
+        ================================================== -->
+
+        <section class="nowcast-summary">
+
+            <div class="summary-location">
+
+                <span>
+                    ACTIVE STORM CELL
+                </span>
+
+                <strong>
+                    Bhubaneswar, Odisha
+                </strong>
+
+                <small>
+                    Storm moving ENE · 28 km/h
+                </small>
+
+            </div>
+
+
+            <div class="summary-stat">
+
+                <span>
+                    ARRIVAL
+                </span>
+
+                <strong>
+                    ~2 hr
+                </strong>
+
+            </div>
+
+
+            <div class="summary-stat">
+
+                <span>
+                    CONFIDENCE
+                </span>
+
+                <strong class="cyan">
+                    87%
+                </strong>
+
+            </div>
+
+
+            <div class="summary-stat">
+
+                <span>
+                    CURRENT RISK
+                </span>
+
+                <strong class="red">
+                    HIGH
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TRAJECTORY
+        ================================================== -->
+
+        <section class="trajectory-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span>PROJECTED TRAJECTORY</span>
+
+                    <h2 id="trajectoryTitle">
+                        5-hour movement envelope
+                    </h2>
+
+                    <p class="trajectory-subtitle">
+                        AI-predicted storm movement and uncertainty corridor
+                    </p>
+
+                </div>
+
+                <div class="trajectory-confidence">
+
+                    <small>MODEL CONFIDENCE</small>
+
+                    <strong id="confidenceValue">87%</strong>
+
+                    <span id="confidenceTrend">
+                        ↑ Stable
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MAP
+            ================================================== -->
+
+            <div class="trajectory-map" id="trajectoryMap">
+
+                <div class="trajectory-grid"></div>
+
+                <div class="map-vignette"></div>
+
+
+                <!-- Atmospheric rings -->
+
+                <div class="storm-radar-ring ring-a"></div>
+                <div class="storm-radar-ring ring-b"></div>
+                <div class="storm-radar-ring ring-c"></div>
+
+
+                <!-- Projected corridor -->
+
+                <svg class="trajectory-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+
+                    <defs>
+
+                        <linearGradient id="corridorGradient" x1="0" y1="0" x2="1" y2="0">
+
+                            <stop offset="0%" stop-color="#2edbff" stop-opacity=".18" />
+
+                            <stop offset="50%" stop-color="#658cff" stop-opacity=".16" />
+
+                            <stop offset="100%" stop-color="#9068ff" stop-opacity=".12" />
+
+                        </linearGradient>
+
+
+                        <linearGradient id="trajectoryGradient" x1="0" y1="0" x2="1" y2="0">
+
+                            <stop offset="0%" stop-color="#2edbff" />
+
+                            <stop offset="55%" stop-color="#5b9cff" />
+
+                            <stop offset="100%" stop-color="#9068ff" />
+
+                        </linearGradient>
+
+
+                        <filter id="trajectoryGlow" x="-50%" y="-50%" width="200%" height="200%">
+
+                            <feGaussianBlur stdDeviation="5" result="blur" />
+
+                            <feMerge>
+
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+
+                            </feMerge>
+
+                        </filter>
+
+                    </defs>
+
+
+                    <!-- uncertainty corridor -->
+
+                    <path class="trajectory-corridor" d="
+                        M95 350
+                        C270 340 395 300 535 250
+                        C680 198 805 145 925 90
+
+                        L925 175
+                        C790 230 670 275 530 325
+                        C390 365 250 405 95 405
+
+                        Z
+                    " />
+
+
+                    <!-- glow -->
+
+                    <path class="trajectory-glow" d="
+                        M95 378
+                        C270 370 395 325 535 285
+                        C680 240 805 185 925 130
+                    " />
+
+
+                    <!-- main trajectory -->
+
+                    <path id="trajectoryPath" class="trajectory-line" d="
+                        M95 378
+                        C270 370 395 325 535 285
+                        C680 240 805 185 925 130
+                    " />
+
+
+                    <!-- moving forecast marker -->
+
+                    <circle id="trajectoryTracker" class="trajectory-tracker" cx="95" cy="378" r="7" />
+
+                </svg>
+
+
+                <!-- =================================================
+                     LOCATION LABELS
+                ================================================== -->
+
+                <div class="map-label label-bhubaneswar">
+                    <span></span>
+                    BHUBANESWAR
+                </div>
+
+                <div class="map-label label-khordha">
+                    KHORDHA
+                </div>
+
+                <div class="map-label label-cuttack">
+                    CUTTACK
+                </div>
+
+                <div class="map-label label-bhadrak">
+                    BHADRAK
+                </div>
+
+
+                <!-- =================================================
+                     STORM POINTS
+                ================================================== -->
+
+                <button class="forecast-point current selected" data-index="0" style="left:9.5%; top:75.6%;">
+
+                    <span class="point-core">
+                        ⚡
+                    </span>
+
+                    <span class="point-time">
+                        NOW
+                    </span>
+
+                </button>
+
+
+                <button class="forecast-point" data-index="1" style="left:30%; top:68%;">
+
+                    <span class="point-core">
+                        ⚡
+                    </span>
+
+                    <span class="point-time">
+                        +2 HR
+                    </span>
+
+                </button>
+
+
+                <button class="forecast-point" data-index="2" style="left:53.5%; top:57%;">
+
+                    <span class="point-core">
+                        ⛈
+                    </span>
+
+                    <span class="point-time">
+                        +3 HR
+                    </span>
+
+                </button>
+
+
+                <button class="forecast-point" data-index="3" style="left:72%; top:44%;">
+
+                    <span class="point-core">
+                        ⛈
+                    </span>
+
+                    <span class="point-time">
+                        +4 HR
+                    </span>
+
+                </button>
+
+
+                <button class="forecast-point" data-index="4" style="left:90%; top:26%;">
+
+                    <span class="point-core">
+                        ◇
+                    </span>
+
+                    <span class="point-time">
+                        +5 HR
+                    </span>
+
+                </button>
+
+
+                <!-- =================================================
+                     LIVE INFO TOOLTIP
+                ================================================== -->
+
+                <div class="trajectory-tooltip" id="trajectoryTooltip">
+
+                    <div class="tooltip-header">
+
+                        <span id="tooltipTime">
+                            NOW
+                        </span>
+
+                        <span class="tooltip-risk" id="tooltipRisk">
+                            HIGH
+                        </span>
+
+                    </div>
+
+
+                    <strong id="tooltipProbability">
+                        82%
+                    </strong>
+
+                    <small>
+                        storm probability
+                    </small>
+
+
+                    <div class="tooltip-divider"></div>
+
+
+                    <div class="tooltip-stats">
+
+                        <span>
+
+                            Lightning
+
+                            <b id="tooltipLightning">
+                                91%
+                            </b>
+
+                        </span>
+
+
+                        <span>
+
+                            Speed
+
+                            <b id="tooltipSpeed">
+                                28 km/h
+                            </b>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     VECTOR
+                ================================================== -->
+
+                <div class="storm-vector">
+
+                    <span id="vectorDirection">
+                        ↗ ENE
+                    </span>
+
+                    <small>
+                        STORM VECTOR
+                    </small>
+
+                </div>
+
+
+                <!-- =================================================
+                     MAP LEGEND
+                ================================================== -->
+
+                <div class="trajectory-legend">
+
+                    <span>
+
+                        <i class="legend-current"></i>
+
+                        Current
+
+                    </span>
+
+
+                    <span>
+
+                        <i class="legend-predicted"></i>
+
+                        Forecast
+
+                    </span>
+
+
+                    <span>
+
+                        <i class="legend-corridor"></i>
+
+                        Uncertainty
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FORECAST CONTROL BAR
+            ================================================== -->
+
+            <div class="forecast-controls">
+
+                <button class="forecast-play" id="forecastPlay" type="button">
+
+                    <span id="playIcon">
+                        ▶
+                    </span>
+
+                    <span id="playText">
+                        Play forecast
+                    </span>
+
+                </button>
+
+
+                <div class="forecast-slider-wrap">
+
+                    <div class="forecast-slider-labels">
+
+                        <span>
+                            NOW
+                        </span>
+
+                        <span>
+                            +2 HR
+                        </span>
+
+                        <span>
+                            +3 HR
+                        </span>
+
+                        <span>
+                            +4 HR
+                        </span>
+
+                        <span>
+                            +5 HR
+                        </span>
+
+                    </div>
+
+
+                    <input id="forecastSlider" class="forecast-slider" type="range" min="0" max="4" value="0"
+                        step="1" />
+
+                </div>
+
+
+                <div class="forecast-current-time">
+
+                    <small>
+                        FORECAST TIME
+                    </small>
+
+                    <strong id="selectedTime">
+                        NOW
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+     AI NOWCAST ANIMATION
+====================================================== -->
+
+<section class="ai-nowcast-animation">
+
+    <div class="animation-heading">
+
+        <div>
+            <span class="section-kicker">
+                SPATIO-TEMPORAL PREDICTION
+            </span>
+
+            <h2>
+                AI Nowcast Animation
+            </h2>
+
+            <p>
+                Observed weather evolution followed by
+                CNN-ConvLSTM predicted movement.
+            </p>
+        </div>
+
+        <div class="animation-status">
+            <span class="animation-live-dot"></span>
+            MODEL READY
+        </div>
+
+    </div>
+
+
+   <!-- WEATHER FRAME -->
+
+<div class="nowcast-frame-viewer">
+
+    <!-- RADAR ANALYSIS BACKGROUND -->
+    <div id="nowcastBaseMap" aria-label="Odisha weather map">
+
+    <img
+        src="../assets/images/odisha-nowcast-map.png"
+        alt="Odisha district weather map"
+        class="odisha-nowcast-map"
+    >
+
+    <div class="radar-grid"></div>
+
+    <div class="radar-crosshair radar-crosshair-h"></div>
+    <div class="radar-crosshair radar-crosshair-v"></div>
+
+    <div class="radar-label radar-label-tl">
+        RADAR / VIL ANALYSIS
+    </div>
+
+    <div class="radar-label radar-label-br">
+        MOSDAC DWR
+    </div>
+
+    <div class="vil-legend">
+        <div class="vil-legend-title">
+            VIL INTENSITY
+        </div>
+
+        <div class="vil-legend-bar"></div>
+
+        <div class="vil-legend-values">
+            <span>LOW</span>
+            <span>0.05</span>
+            <span>0.10</span>
+            <span>0.20+</span>
+            <span>HIGH</span>
+        </div>
+    </div>
+
+</div>
+    <!-- VIL / AI FORECAST OVERLAY -->
+    <canvas
+        id="nowcastCanvas"
+        aria-label="VIL weather intensity overlay"
+    ></canvas>
+
+    <div class="frame-overlay">
+
+        <div class="frame-badge" id="nowcastStatus">
+            OBSERVED
+        </div>
+
+        <div class="frame-time" id="nowcastTime">
+            NOW
+        </div>
+
+        <div class="frame-model">
+            CNN + ConvLSTM
+        </div>
+
+    </div>
+
+</div>
+
+    
+    <!-- CONTROLS -->
+
+    <div class="animation-controls">
+
+        <button
+            id="playNowcast"
+            class="animation-play-button"
+            type="button">
+
+            ▶ Play Nowcast
+
+        </button>
+
+
+        <div class="animation-timeline">
+
+            <div class="animation-time-labels">
+    <span>T−45m</span>
+    <span>T−30m</span>
+    <span>T−15m</span>
+    <span>NOW</span>
+    <span>T+5m</span>
+    <span>T+10m</span>
+</div>
+
+
+            <input
+                id="nowcastSlider"
+                type="range"
+                min="0"
+                max="5"
+                value="3"
+                step="1"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- FRAME INFORMATION -->
+
+    <div class="animation-info">
+
+        <div>
+            <span>FRAME</span>
+            <strong id="animationFrameNumber">
+                3 / 7
+            </strong>
+        </div>
+
+        <div>
+            <span>HORIZON</span>
+            <strong id="animationHorizon">
+                NOW
+            </strong>
+        </div>
+
+        <div>
+            <span>TYPE</span>
+            <strong id="animationFrameType">
+                OBSERVED
+            </strong>
+        </div>
+
+        <div>
+            <span>MODEL</span>
+            <strong>
+                CNN-ConvLSTM
+            </strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+            <!-- =================================================
+                 SELECTED FORECAST DETAILS
+            ================================================== -->
+
+            <div class="selected-forecast">
+
+                <div class="selected-forecast-main">
+
+                    <div class="selected-icon" id="selectedIcon">
+
+                        ⚡
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            SELECTED FORECAST
+                        </span>
+
+
+                        <strong id="selectedRisk">
+                            HIGH RISK
+                        </strong>
+
+
+                        <small id="selectedDescription">
+
+                            Active thunderstorm cell with elevated
+                            lightning probability.
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="selected-stat">
+
+                    <span>
+                        PROBABILITY
+                    </span>
+
+                    <strong id="selectedProbability">
+                        82%
+                    </strong>
+
+                </div>
+
+
+
+                <div class="selected-stat">
+
+                    <span>
+                        LIGHTNING
+                    </span>
+
+                    <strong id="selectedLightning">
+                        91%
+                    </strong>
+
+                </div>
+
+
+
+                <div class="selected-stat">
+
+                    <span>
+                        MOVEMENT
+                    </span>
+
+                    <strong id="selectedMovement">
+                        28 km/h
+                    </strong>
+
+                </div>
+
+
+
+                <div class="selected-stat">
+
+                    <span>
+                        DIRECTION
+                    </span>
+
+                    <strong id="selectedDirection">
+                        ENE
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+      <!-- =================================================
+     FORECAST INTELLIGENCE
+================================================== -->
+
+<section class="forecast-grid">
+
+    <!-- +5 MIN -->
+    <article class="forecast-card">
+
+        <span class="card-kicker">
+            +5 MIN FORECAST
+        </span>
+
+        <strong id="forecast5MaxVil">
+            —
+            <small>VIL</small>
+        </strong>
+
+        <div class="mini-progress">
+            <span id="forecast5CoverageBar" style="width:0%"></span>
+        </div>
+
+        <p id="forecast5Details">
+            Waiting for AI forecast...
+        </p>
+
+    </article>
+
+
+    <!-- +10 MIN -->
+    <article class="forecast-card">
+
+        <span class="card-kicker">
+            +10 MIN FORECAST
+        </span>
+
+        <strong id="forecast10MaxVil">
+            —
+            <small>VIL</small>
+        </strong>
+
+        <div class="mini-progress">
+            <span id="forecast10CoverageBar" style="width:0%"></span>
+        </div>
+
+        <p id="forecast10Details">
+            Waiting for AI forecast...
+        </p>
+
+    </article>
+
+
+    <!-- STORM COVERAGE -->
+    <article class="forecast-card">
+
+        <span class="card-kicker">
+            STORM COVERAGE
+        </span>
+
+        <strong class="purple" id="stormCoverageValue">
+            —
+            <small>%</small>
+        </strong>
+
+        <div class="mini-progress purple-bar">
+            <span id="stormCoverageBar" style="width:0%"></span>
+        </div>
+
+        <p id="stormCoverageDetails">
+            AI-predicted area above storm threshold.
+        </p>
+
+    </article>
+
+
+    <!-- AI RISK -->
+    <article class="forecast-card">
+
+        <span class="card-kicker">
+            AI RISK
+        </span>
+
+        <strong class="green" id="aiRiskValue">
+            —
+        </strong>
+
+        <div class="mini-progress green-bar">
+            <span id="aiRiskBar" style="width:0%"></span>
+        </div>
+
+        <p id="aiRiskDetails">
+            Risk calculated from predicted VIL.
+        </p>
+
+    </article>
+
+</section>
+
+
+        <!-- =================================================
+             RISK EVOLUTION
+        ================================================== -->
+
+        <section class="risk-evolution-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span>
+                        RISK EVOLUTION
+                    </span>
+
+                    <h2>
+                        Thunderstorm probability
+                    </h2>
+
+                </div>
+
+                <span class="live-pill">
+                    LIVE MODEL
+                </span>
+
+            </div>
+
+
+
+            <div class="risk-chart">
+
+                <div class="chart-y">
+
+                    <span>
+                        100%
+                    </span>
+
+                    <span>
+                        75%
+                    </span>
+
+                    <span>
+                        50%
+                    </span>
+
+                    <span>
+                        25%
+                    </span>
+
+                    <span>
+                        0%
+                    </span>
+
+                </div>
+
+
+
+                <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+
+                    <defs>
+
+                        <linearGradient id="riskFill" x1="0" y1="0" x2="0" y2="1">
+
+                            <stop offset="0%" stop-color="#2edbff" stop-opacity=".32" />
+
+                            <stop offset="100%" stop-color="#2edbff" stop-opacity="0" />
+
+                        </linearGradient>
+
+                    </defs>
+
+
+
+                    <path class="risk-area" d="
+                            M0 70
+                            C120 75
+                            180 80
+                            260 65
+                            C360 50
+                            410 42
+                            500 30
+                            C590 25
+                            650 40
+                            740 55
+                            C830 70
+                            900 95
+                            1000 110
+                            L1000 300
+                            L0 300
+                            Z
+                        " />
+
+
+
+                    <path class="risk-line" d="
+                            M0 70
+                            C120 75
+                            180 80
+                            260 65
+                            C360 50
+                            410 42
+                            500 30
+                            C590 25
+                            650 40
+                            740 55
+                            C830 70
+                            900 95
+                            1000 110
+                        " />
+
+
+
+                    <circle cx="500" cy="30" r="7" class="chart-highlight" />
+
+                </svg>
+
+
+
+                <div class="chart-x">
+
+                    <span>
+                        NOW
+                    </span>
+
+                    <span>
+                        +2h
+                    </span>
+
+                    <span>
+                        +3h
+                    </span>
+
+                    <span>
+                        +4h
+                    </span>
+
+                    <span>
+                        +5h
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             IMPACT FORECAST
+        ================================================== -->
+
+        <section class="impact-grid">
+
+
+            <article class="impact-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            IMPACT FORECAST
+                        </span>
+
+                        <h2>
+                            Areas in projected path
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="area-list">
+
+
+                    <div class="area-row">
+
+                        <div class="area-icon">
+                            ◎
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Bhubaneswar
+                            </strong>
+
+                            <small>
+                                Current storm vicinity
+                            </small>
+
+                        </div>
+
+                        <span class="area-risk high">
+                            HIGH
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="area-row">
+
+                        <div class="area-icon">
+                            ◇
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Khordha
+                            </strong>
+
+                            <small>
+                                Expected in ~2 hr
+                            </small>
+
+                        </div>
+
+                        <span class="area-risk high">
+                            HIGH
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="area-row">
+
+                        <div class="area-icon">
+                            ◇
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Cuttack
+                            </strong>
+
+                            <small>
+                                Expected in ~3 hr
+                            </small>
+
+                        </div>
+
+                        <span class="area-risk moderate">
+                            MODERATE
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="area-row">
+
+                        <div class="area-icon">
+                            ◇
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Bhadrak
+                            </strong>
+
+                            <small>
+                                Expected in ~4 hr
+                            </small>
+
+                        </div>
+
+                        <span class="area-risk watch">
+                            WATCH
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- MODEL FACTORS -->
+
+            <article class="impact-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            MODEL INPUTS
+                        </span>
+
+                        <h2>
+                            Prediction drivers
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="factor-list">
+
+
+                    <div class="factor">
+
+                        <div>
+
+                            <span>
+                                Satellite structure
+                            </span>
+
+                            <small>
+                                Cloud-top development
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            94%
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="factor">
+
+                        <div>
+
+                            <span>
+                                Lightning trend
+                            </span>
+
+                            <small>
+                                Strike frequency
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            91%
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="factor">
+
+                        <div>
+
+                            <span>
+                                Wind field
+                            </span>
+
+                            <small>
+                                Movement consistency
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            86%
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="factor">
+
+                        <div>
+
+                            <span>
+                                Atmospheric signal
+                            </span>
+
+                            <small>
+                                Instability indicators
+                            </small>
+
+                        </div>
+
+                        <strong>
+                            82%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DECISION PANEL
+        ================================================== -->
+
+        <section class="decision-panel">
+
+            <div class="decision-icon">
+                ⚡
+            </div>
+
+
+            <div class="decision-content">
+
+                <span>
+                    NOWCAST RECOMMENDATION
+                </span>
+
+
+                <h2>
+                    Prepare for increasing storm activity
+                </h2>
+
+
+                <p>
+                    The current model indicates elevated
+                    thunderstorm and lightning risk over the
+                    next 2–3 hours. Continue monitoring the
+                    live map and alerts.
+                </p>
+
+            </div>
+
+
+            <a href="alerts.html" class="decision-button">
+
+                View Alerts
+
+                <span>
+                    ↗
+                </span>
+
+            </a>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="footer">
+
+            <div class="footer-main">
+
+
+                <div class="footer-brand">
+
+                    <a href="../index.html" class="footer-logo">
+
+                        <div class="footer-logo-icon">
+                            <img src="../assets/logo.png" alt="MEGHDRISHTI Logo" class="footer-logo-image">
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                MEGH<span>DRISHTI</span>
+                            </strong>
+
+                            <small>
+                                AI-POWERED THUNDERSTORM NOWCASTING
+                            </small>
+
+                        </div>
+
+                    </a>
+
+
+                    <p>
+                        Smarter predictions.
+                        Safer communities.
+                    </p>
+
+
+                    <p class="footer-powered">
+                        Powered by AI. Driven by real-time data.
+                    </p>
+
+
+                    <div class="social-links">
+
+                        <a href="#">
+                            𝕏
+                        </a>
+
+                        <a href="#">
+                            in
+                        </a>
+
+                        <a href="#">
+                            ◉
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        PRODUCT
+                    </h3>
+
+                    <a href="../index.html">
+                        Dashboard
+                    </a>
+
+                    <a href="live-map.html">
+                        Live Map
+                    </a>
+
+                    <a href="nowcast.html">
+                        Nowcast
+                    </a>
+
+                    <a href="analytics.html">
+                        Analytics
+                    </a>
+
+                    <a href="alerts.html">
+                        Alerts
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        RESOURCES
+                    </h3>
+
+                    <a href="#">
+                        Documentation
+                    </a>
+
+                    <a href="#">
+                        API Reference
+                    </a>
+
+                    <a href="#">
+                        User Guide
+                    </a>
+
+                    <a href="#">
+                        Research
+                    </a>
+
+                    <a href="#">
+                        Help Center
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        COMPANY
+                    </h3>
+
+                    <a href="#">
+                        About Us
+                    </a>
+
+                    <a href="#">
+                        Our Mission
+                    </a>
+
+                    <a href="#">
+                        Contact
+                    </a>
+
+                    <a href="#">
+                        Team
+                    </a>
+
+                </div>
+
+
+
+                <div class="footer-column newsletter">
+
+                    <h3>
+                        STAY INFORMED
+                    </h3>
+
+                    <p>
+                        Get weather intelligence
+                        and important alerts.
+                    </p>
+
+
+                    <form id="newsletterForm">
+
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email" autocomplete="email"
+                            required>
+
+
+                        <button type="submit">
+                            →
+                        </button>
+
+                    </form>
+
+
+                    <small id="newsletterMessage">
+                        We respect your privacy.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+        
+
+            <div class="footer-bottom">
+
+                <span>
+
+                    © <span id="year"></span>
+
+                    MEGHDRISHTI.
+
+                    All rights reserved.
+
+                </span>
+
+
+                <div>
+
+                    <a href="#">
+                        Privacy
+                    </a>
+
+                    <a href="#">
+                        Terms
+                    </a>
+
+                    <a href="#">
+                        Data Policy
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+
+    <script src="../js/navbar.js"></script>
+
+    <script src="../js/nowcast-animation.js"></script>
+
+    <script src="../js/nowcast.js"></script>    
+
+</body>
+
+</html>

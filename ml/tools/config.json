@@ -1,0 +1,23 @@
+{
+"user_credentials": {
+        "username/email": "rudra06",
+        "password": "Rudra@06"
+},
+
+"search_parameters": {
+        "datasetId": "3SIMG_L1B_STD",
+        "startTime": "2026-04-06",
+        "endTime": "2026-04-06",
+        "count": "1",
+        "boundingBox": "84.0,19.0,87.0,21.5",
+        "gId": ""
+},
+
+"download_settings": {
+        "download_path" : "D:/SIH 2026/ml/data/raw/satellite",
+        "organize_by_date": false,
+        "skip_user_input": false,
+        "generate_error_logs": true,
+        "error_logs_dir": ""
+}
+} 
