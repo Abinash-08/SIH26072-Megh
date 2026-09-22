@@ -234,9 +234,9 @@
 
 
                 <p>
-                    Analyze thunderstorm evolution, model confidence,
-                    lightning risk and 2–5 hour forecast performance
-                    in one operational view.
+                    Analyze thunderstorm evolution, VIL intensity,
+                    storm coverage and short-term AI nowcast
+                    performance in one operational view.
                 </p>
 
             </div>
@@ -291,24 +291,20 @@
             <div class="period-switcher">
 
                 <span class="toolbar-label">
-                    NOWCAST HORIZON
+                    NOWCAST VIEW
                 </span>
 
-                <button class="period-btn active" data-period="2h" type="button">
-                    2 HR
-                </button>
+                <button class="period-btn active" data-period="current" type="button">
+    NOW
+</button>
 
-                <button class="period-btn" data-period="3h" type="button">
-                    3 HR
-                </button>
+<button class="period-btn" data-period="5m" type="button">
+    +5 MIN
+</button>
 
-                <button class="period-btn" data-period="4h" type="button">
-                    4 HR
-                </button>
-
-                <button class="period-btn" data-period="5h" type="button">
-                    5 HR
-                </button>
+<button class="period-btn" data-period="10m" type="button">
+    +10 MIN
+</button>
 
             </div>
 
@@ -348,184 +344,134 @@
 
             <article class="analytics-kpi-card cyan">
 
-                <div class="kpi-card-top">
+    <div class="kpi-card-top">
 
-                    <div class="kpi-icon">
-                        ◈
-                    </div>
+        <div class="kpi-icon">
+            ◈
+        </div>
 
-                    <span>
-                        PREDICTION ACCURACY
-                    </span>
+        <span>
+            CURRENT MAX VIL
+        </span>
 
-                    <b class="kpi-trend up">
-                        +4.8%
-                    </b>
+    </div>
 
-                </div>
+    <strong
+        class="kpi-number"
+        id="currentVilValue"
+    >
+        --
+    </strong>
 
+    <div class="kpi-foot">
 
-                <strong class="kpi-number" id="accuracyValue">
-                    87.4%
-                </strong>
+        <span>
+            latest observed frame
+        </span>
 
+    </div>
 
-                <div class="kpi-foot">
-
-                    <span>
-                        vs previous forecast
-                    </span>
-
-                    <div class="kpi-mini-line">
-
-                        <i style="height:38%"></i>
-                        <i style="height:50%"></i>
-                        <i style="height:43%"></i>
-                        <i style="height:62%"></i>
-                        <i style="height:58%"></i>
-                        <i style="height:75%"></i>
-                        <i style="height:69%"></i>
-                        <i style="height:91%"></i>
-
-                    </div>
-
-                </div>
-
-            </article>
-
+</article>
 
             <!-- Lead time -->
 
             <article class="analytics-kpi-card purple">
 
-                <div class="kpi-card-top">
+    <div class="kpi-card-top">
 
-                    <div class="kpi-icon">
-                        ◷
-                    </div>
+        <div class="kpi-icon">
+            ◷
+        </div>
 
-                    <span>
-                        EARLY WARNING LEAD TIME
-                    </span>
+        <span>
+            T+5 MAX VIL
+        </span>
 
-                    <b class="kpi-trend up">
-                        +6 min
-                    </b>
+    </div>
 
-                </div>
+    <strong
+        class="kpi-number"
+        id="t5VilValue"
+    >
+        --
+    </strong>
 
+    <div class="kpi-foot">
 
-                <strong class="kpi-number" id="leadTimeValue">
-                    38 <small>min</small>
-                </strong>
+        <span>
+            AI forecast
+        </span>
 
+    </div>
 
-                <div class="kpi-foot">
-
-                    <span>
-                        before peak conditions
-                    </span>
-
-                    <div class="kpi-mini-line">
-
-                        <i style="height:30%"></i>
-                        <i style="height:46%"></i>
-                        <i style="height:42%"></i>
-                        <i style="height:61%"></i>
-                        <i style="height:72%"></i>
-                        <i style="height:67%"></i>
-                        <i style="height:84%"></i>
-                        <i style="height:92%"></i>
-
-                    </div>
-
-                </div>
-
-            </article>
+</article>
 
 
             <!-- False alarm -->
 
             <article class="analytics-kpi-card red">
 
-                <div class="kpi-card-top">
+    <div class="kpi-card-top">
 
-                    <div class="kpi-icon">
-                        !
-                    </div>
+        <div class="kpi-icon">
+            !
+        </div>
 
-                    <span>
-                        FALSE ALARM RATE
-                    </span>
+        <span>
+            T+10 MAX VIL
+        </span>
 
-                    <b class="kpi-trend good">
-                        −2.1%
-                    </b>
+    </div>
 
-                </div>
+    <strong
+        class="kpi-number"
+        id="t10VilValue"
+    >
+        --
+    </strong>
 
+    <div class="kpi-foot">
 
-                <strong class="kpi-number" id="falseAlarmValue">
-                    8.6%
-                </strong>
+        <span>
+            AI forecast
+        </span>
 
+    </div>
 
-                <div class="kpi-foot">
-
-                    <span>
-                        lower is better
-                    </span>
-
-                    <div class="kpi-risk-track">
-                        <i style="width:31%"></i>
-                    </div>
-
-                </div>
-
-            </article>
-
+</article>
 
             <!-- Data quality -->
 
             <article class="analytics-kpi-card green">
 
-                <div class="kpi-card-top">
+    <div class="kpi-card-top">
 
-                    <div class="kpi-icon">
-                        ✓
-                    </div>
+        <div class="kpi-icon">
+            ✓
+        </div>
 
-                    <span>
-                        DATA QUALITY
-                    </span>
+        <span>
+            VIL TREND
+        </span>
 
-                    <b class="kpi-trend good">
-                        EXCELLENT
-                    </b>
+    </div>
 
-                </div>
+    <strong
+        class="kpi-number"
+        id="vilTrendValue"
+    >
+        --
+    </strong>
 
+    <div class="kpi-foot">
 
-                <strong class="kpi-number" id="dataQualityValue">
-                    96.8%
-                </strong>
+        <span>
+            T+5 → T+10
+        </span>
 
+    </div>
 
-                <div class="kpi-foot">
-
-                    <span>
-                        sensor + satellite availability
-                    </span>
-
-                    <div class="kpi-quality-track">
-
-                        <i style="width:96.8%"></i>
-
-                    </div>
-
-                </div>
-
-            </article>
+</article>
 
         </section>
 
@@ -546,17 +492,17 @@
                     <div>
 
                         <span class="chart-kicker">
-                            NOWCAST PERFORMANCE
-                        </span>
+    VIL FORECAST EVOLUTION
+</span>
 
-                        <h2>
-                            2–5 Hour Prediction Accuracy
-                        </h2>
+<h2>
+    Current vs Forecast VIL
+</h2>
 
-                        <p>
-                            Accuracy and confidence across the
-                            thunderstorm nowcast horizon.
-                        </p>
+<p>
+    Maximum VIL evolution from the current
+    observation to the +5 and +10 minutes AI forecast.
+</p>
 
                     </div>
 
@@ -589,76 +535,89 @@
 
             <article class="glass-chart-card risk-chart-card">
 
-                <div class="chart-card-header compact">
+    <div class="chart-card-header compact">
 
-                    <div>
+        <div>
 
-                        <span class="chart-kicker">
-                            RISK DISTRIBUTION
-                        </span>
+            <span class="chart-kicker">
+                RISK FORECAST
+            </span>
 
-                        <h2>
-                            Storm Severity Mix
-                        </h2>
+            <h2>
+                Short-Term Risk
+            </h2>
 
-                    </div>
+        </div>
 
+        <span class="live-badge">
+            LIVE
+        </span>
 
-                    <span class="live-badge">
-                        LIVE
-                    </span>
-
-                </div>
-
-
-                <div class="risk-donut-wrap">
-
-                    <canvas id="riskChart"></canvas>
-
-                    <div class="risk-donut-center">
-
-                        <strong id="eventTotal">
-                            248
-                        </strong>
-
-                        <span>
-                            EVENTS
-                        </span>
-
-                    </div>
-
-                </div>
+    </div>
 
 
-                <div class="risk-legend">
+    <div class="risk-donut-wrap">
 
-                    <div>
-                        <i class="dot severe"></i>
-                        <span>Severe</span>
-                        <strong>24%</strong>
-                    </div>
+        <canvas id="riskChart"></canvas>
 
-                    <div>
-                        <i class="dot high"></i>
-                        <span>High</span>
-                        <strong>42%</strong>
-                    </div>
+        <div class="risk-donut-center">
 
-                    <div>
-                        <i class="dot moderate"></i>
-                        <span>Moderate</span>
-                        <strong>21%</strong>
-                    </div>
+            <strong id="eventTotal">
+                --
+            </strong>
 
-                    <div>
-                        <i class="dot low"></i>
-                        <span>Low</span>
-                        <strong>13%</strong>
-                    </div>
+            <span>
+                CURRENT RISK
+            </span>
 
-                </div>
+        </div>
 
-            </article>
+    </div>
+
+
+    <div class="risk-legend">
+
+        <div>
+            <i class="dot severe"></i>
+
+            <span>
+                CURRENT
+            </span>
+
+            <strong id="currentRiskDisplay">
+                --
+            </strong>
+        </div>
+
+
+        <div>
+            <i class="dot high"></i>
+
+            <span>
+                T+5 MIN
+            </span>
+
+            <strong id="t5RiskDisplay">
+                --
+            </strong>
+        </div>
+
+
+        <div>
+            <i class="dot moderate"></i>
+
+            <span>
+                T+10 MIN
+            </span>
+
+            <strong id="t10RiskDisplay">
+                --
+            </strong>
+        </div>
+
+    </div>
+
+</article>
 
 
             <!-- VALIDATION -->
@@ -674,7 +633,7 @@
                         </span>
 
                         <h2>
-                            Predicted vs Observed Storm Intensity
+                            Model Validation Metrics
                         </h2>
 
                         <p>
@@ -688,15 +647,15 @@
 
                     <div class="metric-badge">
 
-                        <span>
-                            RMSE
-                        </span>
+    <span>
+        RMSE
+    </span>
 
-                        <strong>
-                            0.18
-                        </strong>
+    <strong id="validationRmse">
+        --
+    </strong>
 
-                    </div>
+</div>
 
                 </div>
 
@@ -714,35 +673,34 @@
 
             <article class="glass-chart-card regional-card">
 
-                <div class="chart-card-header compact">
+    <div class="chart-card-header compact">
 
-                    <div>
+        <div>
 
-                        <span class="chart-kicker">
-                            REGIONAL INTELLIGENCE
-                        </span>
+            <span class="chart-kicker">
+                CURRENT CONDITIONS
+            </span>
 
-                        <h2>
-                            Activity Concentration
-                        </h2>
+            <h2>
+                Storm Coverage
+            </h2>
 
-                    </div>
+        </div>
+
+        <span class="source-badge">
+            LIVE
+        </span>
+
+    </div>
 
 
-                    <span class="source-badge">
-                        REGIONAL
-                    </span>
+    <div class="chart-canvas-wrap regional-canvas">
 
-                </div>
+        <canvas id="regionalChart"></canvas>
 
+    </div>
 
-                <div class="chart-canvas-wrap regional-canvas">
-
-                    <canvas id="regionalChart"></canvas>
-
-                </div>
-
-            </article>
+</article>
 
         </section>
 
@@ -758,133 +716,168 @@
 
             <article class="glass-panel model-quality-panel">
 
-                <div class="panel-heading">
+    <div class="panel-heading">
 
-                    <div>
+        <div>
 
-                        <span class="chart-kicker">
-                            MODEL QUALITY
-                        </span>
+            <span class="chart-kicker">
+                MODEL QUALITY
+            </span>
 
-                        <h2>
-                            Operational Scorecard
-                        </h2>
+            <h2>
+                Model Performance
+            </h2>
 
-                    </div>
+        </div>
 
+        <span class="score-pill">
+            LIVE
+        </span>
 
-                    <span class="score-pill">
-                        A+
-                    </span>
-
-                </div>
-
-
-                <div class="quality-list">
+    </div>
 
 
-                    <div class="quality-row">
-
-                        <div class="quality-label">
-
-                            <span>
-                                Precision
-                            </span>
-
-                            <small>
-                                storm detection
-                            </small>
-
-                        </div>
-
-                        <strong>
-                            91.2%
-                        </strong>
-
-                        <div class="quality-bar">
-                            <i style="width:91.2%"></i>
-                        </div>
-
-                    </div>
+    <div class="quality-list">
 
 
-                    <div class="quality-row">
+        <!-- MAE -->
 
-                        <div class="quality-label">
+        <div class="quality-row">
 
-                            <span>
-                                Recall
-                            </span>
+            <div class="quality-label">
 
-                            <small>
-                                event capture
-                            </small>
+                <span>
+                    MAE
+                </span>
 
-                        </div>
+                <small>
+                    mean absolute error
+                </small>
 
-                        <strong>
-                            88.7%
-                        </strong>
+            </div>
 
-                        <div class="quality-bar purple">
-                            <i style="width:88.7%"></i>
-                        </div>
+            <strong id="maeValue">
+                --
+            </strong>
 
-                    </div>
+            <div class="quality-bar">
+                <i style="width:70%"></i>
+            </div>
 
-
-                    <div class="quality-row">
-
-                        <div class="quality-label">
-
-                            <span>
-                                Lightning F1
-                            </span>
-
-                            <small>
-                                hazard classification
-                            </small>
-
-                        </div>
-
-                        <strong>
-                            89.6%
-                        </strong>
-
-                        <div class="quality-bar green">
-                            <i style="width:89.6%"></i>
-                        </div>
-
-                    </div>
+        </div>
 
 
-                    <div class="quality-row">
+        <!-- RMSE -->
 
-                        <div class="quality-label">
+        <div class="quality-row">
 
-                            <span>
-                                Lead-time quality
-                            </span>
+            <div class="quality-label">
 
-                            <small>
-                                useful warning delivered
-                            </small>
+                <span>
+                    RMSE
+                </span>
 
-                        </div>
+                <small>
+                    root mean squared error
+                </small>
 
-                        <strong>
-                            94.1%
-                        </strong>
+            </div>
 
-                        <div class="quality-bar orange">
-                            <i style="width:94.1%"></i>
-                        </div>
+            <strong id="rmseValue">
+                --
+            </strong>
 
-                    </div>
+            <div class="quality-bar purple">
+                <i style="width:65%"></i>
+            </div>
 
-                </div>
+        </div>
 
-            </article>
+
+        <!-- POD -->
+
+        <div class="quality-row">
+
+            <div class="quality-label">
+
+                <span>
+                    POD
+                </span>
+
+                <small>
+                    probability of detection
+                </small>
+
+            </div>
+
+            <strong id="podValue">
+                --
+            </strong>
+
+            <div class="quality-bar green">
+                <i style="width:74.6%"></i>
+            </div>
+
+        </div>
+
+
+        <!-- FAR -->
+
+        <div class="quality-row">
+
+            <div class="quality-label">
+
+                <span>
+                    FAR
+                </span>
+
+                <small>
+                    false alarm ratio
+                </small>
+
+            </div>
+
+            <strong id="farValue">
+                --
+            </strong>
+
+            <div class="quality-bar orange">
+                <i style="width:16.8%"></i>
+            </div>
+
+        </div>
+
+
+        <!-- CSI -->
+
+        <div class="quality-row">
+
+            <div class="quality-label">
+
+                <span>
+                    CSI
+                </span>
+
+                <small>
+                    critical success index
+                </small>
+
+            </div>
+
+            <strong id="csiValue">
+                --
+            </strong>
+
+            <div class="quality-bar">
+                <i style="width:64.8%"></i>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</article>
 
 
             <!-- SIGNAL HEALTH -->
@@ -1078,19 +1071,19 @@
                     </span>
 
                     <h2>
-                        2–5 Hour Storm Evolution
+                        Short-Term Storm Evolution
                     </h2>
 
                     <p class="section-description">
-                        Track how storm probability, lightning activity
-                        and model confidence evolve across the forecast window.
+                        Track maximum VIL and storm coverage from the
+                        current observation through the +5 and +10 minutes forecast.
                     </p>
 
                 </div>
 
 
                 <span class="forecast-chip">
-                    2–5 HR NOWCAST
+                    0–10 MIN FORECAST
                 </span>
 
             </div>
