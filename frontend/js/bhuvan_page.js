@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://sih26072-megh.onrender.com";
 
 const BHUVAN_WMS =
     "https://bhuvan-ras2.nrsc.gov.in/cgi-bin/light.exe";

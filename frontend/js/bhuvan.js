@@ -1,4 +1,4 @@
-const MEGHDHRISHTI_API = "http://127.0.0.1:8000";
+const MEGHDHRISHTI_API = "https://sih26072-megh.onrender.com";
 
 
 /* ============================================

@@ -160,7 +160,7 @@ const nowcastData = {
 /* =========================================================
    NOWCAST INTERACTIVE ENGINE
 ========================================================= */
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://sih26072-megh.onrender.com";
 let forecastData = [
     {
         time: "NOW",
