@@ -47,8 +47,14 @@ class RepeatTime(layers.Layer):
 # -----------------------------
 # Load trained model
 # -----------------------------
+MODEL_PATH = os.path.join(
+    os.path.dirname(__file__),
+    "models",
+    "meghdrishti_convlstm_deployment.keras"
+)
+
 model = tf.keras.models.load_model(
-    "models/meghdrishti_convlstm_deployment.keras",
+    MODEL_PATH,
     custom_objects={"RepeatTime": RepeatTime},
     compile=False
 )
@@ -623,5 +629,4 @@ def analytics():
         }
     } 
     
-    
-        
+
