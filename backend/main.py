@@ -386,3 +386,242 @@ def predict_mosdac():
 
     "forecast": forecast
 }
+   
+   
+@app.get("/analytics")
+def analytics():
+
+    if not os.path.exists(MOSDAC_SEQUENCE_PATH):
+        raise HTTPException(
+            status_code=404,
+            detail="MOSDAC sequence file not found."
+        )
+
+    # ---------------------------------------------
+    # Load MOSDAC sequence
+    # ---------------------------------------------
+
+    sequence = np.load(
+        MOSDAC_SEQUENCE_PATH
+    ).astype(np.float32)
+
+    if sequence.shape != (4, 48, 48):
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid MOSDAC sequence shape: {sequence.shape}"
+        )
+
+    # Keep original VIL
+    original_sequence = sequence.copy()
+
+    # ---------------------------------------------
+    # Current / latest observed frame
+    # ---------------------------------------------
+
+    current_frame = original_sequence[-1]
+
+    current_max_vil = float(
+        np.max(current_frame)
+    )
+
+    current_mean_vil = float(
+        np.mean(current_frame)
+    )
+
+    current_storm_coverage = float(
+        np.mean(
+            current_frame >= STORM_THRESHOLD
+        ) * 100
+    )
+
+    # ---------------------------------------------
+    # Normalize exactly like training
+    # ---------------------------------------------
+
+    normalized = np.clip(
+        sequence,
+        VIL_MIN,
+        VIL_MAX
+    )
+
+    normalized = (
+        normalized - VIL_MIN
+    ) / (
+        VIL_MAX - VIL_MIN
+    )
+
+    X = normalized[
+        np.newaxis,
+        ...,
+        np.newaxis
+    ]
+
+    # ---------------------------------------------
+    # ConvLSTM inference
+    # ---------------------------------------------
+
+    prediction = model.predict(
+        X,
+        verbose=0
+    )
+
+    prediction = prediction[0, ..., 0]
+
+    # ---------------------------------------------
+    # Denormalize
+    # ---------------------------------------------
+
+    prediction_vil = (
+        prediction * (VIL_MAX - VIL_MIN)
+        + VIL_MIN
+    )
+
+    # ---------------------------------------------
+    # Calculate forecast analytics
+    # ---------------------------------------------
+
+    forecast_analytics = []
+
+    for i, minutes_ahead in enumerate([5, 10]):
+
+        frame = prediction_vil[i]
+
+        max_vil = float(
+            np.max(frame)
+        )
+
+        mean_vil = float(
+            np.mean(frame)
+        )
+
+        storm_coverage = float(
+            np.mean(
+                frame >= STORM_THRESHOLD
+            ) * 100
+        )
+
+        forecast_analytics.append({
+            "minutes_ahead": minutes_ahead,
+            "max_vil": round(max_vil, 4),
+            "mean_vil": round(mean_vil, 4),
+            "storm_coverage_percent": round(
+                storm_coverage,
+                2
+            ),
+            "risk_level": get_risk_level(max_vil)
+        })
+
+    # ---------------------------------------------
+    # VIL trend
+    # ---------------------------------------------
+
+    t5_max = forecast_analytics[0]["max_vil"]
+    t10_max = forecast_analytics[1]["max_vil"]
+
+    if t10_max > t5_max + 0.05:
+        trend = "increasing"
+    elif t10_max < t5_max - 0.05:
+        trend = "decreasing"
+    else:
+        trend = "stable"
+
+    # ---------------------------------------------
+    # Coverage trend
+    # ---------------------------------------------
+
+    t5_coverage = forecast_analytics[0][
+        "storm_coverage_percent"
+    ]
+
+    t10_coverage = forecast_analytics[1][
+        "storm_coverage_percent"
+    ]
+
+    coverage_change = (
+        t10_coverage - t5_coverage
+    )
+
+    # ---------------------------------------------
+    # Return Analytics
+    # ---------------------------------------------
+
+    return {
+
+        "status": "success",
+
+        "source": "MOSDAC TERLS DWR",
+
+        "model": "Meghdrishti ConvLSTM",
+
+        "forecast_horizon_minutes": [
+            5,
+            10
+        ],
+
+        "current": {
+            "max_vil": round(
+                current_max_vil,
+                4
+            ),
+
+            "mean_vil": round(
+                current_mean_vil,
+                4
+            ),
+
+            "storm_coverage_percent": round(
+                current_storm_coverage,
+                2
+            ),
+
+            "risk_level": get_risk_level(
+                current_max_vil
+            )
+        },
+
+        "forecast": forecast_analytics,
+
+        "trend": {
+            "vil": trend,
+
+            "max_vil_change_t5_to_t10": round(
+                t10_max - t5_max,
+                4
+            ),
+
+            "storm_coverage_change_percent": round(
+                coverage_change,
+                2
+            )
+        },
+
+        "model_metrics": {
+
+            "test_mae": 0.0483,
+
+            "test_rmse": 0.1974,
+
+            "pod_percent": 74.6,
+
+            "far_percent": 16.8,
+
+            "csi_percent": 64.8
+        },
+
+        "notes": {
+
+            "threshold_vil": STORM_THRESHOLD,
+
+            "input_history_minutes": 20,
+
+            "forecast_interval_minutes": [
+                5,
+                10
+            ],
+
+            "experimental_mosdac_domain_transfer": True
+        }
+    } 
+    
+    
+        
