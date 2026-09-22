@@ -2,14 +2,590 @@
    MEGHDHRISTI — ANALYTICS ENGINE
    2–5 HOUR AI NOWCASTING
 ========================================================= */
+const API_BASE_URL = "http://127.0.0.1:8000";
 
-(() => {
-    "use strict";
+/* =====================================================
+   BACKEND ANALYTICS API
+===================================================== */
+
+async function fetchAnalytics() {
+
+    const status =
+        document.getElementById("engineStatus");
+
+    const updated =
+        document.getElementById("engineUpdated");
+
+    try {
+
+        if (status) {
+            status.textContent = "CONNECTING";
+            status.style.color = COLORS.cyan;
+        }
+
+        const response = await fetch(
+            `${API_BASE_URL}/analytics`
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `Analytics API returned ${response.status}`
+            );
+        }
+
+        const data = await response.json();
+
+        if (data.status !== "success") {
+            throw new Error(
+                "Backend returned unsuccessful status"
+            );
+        }
+
+        state.analyticsData = data;
+
+        updateAnalyticsUI(data);
+
+        if (status) {
+            status.textContent = "LIVE";
+            status.style.color = COLORS.green;
+        }
+
+        if (updated) {
+            updated.textContent = "Updated just now";
+        }
+
+        console.log(
+            "MEGHDRISHTI Analytics API:",
+            data
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Analytics backend error:",
+            error
+        );
+
+        if (status) {
+            status.textContent = "BACKEND OFFLINE";
+            status.style.color = COLORS.red;
+        }
+
+        if (updated) {
+            updated.textContent =
+                "Unable to update analytics";
+        }
+    }
+}
+
+
+function updateRiskDisplay(current, t5, t10) {
+
+    const eventTotal = document.getElementById("eventTotal");
+
+    if (eventTotal) {
+        eventTotal.textContent = current.risk_level.toUpperCase();
+    }
+
+
+    const currentRisk = document.getElementById("currentRiskDisplay");
+
+    if (currentRisk) {
+        currentRisk.textContent = current.risk_level.toUpperCase();
+    }
+
+
+    const t5Risk = document.getElementById("t5RiskDisplay");
+
+    if (t5Risk && t5) {
+        t5Risk.textContent = t5.risk_level.toUpperCase();
+    }
+
+
+    const t10Risk = document.getElementById("t10RiskDisplay");
+
+    if (t10Risk && t10) {
+        t10Risk.textContent = t10.risk_level.toUpperCase();
+    }
+
+}
+
+
+
+function updateRealInsight(
+    data,
+    current,
+    t5,
+    t10
+) {
+
+    const title =
+        document.getElementById(
+            "insightTitle"
+        );
+
+    const text =
+        document.getElementById(
+            "insightText"
+        );
+
+    if (!title || !text)
+        return;
+
+    const trend =
+        data.trend.vil;
+
+    if (trend === "increasing") {
+
+        title.textContent =
+            "VIL intensity is increasing in the short forecast.";
+
+        text.textContent =
+            `Maximum VIL changes from ${t5.max_vil.toFixed(3)} at T+5 to ${t10.max_vil.toFixed(3)} at T+10.`;
+
+    } else if (
+        trend === "decreasing"
+    ) {
+
+        title.textContent =
+            "VIL intensity is decreasing in the short forecast.";
+
+        text.textContent =
+            `Maximum VIL changes from ${t5.max_vil.toFixed(3)} at T+5 to ${t10.max_vil.toFixed(3)} at T+10.`;
+
+    } else {
+
+        title.textContent =
+            "VIL intensity remains relatively stable.";
+
+        text.textContent =
+            `The T+5 and T+10 maximum VIL values remain close, indicating limited change over the short forecast interval.`;
+    }
+}
+/* =====================================================
+   UPDATE ANALYTICS UI FROM BACKEND
+===================================================== */
+
+function updateAnalyticsUI(data) {
+
+    const current = data.current;
+
+    const t5 = data.forecast.find(
+        item => item.minutes_ahead === 5
+    );
+
+    const t10 = data.forecast.find(
+        item => item.minutes_ahead === 10
+    );
+
+    /* ---------------------------------------------
+       CURRENT MAX VIL
+    --------------------------------------------- */
+
+    const currentVil =
+        document.getElementById("currentVilValue");
+
+    if (currentVil) {
+        currentVil.textContent =
+            current.max_vil.toFixed(3);
+    }
+
+
+    /* ---------------------------------------------
+       T+5 MAX VIL
+    --------------------------------------------- */
+
+    const t5Vil =
+        document.getElementById("t5VilValue");
+
+    if (t5Vil && t5) {
+        t5Vil.textContent =
+            t5.max_vil.toFixed(3);
+    }
+
+
+    /* ---------------------------------------------
+       T+10 MAX VIL
+    --------------------------------------------- */
+
+    const t10Vil =
+        document.getElementById("t10VilValue");
+
+    if (t10Vil && t10) {
+        t10Vil.textContent =
+            t10.max_vil.toFixed(3);
+    }
+
+
+    /* ---------------------------------------------
+       VIL TREND
+    --------------------------------------------- */
+
+    const trend =
+        document.getElementById("vilTrendValue");
+
+    if (trend) {
+
+        const trendText =
+            data.trend.vil;
+
+        if (trendText === "increasing") {
+
+            trend.textContent =
+                "↑ INCREASING";
+
+        } else if (
+            trendText === "decreasing"
+        ) {
+
+            trend.textContent =
+                "↓ DECREASING";
+
+        } else {
+
+            trend.textContent =
+                "→ STABLE";
+        }
+    }
+
+
+    /* ---------------------------------------------
+       STORM COVERAGE
+    --------------------------------------------- */
+
+    const currentCoverage =
+        document.getElementById(
+            "currentCoverageValue"
+        );
+
+    const t5Coverage =
+        document.getElementById(
+            "t5CoverageValue"
+        );
+
+    const t10Coverage =
+        document.getElementById(
+            "t10CoverageValue"
+        );
+
+    if (currentCoverage) {
+
+        currentCoverage.textContent =
+            `${current.storm_coverage_percent.toFixed(1)}%`;
+    }
+
+    if (t5Coverage && t5) {
+
+        t5Coverage.textContent =
+            `${t5.storm_coverage_percent.toFixed(1)}%`;
+    }
+
+    if (t10Coverage && t10) {
+
+        t10Coverage.textContent =
+            `${t10.storm_coverage_percent.toFixed(1)}%`;
+    }
+
+
+    /* ---------------------------------------------
+       CURRENT RISK
+    --------------------------------------------- */
+
+    const risk =
+        document.getElementById(
+            "currentRiskValue"
+        );
+
+    if (risk) {
+
+        risk.textContent =
+            current.risk_level.toUpperCase();
+    }
+
+
+    /* ---------------------------------------------
+       MODEL METRICS
+    --------------------------------------------- */
+
+    const mae =
+        document.getElementById(
+            "maeValue"
+        );
+
+    const rmse =
+        document.getElementById(
+            "rmseValue"
+        );
+
+    const pod =
+        document.getElementById(
+            "podValue"
+        );
+
+    const far =
+        document.getElementById(
+            "farValue"
+        );
+
+    const csi =
+        document.getElementById(
+            "csiValue"
+        );
+
+    if (mae) {
+        mae.textContent =
+            data.model_metrics.test_mae.toFixed(4);
+    }
+
+    if (rmse) {
+        rmse.textContent =
+            data.model_metrics.test_rmse.toFixed(4);
+    }
+
+    if (pod) {
+        pod.textContent =
+            `${data.model_metrics.pod_percent}%`;
+    }
+
+    if (far) {
+        far.textContent =
+            `${data.model_metrics.far_percent}%`;
+    }
+
+    if (csi) {
+        csi.textContent =
+            `${data.model_metrics.csi_percent}%`;
+    }
+
+    const validationRmse =
+    document.getElementById(
+        "validationRmse"
+    );
+
+if (validationRmse) {
+    validationRmse.textContent =
+        data.model_metrics.test_rmse.toFixed(4);
+}
+
+
+    /* ---------------------------------------------
+       UPDATE REAL VIL CHART
+    --------------------------------------------- */
+
+    updateVilForecastChart(
+        current,
+        t5,
+        t10
+    );
+
+    createValidationChart(
+    current,
+    t5,
+    t10
+);
+
+
+createRegionalChart(
+    current,
+    t5,
+    t10
+);
+
+buildHourlySignal(
+    current,
+    t5,
+    t10
+);
+    /* ---------------------------------------------
+       UPDATE RISK DISPLAY
+    --------------------------------------------- */
+
+    updateRiskDisplay(
+        current,
+        t5,
+        t10
+    );
+
+    createRiskChart(
+    current,
+    t5,
+    t10
+);
+
+
+    /* ---------------------------------------------
+       UPDATE AI INSIGHT
+    --------------------------------------------- */
+
+    updateRealInsight(
+        data,
+        current,
+        t5,
+        t10
+    );
+
+}
+
+
+/* =====================================================
+   REAL VIL FORECAST CHART
+===================================================== */
+
+function updateVilForecastChart(
+    current,
+    t5,
+    t10
+) {
+
+    const canvas =
+        document.getElementById(
+            "accuracyChart"
+        );
+
+    if (!canvas) return;
+
+    if (typeof Chart === "undefined") return;
+
+    destroyChart("accuracy");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    const labels = [
+        "CURRENT",
+        "T+5 MIN",
+        "T+10 MIN"
+    ];
+
+    const values = [
+        current.max_vil,
+        t5 ? t5.max_vil : null,
+        t10 ? t10.max_vil : null
+    ];
+
+    state.charts.accuracy =
+        new Chart(ctx, {
+
+            type: "line",
+
+            data: {
+
+                labels: labels,
+
+                datasets: [
+
+                    {
+                        label: "Maximum VIL",
+
+                        data: values,
+
+                        borderColor:
+                            COLORS.cyan,
+
+                        backgroundColor:
+                            createGradient(
+                                ctx,
+                                "rgba(46,219,255,.25)",
+                                "rgba(46,219,255,0)"
+                            ),
+
+                        borderWidth: 3,
+
+                        pointRadius: 5,
+
+                        pointHoverRadius: 8,
+
+                        pointBackgroundColor:
+                            "#071321",
+
+                        pointBorderColor:
+                            COLORS.cyan,
+
+                        pointBorderWidth: 2,
+
+                        tension: 0.35,
+
+                        fill: true
+                    }
+                ]
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                interaction: {
+                    mode: "index",
+                    intersect: false
+                },
+
+                plugins: {
+
+                    legend: {
+                        display: true,
+
+                        position: "top",
+
+                        align: "end",
+
+                        labels: {
+
+                            color: "#8ea3b8",
+
+                            usePointStyle: true,
+
+                            padding: 18,
+
+                            font: {
+                                family: "Inter",
+                                size: 11,
+                                weight: "600"
+                            }
+                        }
+                    },
+
+                    tooltip: tooltipOptions()
+                },
+
+                scales: {
+
+                    ...baseScales(),
+
+                    y: {
+
+                        ...baseScales().y,
+
+                        beginAtZero: true,
+
+                        title: {
+
+                            display: true,
+
+                            text: "VIL",
+
+                            color: COLORS.text,
+
+                            font: {
+                                family: "Inter",
+                                size: 10,
+                                weight: "600"
+                            }
+                        }
+                    }
+                }
+            }
+        });
+}
+
+
 
     const state = {
-        period: "2h",
+        period: "current",
         charts: {},
-        refreshing: false
+        refreshing: false,
+        analyticsData: null
     };
 
     const COLORS = {
@@ -28,107 +604,7 @@
        2–5 HOUR NOWCAST DATA
     ===================================================== */
 
-    const PERIOD_DATA = {
-
-        "2h": {
-            labels: [
-                "NOW",
-                "+30 MIN",
-                "+60 MIN",
-                "+90 MIN",
-                "+2 HR"
-            ],
-            accuracy: [
-                87.4,
-                88.1,
-                89.0,
-                89.6,
-                90.2
-            ],
-            confidence: [
-                88.1,
-                88.7,
-                89.4,
-                90.0,
-                90.6
-            ]
-        },
-
-        "3h": {
-            labels: [
-                "NOW",
-                "+30 MIN",
-                "+1 HR",
-                "+2 HR",
-                "+3 HR"
-            ],
-            accuracy: [
-                87.4,
-                88.0,
-                88.7,
-                89.3,
-                89.8
-            ],
-            confidence: [
-                88.1,
-                88.6,
-                89.1,
-                89.7,
-                90.1
-            ]
-        },
-
-        "4h": {
-            labels: [
-                "NOW",
-                "+1 HR",
-                "+2 HR",
-                "+3 HR",
-                "+4 HR"
-            ],
-            accuracy: [
-                87.4,
-                87.9,
-                88.5,
-                89.0,
-                89.4
-            ],
-            confidence: [
-                88.1,
-                88.5,
-                89.0,
-                89.4,
-                89.8
-            ]
-        },
-
-        "5h": {
-            labels: [
-                "NOW",
-                "+1 HR",
-                "+2 HR",
-                "+3 HR",
-                "+4 HR",
-                "+5 HR"
-            ],
-            accuracy: [
-                87.4,
-                87.8,
-                88.2,
-                88.7,
-                89.1,
-                89.3
-            ],
-            confidence: [
-                88.1,
-                88.4,
-                88.8,
-                89.2,
-                89.5,
-                89.7
-            ]
-        }
-    };
+    
 
 
     /* =====================================================
@@ -325,905 +801,495 @@
        ACCURACY CHART
     ===================================================== */
 
-    function createAccuracyChart() {
-
-        const canvas =
-            document.getElementById(
-                "accuracyChart"
-            );
-
-        if (!canvas) return;
-
-        if (typeof Chart === "undefined") {
-
-            console.error(
-                "Chart.js is not loaded."
-            );
-
-            return;
-        }
-
-        destroyChart("accuracy");
-
-        const ctx =
-            canvas.getContext("2d");
-
-        const data =
-            PERIOD_DATA[state.period];
-
-
-        state.charts.accuracy =
-            new Chart(ctx, {
-
-                type: "line",
-
-                data: {
-
-                    labels:
-                        data.labels,
-
-                    datasets: [
-
-                        {
-
-                            label:
-                                "Prediction Accuracy",
-
-                            data:
-                                data.accuracy,
-
-                            borderColor:
-                                COLORS.cyan,
-
-                            backgroundColor:
-                                createGradient(
-                                    ctx,
-                                    "rgba(46,219,255,.25)",
-                                    "rgba(46,219,255,0)"
-                                ),
-
-                            borderWidth: 3,
-
-                            pointRadius: 4,
-
-                            pointHoverRadius: 7,
-
-                            pointBackgroundColor:
-                                "#071321",
-
-                            pointBorderColor:
-                                COLORS.cyan,
-
-                            pointBorderWidth: 2,
-
-                            tension: 0.42,
-
-                            fill: true
-                        },
-
-                        {
-
-                            label:
-                                "Model Confidence",
-
-                            data:
-                                data.confidence,
-
-                            borderColor:
-                                COLORS.purple,
-
-                            backgroundColor:
-                                "transparent",
-
-                            borderWidth: 2,
-
-                            borderDash:
-                                [7, 6],
-
-                            pointRadius: 3,
-
-                            pointHoverRadius: 6,
-
-                            pointBackgroundColor:
-                                "#071321",
-
-                            pointBorderColor:
-                                COLORS.purple,
-
-                            pointBorderWidth: 2,
-
-                            tension: 0.42,
-
-                            fill: false
-                        }
-                    ]
-                },
-
-                options: {
-
-                    responsive: true,
-
-                    maintainAspectRatio:
-                        false,
-
-                    interaction: {
-
-                        mode: "index",
-
-                        intersect: false
-                    },
-
-                    plugins: {
-
-                        legend: {
-
-                            position:
-                                "top",
-
-                            align:
-                                "end",
-
-                            labels: {
-
-                                color:
-                                    "#8ea3b8",
-
-                                padding: 18,
-
-                                boxWidth: 12,
-
-                                boxHeight: 7,
-
-                                usePointStyle:
-                                    true,
-
-                                font: {
-
-                                    family:
-                                        "Inter",
-
-                                    size: 11,
-
-                                    weight: "600"
-                                }
-                            }
-                        },
-
-                        tooltip:
-                            tooltipOptions()
-                    },
-
-                    scales: {
-
-                        ...baseScales(),
-
-                        y: {
-
-                            ...baseScales().y,
-
-                            min: 70,
-
-                            max: 100,
-
-                            ticks: {
-
-                                ...baseScales().y.ticks,
-
-                                callback:
-                                    value =>
-                                        `${value}%`
-                            }
-                        }
-                    }
-                }
-            });
-    }
-
+  
 
     /* =====================================================
        RISK DISTRIBUTION
     ===================================================== */
 
-    function createRiskChart() {
+    function createRiskChart(current, t5, t10) {
 
-        const canvas =
-            document.getElementById(
-                "riskChart"
-            );
+    const canvas = document.getElementById("riskChart");
 
-        if (!canvas) return;
+    if (!canvas || typeof Chart === "undefined") return;
 
-        if (typeof Chart === "undefined")
-            return;
+    destroyChart("risk");
 
-        destroyChart("risk");
+    const ctx = canvas.getContext("2d");
 
-        state.charts.risk =
-            new Chart(canvas, {
+    const riskToValue = (risk) => {
+        if (!risk) return 0;
 
-                type: "doughnut",
+        switch (risk.toLowerCase()) {
+            case "low":
+                return 1;
+            case "moderate":
+                return 2;
+            case "high":
+                return 3;
+            case "extreme":
+                return 4;
+            default:
+                return 0;
+        }
+    };
 
-                data: {
+    const values = [
+        riskToValue(current?.risk_level),
+        riskToValue(t5?.risk_level),
+        riskToValue(t10?.risk_level)
+    ];
 
-                    labels: [
-                        "Severe",
-                        "High",
-                        "Moderate",
-                        "Low"
-                    ],
+    state.charts.risk = new Chart(ctx, {
 
-                    datasets: [
+        type: "doughnut",
 
-                        {
+        data: {
 
-                            data: [
-                                24,
-                                42,
-                                21,
-                                13
-                            ],
+            labels: [
+                "CURRENT",
+                "T+5 MIN",
+                "T+10 MIN"
+            ],
 
-                            backgroundColor: [
+            datasets: [{
+                data: values,
 
-                                COLORS.red,
-                                COLORS.orange,
-                                COLORS.yellow,
-                                COLORS.cyan
-                            ],
+                backgroundColor: [
+                    COLORS.cyan,
+                    COLORS.purple,
+                    COLORS.green
+                ],
 
-                            borderColor:
-                                "#071321",
+                borderColor: "#071321",
 
-                            borderWidth: 5,
+                borderWidth: 3,
 
-                            hoverOffset: 9
-                        }
-                    ]
+                hoverOffset: 8
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+            cutout: "68%",
+
+            plugins: {
+
+                legend: {
+                    display: false
                 },
 
-                options: {
+                tooltip: {
 
-                    responsive: true,
+                    callbacks: {
 
-                    maintainAspectRatio:
-                        false,
+                        label: function(context) {
 
-                    cutout: "72%",
+                            const riskLevels = [
+                                current?.risk_level || "--",
+                                t5?.risk_level || "--",
+                                t10?.risk_level || "--"
+                            ];
 
-                    plugins: {
+                            return ` ${riskLevels[context.dataIndex].toUpperCase()}`;
 
-                        legend: {
-                            display: false
-                        },
+                        }
 
-                        tooltip:
-                            tooltipOptions()
                     }
-                }
-            });
-    }
 
+                }
+
+            }
+
+        }
+
+    });
+
+}
 
     /* =====================================================
        PREDICTED VS OBSERVED
     ===================================================== */
 
-    function createValidationChart() {
+    function createValidationChart(current, t5, t10) {
 
-        const canvas =
-            document.getElementById(
-                "validationChart"
-            );
+    const canvas =
+        document.getElementById(
+            "validationChart"
+        );
 
-        if (!canvas) return;
+    if (!canvas) return;
 
-        if (typeof Chart === "undefined")
-            return;
+    if (typeof Chart === "undefined")
+        return;
 
-        destroyChart("validation");
+    destroyChart("validation");
 
-        const ctx =
-            canvas.getContext("2d");
+    const ctx =
+        canvas.getContext("2d");
 
 
-        state.charts.validation =
-            new Chart(ctx, {
+    const labels = [
+        "CURRENT",
+        "T+5 MIN",
+        "T+10 MIN"
+    ];
 
-                type: "line",
 
-                data: {
+    const values = [
+        current ? current.max_vil : null,
+        t5 ? t5.max_vil : null,
+        t10 ? t10.max_vil : null
+    ];
 
-                    labels: [
 
-                        "NOW",
-                        "+1 HR",
-                        "+2 HR",
-                        "+3 HR",
-                        "+4 HR",
-                        "+5 HR"
-                    ],
+    state.charts.validation =
+        new Chart(ctx, {
 
-                    datasets: [
+            type: "bar",
 
-                        {
+            data: {
 
-                            label:
-                                "Predicted",
+                labels: labels,
 
-                            data: [
-                                68,
-                                74,
-                                82,
-                                91,
-                                76,
-                                72
-                            ],
+                datasets: [
 
-                            borderColor:
-                                COLORS.cyan,
+                    {
+                        label: "Maximum VIL",
 
-                            backgroundColor:
-                                createGradient(
-                                    ctx,
-                                    "rgba(46,219,255,.12)",
-                                    "rgba(46,219,255,0)"
-                                ),
+                        data: values,
 
-                            borderWidth: 3,
+                        backgroundColor: [
+                            COLORS.cyan,
+                            COLORS.purple,
+                            COLORS.green
+                        ],
 
-                            tension: 0.38,
+                        borderRadius: 8,
 
-                            pointRadius: 4,
+                        borderSkipped: false
+                    }
 
-                            pointHoverRadius: 7,
+                ]
 
-                            pointBackgroundColor:
-                                "#071321",
+            },
 
-                            pointBorderColor:
-                                COLORS.cyan,
+            options: {
 
-                            pointBorderWidth: 2,
+                responsive: true,
 
-                            fill: true
-                        },
+                maintainAspectRatio: false,
 
-                        {
+                plugins: {
 
-                            label:
-                                "Observed",
+                    legend: {
 
-                            data: [
-                                66,
-                                72,
-                                79,
-                                88,
-                                74,
-                                70
-                            ],
+                        display: true,
 
-                            borderColor:
-                                COLORS.red,
+                        position: "top",
 
-                            backgroundColor:
-                                "transparent",
+                        align: "end",
 
-                            borderWidth: 2,
+                        labels: {
 
-                            borderDash:
-                                [7, 6],
+                            color: "#8ea3b8",
 
-                            tension: 0.38,
+                            usePointStyle: true,
 
-                            pointRadius: 4,
+                            padding: 18,
 
-                            pointHoverRadius: 7,
+                            font: {
 
-                            pointBackgroundColor:
-                                "#071321",
+                                family: "Inter",
 
-                            pointBorderColor:
-                                COLORS.red,
+                                size: 11,
 
-                            pointBorderWidth: 2
+                                weight: "600"
+                            }
                         }
-                    ]
+                    },
+
+                    tooltip:
+                        tooltipOptions()
                 },
 
-                options: {
+                scales: {
 
-                    responsive: true,
+                    ...baseScales(),
 
-                    maintainAspectRatio:
-                        false,
+                    y: {
 
-                    interaction: {
+                        ...baseScales().y,
 
-                        mode: "index",
+                        beginAtZero: true,
 
-                        intersect: false
-                    },
+                        title: {
 
-                    plugins: {
+                            display: true,
 
-                        legend: {
+                            text: "Maximum VIL",
 
-                            position:
-                                "top",
+                            color: COLORS.text,
 
-                            align:
-                                "end",
+                            font: {
 
-                            labels: {
+                                family: "Inter",
 
-                                color:
-                                    "#8ea3b8",
+                                size: 10,
 
-                                padding: 18,
-
-                                boxWidth: 12,
-
-                                boxHeight: 7,
-
-                                usePointStyle:
-                                    true,
-
-                                font: {
-
-                                    family:
-                                        "Inter",
-
-                                    size: 11,
-
-                                    weight: "600"
-                                }
-                            }
-                        },
-
-                        tooltip:
-                            tooltipOptions()
-                    },
-
-                    scales: {
-
-                        ...baseScales(),
-
-                        y: {
-
-                            ...baseScales().y,
-
-                            min: 20,
-
-                            max: 100,
-
-                            ticks: {
-
-                                ...baseScales().y.ticks,
-
-                                callback:
-                                    value =>
-                                        `${value}%`
+                                weight: "600"
                             }
                         }
                     }
                 }
-            });
-    }
+            }
+        });
+}
 
 
     /* =====================================================
        REGIONAL ACTIVITY
     ===================================================== */
 
-    function createRegionalChart() {
+    function createRegionalChart(current, t5, t10) {
 
-        const canvas =
-            document.getElementById(
-                "regionalChart"
-            );
+    const canvas =
+        document.getElementById(
+            "regionalChart"
+        );
 
-        if (!canvas) return;
+    if (!canvas) return;
 
-        if (typeof Chart === "undefined")
-            return;
+    if (typeof Chart === "undefined")
+        return;
 
-        destroyChart("regional");
+    destroyChart("regional");
+
+    const ctx =
+        canvas.getContext("2d");
 
 
-        state.charts.regional =
-            new Chart(canvas, {
+    const labels = [
+        "CURRENT",
+        "T+5 MIN",
+        "T+10 MIN"
+    ];
 
-                type: "bar",
 
-                data: {
+    const values = [
+        current ? current.storm_coverage_percent : null,
+        t5 ? t5.storm_coverage_percent : null,
+        t10 ? t10.storm_coverage_percent : null
+    ];
 
-                    labels: [
 
-                        "Bhubaneswar",
-                        "Cuttack",
-                        "Khordha",
-                        "Puri",
-                        "Jajpur"
-                    ],
+    state.charts.regional =
+        new Chart(ctx, {
 
-                    datasets: [
+            type: "bar",
 
-                        {
+            data: {
 
-                            label:
-                                "Storm Activity",
+                labels: labels,
 
-                            data: [
-                                91,
-                                82,
-                                68,
-                                57,
-                                44
-                            ],
+                datasets: [
 
-                            backgroundColor: [
+                    {
+                        label:
+                            "Storm Coverage",
 
-                                COLORS.red,
-                                COLORS.orange,
-                                COLORS.yellow,
-                                COLORS.cyan,
-                                COLORS.purple
-                            ],
+                        data:
+                            values,
 
-                            borderRadius: 8,
+                        backgroundColor: [
+                            COLORS.cyan,
+                            COLORS.purple,
+                            COLORS.green
+                        ],
 
-                            borderSkipped: false
-                        }
-                    ]
-                },
+                        borderRadius: 8,
 
-                options: {
+                        borderSkipped: false
+                    }
 
-                    responsive: true,
+                ]
+            },
 
-                    maintainAspectRatio:
-                        false,
+            options: {
 
-                    plugins: {
+                responsive: true,
 
-                        legend: {
-                            display: false
-                        },
+                maintainAspectRatio: false,
 
-                        tooltip:
-                            tooltipOptions()
+                plugins: {
+
+                    legend: {
+                        display: false
                     },
 
-                    scales: {
+                    tooltip:
+                        tooltipOptions()
+                },
 
-                        x: {
+                scales: {
 
-                            grid: {
-                                display: false
-                            },
+                    ...baseScales(),
 
-                            border: {
-                                display: false
-                            },
+                    y: {
 
-                            ticks: {
+                        ...baseScales().y,
 
-                                color:
-                                    COLORS.text,
+                        beginAtZero: true,
 
-                                font: {
+                        title: {
 
-                                    family:
-                                        "Inter",
+                            display: true,
 
-                                    size: 10,
+                            text:
+                                "Storm Coverage (%)",
 
-                                    weight: "600"
-                                }
+                            color:
+                                COLORS.text,
+
+                            font: {
+
+                                family:
+                                    "Inter",
+
+                                size: 10,
+
+                                weight: "600"
                             }
                         },
 
-                        y: {
+                        ticks: {
 
-                            beginAtZero: true,
+                            ...baseScales().y.ticks,
 
-                            max: 100,
-
-                            border: {
-                                display: false
-                            },
-
-                            grid: {
-
-                                color:
-                                    COLORS.grid
-                            },
-
-                            ticks: {
-
-                                color:
-                                    COLORS.text,
-
-                                font: {
-
-                                    family:
-                                        "Inter",
-
-                                    size: 10
-                                },
-
-                                callback:
-                                    value =>
-                                        `${value}%`
-                            }
+                            callback:
+                                value =>
+                                    `${value}%`
                         }
                     }
                 }
-            });
-    }
+            }
+        });
+}
 
 
     /* =====================================================
        HOURLY SIGNAL
     ===================================================== */
 
-    function buildHourlySignal() {
+    function buildHourlySignal(current, t5, t10) {
 
-        const grid =
-            document.getElementById(
-                "hourlyGrid"
-            );
+    const grid =
+        document.getElementById(
+            "hourlyGrid"
+        );
 
-        if (!grid) return;
-
-
-        const values = [
-
-            {
-                time: "NOW",
-                value: 82,
-                label: "HIGH RISK"
-            },
-
-            {
-                time: "+2 HR",
-                value: 86,
-                label: "STORM GROWTH"
-            },
-
-            {
-                time: "+3 HR",
-                value: 91,
-                label: "LIGHTNING ↑"
-            },
-
-            {
-                time: "+4 HR",
-                value: 94,
-                label: "PEAK RISK"
-            },
-
-            {
-                time: "+5 HR",
-                value: 68,
-                label: "WEAKENING"
-            }
-        ];
+    if (!grid) return;
 
 
-        grid.innerHTML =
-            values.map(
-                (item, index) => {
+    const values = [
 
-                    let color =
-                        COLORS.cyan;
+        {
+            time: "CURRENT",
+            vil: current?.max_vil ?? null,
+            coverage: current?.storm_coverage_percent ?? null,
+            risk: current?.risk_level ?? "--"
+        },
 
-                    if (item.value >= 90) {
+        {
+            time: "T+5 MIN",
+            vil: t5?.max_vil ?? null,
+            coverage: t5?.storm_coverage_percent ?? null,
+            risk: t5?.risk_level ?? "--"
+        },
 
-                        color =
-                            COLORS.red;
+        {
+            time: "T+10 MIN",
+            vil: t10?.max_vil ?? null,
+            coverage: t10?.storm_coverage_percent ?? null,
+            risk: t10?.risk_level ?? "--"
+        }
 
-                    } else if (
-                        item.value >= 80
-                    ) {
-
-                        color =
-                            COLORS.orange;
-
-                    } else if (
-                        item.value >= 65
-                    ) {
-
-                        color =
-                            COLORS.yellow;
-                    }
+    ];
 
 
-                    const height =
-                        Math.max(
-                            30,
-                            item.value * 0.55
-                        );
+    grid.innerHTML =
+        values.map(
+            (item, index) => {
+
+                const vil =
+                    item.vil !== null
+                        ? item.vil.toFixed(3)
+                        : "--";
+
+                const coverage =
+                    item.coverage !== null
+                        ? `${item.coverage.toFixed(1)}%`
+                        : "--";
 
 
-                    return `
+                return `
 
-                        <div
-                            class="forecast-hour
-                            ${index === 0 ? "active" : ""}"
-                            style="
-                                --signal-color:${color};
-                                --signal-height:${height}px;
-                            "
-                        >
+                    <div
+                        class="forecast-hour
+                        ${index === 0 ? "active" : ""}"
+                    >
 
-                            <span
-                                class="forecast-time"
-                            >
-                                ${item.time}
-                            </span>
+                        <span class="forecast-time">
+                            ${item.time}
+                        </span>
 
-                            <div
-                                class="forecast-bar"
-                            >
-                                <i></i>
-                            </div>
-
-                            <strong>
-                                ${item.value}%
-                            </strong>
-
-                            <small>
-                                ${item.label}
-                            </small>
-
+                        <div class="forecast-bar">
+                            <i
+                                style="
+                                    height:${Math.max(
+                                        10,
+                                        Math.min(
+                                            100,
+                                            (item.vil || 0) * 25
+                                        )
+                                    )}%;
+                                "
+                            ></i>
                         </div>
 
-                    `;
-                }
-            ).join("");
-    }
+                        <strong>
+                            VIL ${vil}
+                        </strong>
 
+                        <small>
+                            Coverage ${coverage}
+                            · ${item.risk.toUpperCase()}
+                        </small>
+
+                    </div>
+
+                `;
+            }
+        ).join("");
+}
 
     /* =====================================================
        PERIOD SWITCHING
     ===================================================== */
 
-    function updatePeriod(period) {
-
-        if (!PERIOD_DATA[period])
-            return;
-
-
-        state.period =
-            period;
-
-
-        document
-            .querySelectorAll(
-                ".period-btn"
-            )
-            .forEach(button => {
-
-                button.classList.toggle(
-                    "active",
-                    button.dataset.period ===
-                        period
-                );
-            });
-
-
-        createAccuracyChart();
-
-
-        const accuracyMap = {
-
-            "2h": "90.2%",
-
-            "3h": "89.8%",
-
-            "4h": "89.4%",
-
-            "5h": "89.3%"
-        };
-
-
-        const accuracyValue =
-            document.getElementById(
-                "accuracyValue"
-            );
-
-        const accuracySummary =
-            document.getElementById(
-                "accuracySummary"
-            );
-
-
-        if (accuracyValue) {
-
-            accuracyValue.textContent =
-                accuracyMap[period];
-        }
-
-
-        if (accuracySummary) {
-
-            accuracySummary.textContent =
-                accuracyMap[period];
-        }
-
-
-        updateInsight(period);
-    }
+    
 
 
     /* =====================================================
        INSIGHT PANEL
     ===================================================== */
 
-    function updateInsight(period) {
-
-        const title =
-            document.getElementById(
-                "insightTitle"
-            );
-
-        const text =
-            document.getElementById(
-                "insightText"
-            );
-
-
-        if (!title || !text)
-            return;
-
-
-        const insights = {
-
-            "2h": {
-
-                title:
-                    "Short-horizon prediction confidence is very high.",
-
-                text:
-                    "The model currently shows strong agreement between satellite texture, lightning density and storm-motion signals. The 2-hour window provides the highest operational confidence for immediate warning decisions."
-            },
-
-            "3h": {
-
-                title:
-                    "Storm structure remains stable through the 3-hour window.",
-
-                text:
-                    "AI-derived storm-cell movement and lightning trends remain consistent, supporting reliable short-to-medium range thunderstorm prediction."
-            },
-
-            "4h": {
-
-                title:
-                    "Confidence remains strong as the forecast horizon expands.",
-
-                text:
-                    "The model continues to maintain useful predictive skill at four hours, although uncertainty gradually increases as the forecast extends further from current observations."
-            },
-
-            "5h": {
-
-                title:
-                    "Five-hour forecasts provide useful early planning intelligence.",
-
-                text:
-                    "The extended horizon provides valuable advance warning for developing storm activity, while the model accounts for increasing uncertainty in storm evolution."
-            }
-        };
-
-
-        title.textContent =
-            insights[period].title;
-
-        text.textContent =
-            insights[period].text;
-    }
+   
 
 
     /* =====================================================
@@ -1232,80 +1298,41 @@
 
     function refreshAnalytics() {
 
-        if (state.refreshing)
-            return;
+    if (state.refreshing)
+        return;
 
+    state.refreshing = true;
 
-        state.refreshing =
-            true;
+    const button =
+        document.getElementById(
+            "refreshAnalytics"
+        );
 
+    const status =
+        document.getElementById(
+            "engineStatus"
+        );
 
-        const button =
-            document.getElementById(
-                "refreshAnalytics"
-            );
+    if (button) {
 
-        const status =
-            document.getElementById(
-                "engineStatus"
-            );
+        button.classList.add(
+            "is-refreshing"
+        );
 
-        const updated =
-            document.getElementById(
-                "engineUpdated"
-            );
+        button.disabled = true;
+    }
 
+    if (status) {
 
-        if (button) {
+        status.textContent =
+            "SYNCING";
 
-            button.classList.add(
-                "is-refreshing"
-            );
+        status.style.color =
+            COLORS.cyan;
+    }
 
-            button.disabled =
-                true;
-        }
-
-
-        if (status) {
-
-            status.textContent =
-                "SYNCING";
-
-            status.style.color =
-                COLORS.cyan;
-        }
-
-
-        setTimeout(() => {
-
-            createAccuracyChart();
-
-            createRiskChart();
-
-            createValidationChart();
-
-            createRegionalChart();
-
-            buildHourlySignal();
-
-
-            if (updated) {
-
-                updated.textContent =
-                    "Updated just now";
-            }
-
-
-            if (status) {
-
-                status.textContent =
-                    "PROCESSING";
-
-                status.style.color =
-                    COLORS.green;
-            }
-
+    fetchAnalytics()
+        .finally(() => {
 
             if (button) {
 
@@ -1317,12 +1344,9 @@
                     false;
             }
 
-
-            state.refreshing =
-                false;
-
-        }, 700);
-    }
+            state.refreshing = false;
+        });
+}
 
 
     /* =====================================================
@@ -1432,34 +1456,6 @@
         );
 
 
-        createAccuracyChart();
-
-        createRiskChart();
-
-        createValidationChart();
-
-        createRegionalChart();
-
-        buildHourlySignal();
-
-
-        document
-            .querySelectorAll(
-                ".period-btn"
-            )
-            .forEach(button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        updatePeriod(
-                            button.dataset.period
-                        );
-                    }
-                );
-            });
-
 
         const refreshButton =
             document.getElementById(
@@ -1480,8 +1476,7 @@
 
         setFooterYear();
 
-        updateInsight("2h");
-
+        fetchAnalytics();
 
         console.log(
             "MEGHDHRISTI Analytics initialized successfully."
@@ -1504,4 +1499,3 @@
         init();
     }
 
-})();
